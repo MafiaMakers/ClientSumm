@@ -17,6 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 LIBS += -lws2_32
 
+RESOURCES += imgs.qrc
+
 SOURCES += \
    # audioplayer.cpp \
     audioplayer.cpp \
@@ -29,7 +31,9 @@ SOURCES += \
     systemfunctions_c.cpp \
     uimanager.cpp \
     networker_c.cpp \
-    videoplayer.cpp
+    userbuttonpanel.cpp \
+    videoplayer.cpp \
+    videospace.cpp
 
 HEADERS += \
     audioplayer.h \
@@ -45,7 +49,9 @@ HEADERS += \
     uimanager.h \
     networker_c.h \
     defines_c.h \
-    videoplayer.h
+    userbuttonpanel.h \
+    videoplayer.h \
+    videospace.h
 
 FORMS +=
 

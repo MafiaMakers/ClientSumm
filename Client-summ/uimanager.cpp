@@ -1,12 +1,19 @@
 #include "uimanager.h"
+#include <userbuttonpanel.h>
+
 using namespace Mafia;
 UIManager::UIManager(QWidget *parent): QMainWindow(parent)
 {
     this->resize(1280, 700);
-    for(int i = 0; i < 5; i++) {
-        fields.append(new SampleRelative(this));
-    }
-    fields[0]->setRelatives(QList<double>() << 960/1280.0 << 350/700.0 << 310/1280.0 << 350.0/700.0); // chat
+    this->setMinimumSize(500, 500);
+
+    fields.append(new SampleRelative(this));
+    fields.append(new UserButtonPanel(this));
+    fields.append(new SampleRelative(this));
+    fields.append(new VideoSpace(this));
+    fields.append(new SampleRelative(this));
+
+    fields[0]->setRelatives(QList<double>() << 960/1280.0 << 350/700.0 << 310/1280.0 << 340.0/700.0); // chat
     fields[1]->setRelatives(QList<double>() << 10/1280.0 << 610/700.0 << 940/1280.0 << 80/700.0); // bottom box
     fields[2]->setRelatives(QList<double>() << 960/1280.0 << 10/700.0 << 310/1280.0 << 160/700.0); // role icon
     fields[3]->setRelatives(QList<double>() << 10/1280.0 << 10/700.0 << 940/1280.0 << 590/700.0); // video space
@@ -21,11 +28,8 @@ UIManager::~UIManager() {
 }
 
 void UIManager::resizeEvent(QResizeEvent *event) {
-    QSize gs = event->size();
-    gs.setHeight(qRound(gs.width()*35.0/64.0));
-    this->resize(gs);
     foreach(RelativeWidget* el, fields) {
-        el->updateBounds(gs);
+        el->updateBounds(event->size());
     }
 }
 /////////////////////////////////////////////
@@ -64,7 +68,7 @@ void UIManager::updateVotings(QList<QList<int> > votings) {
 }
 
 void UIManager::updateFrame(int idx, QByteArray frame) {
-
+    fields[3]->updateFrame(idx, frame);
 }
 
 void UIManager::enableVotings(bool status) {

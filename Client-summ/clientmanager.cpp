@@ -5,21 +5,24 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
 {
     mafUi =new UIManager();
     mafUi->show();
-//    micphone = new MicphoneHelper();
-//    webcam = new CamHelper();
-//    serverIP = "192.168.8.1";
-//    net = new NetWorker_c(serverIP.toStdString());
-//    out = new QTextStream(stdout);
-//    votings.clear();
-//    meAdmin = false;
-//    canSpeak = false;
-//    camActive = true;
-//    hardSender = new QTimer();
-//    hardSender->setInterval(40);
-//    connect(hardSender, &QTimer::timeout, this, &ClientManager::sendHardware);
-//    connect(net, &NetWorker_c::messageReceived, this, &ClientManager::getMessage);
+    muchPlayers = 10;
+    mafUi->setPlayersCount(muchPlayers);
+    micphone = new MicphoneHelper();
+    webcam = new CamHelper();
+    serverIP = "192.168.8.1";
+    net = new NetWorker_c(serverIP.toStdString());
+    out = new QTextStream(stdout);
+    votings.clear();
+    meAdmin = false;
+    canSpeak = false;
+    camActive = true;
+    myIdx = 5;
+    hardSender = new QTimer();
+    hardSender->setInterval(40);
+    connect(hardSender, &QTimer::timeout, this, &ClientManager::sendHardware);
+    connect(net, &NetWorker_c::messageReceived, this, &ClientManager::getMessage);
+    hardSender->start();
 //    net->connect();
-//    hardSender->start();
 }
 
 ClientManager::~ClientManager() {
@@ -133,10 +136,15 @@ void ClientManager::sendHardware() {
         QByteArray audio = micphone->getAudio();
         //send audio via net
     }
-    if(camActive) {
+
     QByteArray video = webcam->getFrame();
+    if(camActive) {
     // send video via net
     }
+    mafUi->updateFrame(myIdx, video);
+    mafUi->updateFrame(3, video);
+    mafUi->updateFrame(8, video);
+    mafUi->updateFrame(0, video);
 }
 
 void ClientManager::addPlayer(std::string player) {

@@ -12,6 +12,7 @@
 #include <QList>
 #include <samplerelative.h>
 #include <relativewidget.h>
+#include <videospace.h>
 
 QT_BEGIN_NAMESPACE
 

@@ -3,20 +3,26 @@
 
 #include <QObject>
 #include <QLabel>
+#include <relativewidget.h>
+
 namespace Mafia {
-class VideoPlayer : public QObject
+class VideoPlayer
 {
-    Q_OBJECT
 public:
-    explicit VideoPlayer(QWidget *parent, QObject *cringe = nullptr);
-    void setGeometry(int x, int y, int w, int h);
+    explicit VideoPlayer(QWidget *parent);
     void setBorder(int bw, QColor ncolor);
     void updateFrame(QByteArray frame);
+    void updateBounds(QRect nbounds);
+    void setRelatives(QList<double> dimens);
 private:
     int w, h;
     QColor borderColor;
     QWidget *parent;
     QLabel *player;
+    QList<double> myDimens;
+    QRect parBounds;
+
+    void repaint();
 signals:
 
 };

@@ -19,6 +19,7 @@ public:
     virtual void enableSpeaking(bool status) {}
     virtual void setVotings(QList<QList<int>> votings) {}
     virtual void setEnable(bool status) {}
+    virtual void updateFrame(int idx, QByteArray frame) {}
 
 };
 }
