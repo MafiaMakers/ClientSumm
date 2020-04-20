@@ -1,21 +1,20 @@
 #ifndef USERBUTTONPANEL_H
 #define USERBUTTONPANEL_H
 
-#include "relativewidget.h"
 #include <QFrame>
 #include <QPushButton>
 
 namespace Mafia {
 
-class UserButtonPanel : public Mafia::RelativeWidget
+class UserButtonPanel: public QObject
 {
     Q_OBJECT
 public:
     explicit UserButtonPanel(QWidget* parent);
-    virtual void setRelatives(QList<double> dimens);
-    virtual void updateBounds(QSize nsize);
-    void setMicro(bool on);
-    void setCamera(bool on);
+     void setRelatives(QList<double> dimens);
+     void updateBounds(QSize nsize);
+     void setMicro(bool on);
+     void setCamera(bool on);
 
 signals:
     void microStatus(bool on);

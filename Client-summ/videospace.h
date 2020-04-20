@@ -1,17 +1,16 @@
 #ifndef VIDEOSPACE_H
 #define VIDEOSPACE_H
-#include <relativewidget.h>
 #include <videoplayer.h>
 
 namespace Mafia {
-class VideoSpace : public RelativeWidget
+class VideoSpace
 {
 public:
     VideoSpace(QWidget *parent);
-    virtual void setPlayersCount(int count) override;
-    virtual void updateBounds(QSize nsize) override;
-    virtual void setRelatives(QList<double> dimens) override;
-    virtual void updateFrame(int idx, QByteArray frame) override;
+    void setPlayersCount(int count);
+    void updateBounds(QSize nsize);
+    void setRelatives(QList<double> dimens);
+    void updateFrame(int idx, QByteArray frame);
 private:
     QList<VideoPlayer*> webcams;
     QList<double> myDimens;

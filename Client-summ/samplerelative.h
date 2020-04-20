@@ -1,14 +1,21 @@
 #ifndef SAMLPLERELATIVE_H
 #define SAMLPLERELATIVE_H
-#include <relativewidget.h>
 #include <QTextEdit>
 namespace Mafia {
-class SampleRelative : public RelativeWidget
+class SampleRelative
 {
 public:
     SampleRelative(QWidget* parent);
-    virtual void setRelatives(QList<double> dimens) override;
-    virtual void updateBounds(QSize nsize) override;
+    void setRelatives(QList<double> dimens);
+    void updateBounds(QSize nsize);
+    void setPlayersCount(int count);
+    void setAdminActive(bool status);
+    void setRole(int role);
+    void setMicro(bool status);
+    void setCamera(bool status);
+    void setVotings(QList<QList<int>> votings);
+    void setEnable(bool status);
+    void updateFrame(int idx, QByteArray frame);
 private:
     QTextEdit *form;
     QList<double> myDimens;

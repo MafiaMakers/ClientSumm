@@ -134,17 +134,14 @@ void ClientManager::enableSpeaking(std::string status) {
 void ClientManager::sendHardware() {
     if(canSpeak) {
         QByteArray audio = micphone->getAudio();
-        //send audio via net
+    //send audio via net
     }
 
     QByteArray video = webcam->getFrame();
     if(camActive) {
+        mafUi->updateFrame(myIdx, video);
     // send video via net
     }
-    mafUi->updateFrame(myIdx, video);
-    mafUi->updateFrame(3, video);
-    mafUi->updateFrame(8, video);
-    mafUi->updateFrame(0, video);
 }
 
 void ClientManager::addPlayer(std::string player) {

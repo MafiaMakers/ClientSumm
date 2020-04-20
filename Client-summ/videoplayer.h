@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QLabel>
-#include <relativewidget.h>
 
 namespace Mafia {
 class VideoPlayer

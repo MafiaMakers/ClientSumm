@@ -11,8 +11,8 @@
 #include <QTextEdit>
 #include <QList>
 #include <samplerelative.h>
-#include <relativewidget.h>
 #include <videospace.h>
+#include <userbuttonpanel.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -36,12 +36,17 @@ public:
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;
-    QList<Mafia::RelativeWidget*> fields;
+    SampleRelative *chat;
+    SampleRelative *roleIcon;
+    SampleRelative *votings;
+    VideoSpace *camsSpace;
+    UserButtonPanel *bottomBox;
+
 
 private slots:
-    void micphone_slot(bool status);
-    void webkam_slot(bool status);
-    void leave_room_slot();
+    void micphoneSlot(bool status);
+    void webkamSlot(bool status);
+    void leaveRoomSlot();
 
 signals:
     void micphoneSignal(bool status);

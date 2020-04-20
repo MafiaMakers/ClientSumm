@@ -43,7 +43,6 @@ HEADERS += \
     include_c.h \
     micphonehelper.h \
    # videoplayer.h
-    relativewidget.h \
     samplerelative.h \
     systemfunctions_c.h \
     uimanager.h \
