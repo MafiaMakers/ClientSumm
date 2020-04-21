@@ -8,7 +8,7 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
 
     chat = new SampleRelative(this);
     bottomBox = new UserButtonPanel(this);
-    roleIcon = new SampleRelative(this);
+    roleIcon = new ShowRole(this);
     camsSpace = new VideoSpace(this);
     votings = new VotingsField(this);
 
@@ -44,7 +44,7 @@ void UIManager::leaveRoomSlot() {
 }
 //////////////////////////////////////////////////
 void UIManager::updateRole(int role) {
-    roleIcon->setRole(role);
+    roleIcon->Show_role(role);
 }
 
 void UIManager::setAdminActive(bool status) {

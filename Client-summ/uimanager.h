@@ -14,6 +14,7 @@
 #include <videospace.h>
 #include <userbuttonpanel.h>
 #include <votingsfield.h>
+#include <showrole.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -38,7 +39,7 @@ public:
 private:
     virtual void resizeEvent(QResizeEvent *event) override;
     SampleRelative *chat;
-    SampleRelative *roleIcon;
+    ShowRole *roleIcon;
     VotingsField *votings;
     VideoSpace *camsSpace;
     UserButtonPanel *bottomBox;
