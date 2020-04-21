@@ -45,10 +45,10 @@ private:
     bool microState, cameraState;
     int modeGame;
     void repaint();
-    const QIcon iconCameraON = QIcon(":/img/Camera_ON"), iconCameraOFF = QIcon(":/img/Camera_OFF"),
-            iconMicroON = QIcon(":/img/Microphone_ON"), iconMicroOFF = QIcon(":/img/Microphone_OFF"),
-            iconStopGame = QIcon(":/img/StopGameButton.png"), iconContinue = QIcon(":/img/ContinueButton.png"),
-            iconEndGame = QIcon(":/img/EndGameButton.png");
+    const QIcon iconCameraON = QIcon(":UserPanel/img/Camera_ON"), iconCameraOFF = QIcon(":UserPanel/img/Camera_OFF"),
+            iconMicroON = QIcon(":UserPanel/img/Microphone_ON"), iconMicroOFF = QIcon(":UserPanel/img/Microphone_OFF"),
+            iconStopGame = QIcon(":UserPanel/img/StopGameButton.png"), iconContinue = QIcon(":UserPanel/img/ContinueButton.png"),
+            iconEndGame = QIcon(":UserPanel/img/EndGameButton.png");
 };
 }
 

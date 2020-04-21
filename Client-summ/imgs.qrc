@@ -5,7 +5,7 @@
         <file>img/mafia.jpg</file>
         <file>img/sheriff.jpg</file>
     </qresource>
-    <qresource prefix="/">
+    <qresource prefix="/UserPanel">
         <file>img/Camera_OFF.png</file>
         <file>img/Camera_ON.png</file>
         <file>img/ContinueButton.png</file>
