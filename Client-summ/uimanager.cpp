@@ -10,13 +10,15 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     bottomBox = new UserButtonPanel(this);
     roleIcon = new SampleRelative(this);
     camsSpace = new VideoSpace(this);
-    votings = new SampleRelative(this);
+    votings = new VotingsField(this);
 
-    chat->setRelatives(QList<double>() << 960/1280.0 << 350/700.0 << 310/1280.0 << 340.0/700.0); // chat
-    bottomBox->setRelatives(QList<double>() << 10/1280.0 << 610/700.0 << 940/1280.0 << 80/700.0); // bottom box
-    roleIcon->setRelatives(QList<double>() << 960/1280.0 << 10/700.0 << 310/1280.0 << 160/700.0); // role icon
     camsSpace->setRelatives(QList<double>() << 10/1280.0 << 10/700.0 << 940/1280.0 << 590/700.0); // cams space
-    votings->setRelatives(QList<double>() << 960/1280.0 << 180/700.0 << 310.0/1280.0 << 160/700.0); // votings field
+    bottomBox->setRelatives(QList<double>() << 10/1280.0 << 610/700.0 << 940/1280.0 << 80/700.0); // bottom box
+    roleIcon->setRelatives(QList<double>() << 960/1280.0 << 10/700.0 << 310/1280.0 << 120/700.0); // role icon
+    votings->setRelatives(QList<double>() << 960/1280.0 << 140/700.0 << 310.0/1280.0 << 120/700.0); // votings field
+    chat->setRelatives(QList<double>() << 960/1280.0 << 270/700.0 << 310/1280.0 << 420.0/700.0); // chat
+
+    connect(bottomBox, &UserButtonPanel::exitApp, this, &UIManager::leaveRoomSlot);
 }
 
 UIManager::~UIManager() {
@@ -61,8 +63,8 @@ void UIManager::enableSpeaking(bool status) {
     bottomBox->setMicro(status);
 }
 
-void UIManager::updateVotings(QList<QList<int> > votings) {
-    //votings->setVotings(votings);
+void UIManager::updateVotings(QList<QList<int>> votes) {
+    votings->setVotings(votes);
 }
 
 void UIManager::updateFrame(int idx, QByteArray frame) {
@@ -70,5 +72,11 @@ void UIManager::updateFrame(int idx, QByteArray frame) {
 }
 
 void UIManager::enableVotings(bool status) {
-    votings->setEnable(status);
+    if(status) {
+        chat->setRelatives(QList<double>() << 960/1280.0 << 270/700.0 << 310/1280.0 << 420.0/700.0);
+        votings->setVisible(true);
+    } else {
+        chat->setRelatives(QList<double>() << 960/1280.0 << 140/700.0 << 310/1280.0 << 550.0/700.0);
+        votings->setVisible(false);
+    }
 }

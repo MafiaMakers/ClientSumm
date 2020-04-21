@@ -12,11 +12,11 @@ public:
     void setRelatives(QList<double> dimens);
     void updateFrame(int idx, QByteArray frame);
 private:
-    QList<VideoPlayer*> webcams;
+    QSize parSize;
     QList<double> myDimens;
     void repaint();
-    QSize parSize;
     QWidget *parent;
+    QList<VideoPlayer*> webcams;
     int muchPlayers;
 };
 }

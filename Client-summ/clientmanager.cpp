@@ -21,8 +21,17 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     hardSender->setInterval(40);
     connect(hardSender, &QTimer::timeout, this, &ClientManager::sendHardware);
     connect(net, &NetWorker_c::messageReceived, this, &ClientManager::getMessage);
+    connect(mafUi, &UIManager::leaveRoomSignal, this, &ClientManager::leaveRoom);
     hardSender->start();
 //    net->connect();
+    mafUi->enableVotings(true);
+    for(int i = 0; i < muchPlayers; i++) {
+        QList<int> l;
+        votings.append(l);
+    }
+    votings[3].append(QList<int>() << 1 << 8 << 5);
+    votings[7].append(QList<int>() << 3 << 4 << 2 << 0 << 6 << 8 << 9);
+    mafUi->updateVotings(votings);
 }
 
 ClientManager::~ClientManager() {
@@ -83,10 +92,16 @@ void ClientManager::changeStage(std::string nstage) {
     // update voting status requered
     if(curStage == ARGUMENT_STAGE && nst == DEATH_STAGE) {
         votings.clear();
-        votings.reserve(muchPlayers);
+        for(int i = 0; i < muchPlayers; i++) {
+            QList<int> l;
+            votings.append(l);
+        }
         mafUi->updateVotings(votings);
     } else if(nst == ARGUMENT_STAGE) {
-        votings.reserve(muchPlayers);
+        for(int i = 0; i < muchPlayers; i++) {
+            QList<int> l;
+            votings.append(l);
+        }
         mafUi->enableVotings(true);
         mafUi->updateVotings(votings);
     } else {
@@ -156,6 +171,7 @@ void ClientManager::sheriffResult(std::string content) {
 
 void ClientManager::leaveRoom() {
     // leaving room but not now
+    mafUi->close();
 }
 
 void ClientManager::updateIndex(std::string content) {

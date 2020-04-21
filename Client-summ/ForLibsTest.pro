@@ -33,7 +33,8 @@ SOURCES += \
     networker_c.cpp \
     userbuttonpanel.cpp \
     videoplayer.cpp \
-    videospace.cpp
+    videospace.cpp \
+    votingsfield.cpp
 
 HEADERS += \
     audioplayer.h \
@@ -50,7 +51,8 @@ HEADERS += \
     defines_c.h \
     userbuttonpanel.h \
     videoplayer.h \
-    videospace.h
+    videospace.h \
+    votingsfield.h
 
 FORMS +=
 
