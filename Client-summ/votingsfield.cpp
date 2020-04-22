@@ -2,12 +2,17 @@
 using namespace Mafia;
 VotingsField::VotingsField(QWidget *parent) : QObject()
 {
+    iconSource = QImage(":switch/img/treug");
+    leftBut = new QPushButton(parent);
+    rightBut = new QPushButton(parent);
+    leftBut->setStyleSheet("background-color: #42F8F9;");
+    rightBut->setStyleSheet("background-color: #42F8F9;");
     mainView = new QScrollArea(parent);
     mainView->setStyleSheet("background-color: #BBFE9C;"
                             "border: 1px solid #000000;");
     mainView->setWidgetResizable(true);
     mainView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    mainView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    mainView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     gl = new QGridLayout(mainView);
     QWidget *toadd = new QWidget();
     toadd->setLayout(gl);
@@ -32,7 +37,16 @@ void VotingsField::updateBounds(QSize nsize) {
 }
 
 void VotingsField::repaint() {
-    mainView->setGeometry(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), myDimens[2]*parSize.width(), myDimens[3]*parSize.height());
+    mainView->setGeometry((myDimens[0]+0.03)*parSize.width(), myDimens[1]*parSize.height(), (myDimens[2]-0.06)*parSize.width(), myDimens[3]*parSize.height());
+    leftBut->setGeometry(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), 0.03*parSize.width(), myDimens[3]*parSize.height());
+    rightBut->setGeometry((myDimens[0]+myDimens[2]-0.03)*parSize.width(), myDimens[1]*parSize.height(), 0.03*parSize.width(), myDimens[3]*parSize.height());
+
+    leftIcon = QIcon(QPixmap::fromImage(iconSource.mirrored(true, false)));
+    rightIcon = QIcon(QPixmap::fromImage(iconSource));
+    leftBut->setIcon(leftIcon);
+    rightBut->setIcon(rightIcon);
+    leftBut->setIconSize(QSize(leftBut->size().width()*0.5, leftBut->size().height()));
+    rightBut->setIconSize(QSize(rightBut->size().width()*0.5, rightBut->size().height()));
 }
 
 void VotingsField::setVotings(QList<QList<int> > votings) {

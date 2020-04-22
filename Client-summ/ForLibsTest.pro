@@ -26,6 +26,7 @@ SOURCES += \
     camhelper.cpp \
     micphonehelper.cpp \
     samplerelative.cpp \
+    settingswindow.cpp \
     systemfunctions_c.cpp \
     uimanager.cpp \
     networker_c.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     include_c.h \
     micphonehelper.h \
     samplerelative.h \
+    settingswindow.h \
     systemfunctions_c.h \
     uimanager.h \
     networker_c.h \

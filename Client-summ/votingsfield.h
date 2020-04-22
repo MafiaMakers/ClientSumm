@@ -7,6 +7,9 @@
 #include <QScrollArea>
 #include <QGridLayout>
 #include <QFrame>
+#include <QPushButton>
+#include <QIcon>
+#include <QImage>
 
 namespace Mafia {
 class VotingsField : public QObject
@@ -25,6 +28,10 @@ private:
     QWidget *parent;
     QScrollArea *mainView;
     QGridLayout *gl;
+    QPushButton *leftBut, *rightBut;
+    QIcon leftIcon, rightIcon;
+    QImage iconSource;
+
 signals:
 
 };

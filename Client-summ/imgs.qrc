@@ -14,4 +14,7 @@
         <file>img/Microphone_ON.png</file>
         <file>img/StopGameButton.png</file>
     </qresource>
+    <qresource prefix="/switch">
+        <file>img/treug.png</file>
+    </qresource>
 </RCC>
