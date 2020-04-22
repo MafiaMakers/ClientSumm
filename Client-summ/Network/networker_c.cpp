@@ -174,7 +174,6 @@ namespace Mafia {
 			break;
 		}
         default:{
-            std::cout << messageId << " " << message << " " << size << std::endl;
             char* newMes = new char[size];
             int id = (int)messageId;
             int newSize = size;
