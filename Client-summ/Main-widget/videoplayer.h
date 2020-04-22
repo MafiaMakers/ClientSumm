@@ -9,6 +9,7 @@ class VideoPlayer
 {
 public:
     explicit VideoPlayer(QWidget *parent);
+    ~VideoPlayer();
     void setBorder(int bw, QColor ncolor);
     void updateFrame(QByteArray frame);
     void updateBounds(QRect nbounds);

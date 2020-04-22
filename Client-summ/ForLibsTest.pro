@@ -20,39 +20,39 @@ LIBS += -lws2_32
 RESOURCES += imgs.qrc
 
 SOURCES += \
-    audioplayer.cpp \
+    Backend/audioplayer.cpp \
+    Backend/camhelper.cpp \
+    Backend/micphonehelper.cpp \
+    Main-widget/samplerelative.cpp \
+    Main-widget/showrole.cpp \
+    Main-widget/uimanager.cpp \
+    Main-widget/userbuttonpanel.cpp \
+    Main-widget/videoplayer.cpp \
+    Main-widget/videospace.cpp \
+    Main-widget/votingsfield.cpp \
+    Network/networker_c.cpp \
+    Network/systemfunctions_c.cpp \
+    Settings-widget/settingswindow.cpp \
     clientmanager.cpp \
-    main.cpp \
-    camhelper.cpp \
-    micphonehelper.cpp \
-    samplerelative.cpp \
-    settingswindow.cpp \
-    systemfunctions_c.cpp \
-    uimanager.cpp \
-    networker_c.cpp \
-    userbuttonpanel.cpp \
-    videoplayer.cpp \
-    videospace.cpp \
-    votingsfield.cpp \
-    showrole.cpp
+    main.cpp
 
 HEADERS += \
-    camhelper.h \
-    audioplayer.h \
-    clientmanager.h \
-    include_c.h \
-    micphonehelper.h \
-    samplerelative.h \
-    settingswindow.h \
-    systemfunctions_c.h \
-    uimanager.h \
-    networker_c.h \
-    defines_c.h \
-    userbuttonpanel.h \
-    videoplayer.h \
-    videospace.h \
-    votingsfield.h \
-    showrole.h
+    Backend/audioplayer.h \
+    Backend/camhelper.h \
+    Backend/micphonehelper.h \
+    Main-widget/samplerelative.h \
+    Main-widget/showrole.h \
+    Main-widget/uimanager.h \
+    Main-widget/userbuttonpanel.h \
+    Main-widget/videoplayer.h \
+    Main-widget/videospace.h \
+    Main-widget/votingsfield.h \
+    Network/defines_c.h \
+    Network/include_c.h \
+    Network/networker_c.h \
+    Network/systemfunctions_c.h \
+    Settings-widget/settingswindow.h \
+    clientmanager.h
 
 FORMS +=
 

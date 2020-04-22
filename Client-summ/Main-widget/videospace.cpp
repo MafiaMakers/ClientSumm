@@ -8,8 +8,11 @@ VideoSpace::VideoSpace(QWidget *parent)
 }
 
 void VideoSpace::setPlayersCount(int count) {
+    while(webcams.size() > 0) {
+        delete webcams.last();
+        webcams.pop_back();
+    }
     muchPlayers = count;
-    webcams.clear();
     double k = 1.5;
     int wc = 0, hc = 0, margin = 10, wp = 0, hp = 0;
     int myWidth = myDimens[2]*parSize.width(), myHeight = myDimens[3]*parSize.height();

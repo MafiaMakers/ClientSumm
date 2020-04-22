@@ -1,6 +1,6 @@
 #ifndef VIDEOSPACE_H
 #define VIDEOSPACE_H
-#include <videoplayer.h>
+#include "videoplayer.h"
 
 namespace Mafia {
 class VideoSpace

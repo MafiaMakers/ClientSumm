@@ -1,5 +1,4 @@
 #include "showrole.h"
-#include <QPixmap>
 
 using namespace Mafia;
 

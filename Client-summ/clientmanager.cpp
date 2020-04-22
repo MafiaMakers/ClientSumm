@@ -33,10 +33,15 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
 {
     mafUi =new UIManager();
     mafUi->show();
+<<<<<<< HEAD
     muchPlayers = 1;
+=======
+    muchPlayers = 2;
+    mafUi->setPlayersCount(1);
+>>>>>>> 616cc5350299edb609770b50ae12e3b02951ffc4
     mafUi->setPlayersCount(muchPlayers);
     setWind = new SettingsWindow();
-    setWind->show();
+    //setWind->show();
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
     net = new NetWorker_c();
@@ -63,9 +68,15 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     }
 //    votings[3].append(QList<int>() << 1 << 8 << 5);
 //    votings[7].append(QList<int>() << 3 << 4 << 2 << 0 << 6 << 8 << 9);
+<<<<<<< HEAD
     /*for(int i = 0; i < muchPlayers; i++) {
         votings[3].append(i);
     }*/
+=======
+//    for(int i = 0; i < muchPlayers; i++) {
+//        votings[3].append(i);
+//    }
+>>>>>>> 616cc5350299edb609770b50ae12e3b02951ffc4
     mafUi->updateVotings(votings);
     inputFirstData();
 }

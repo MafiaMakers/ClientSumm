@@ -11,6 +11,13 @@ VideoPlayer::VideoPlayer(QWidget *parent)
     player->setText("Video isn't available");
     player->show();
 }
+
+VideoPlayer::~VideoPlayer() {
+   // player->setVisible(false);
+    delete player;
+   // delete parent;
+}
+
 void VideoPlayer::updateFrame(QByteArray frame) {
     QPixmap pixmap;
     pixmap.loadFromData(frame, "jpg");
