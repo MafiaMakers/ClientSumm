@@ -10,7 +10,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
     serverIP = "192.168.8.1";
-    net = new NetWorker_c(serverIP.toStdString());
+    net = new NetWorker_c();
     out = new QTextStream(stdout);
     votings.clear();
     meAdmin = false;
@@ -76,7 +76,18 @@ void ClientManager::getMessage(int id, std::string content) {
     case CAN_SPEAK_MESSAGE_ID:
         enableSpeaking(content);
     break;
-
+    case TEXT_MESSAGE_ID:{
+        break;
+    }
+    case KEY_MESSAGE_ID:{
+        break;
+    }
+    case FATHER_MESSAGE_ID:{
+        break;
+    }
+    case CANDIDATES_MESSAGE_ID:{
+        break;
+    }
     default:
         throwError("Messge id - "+QString::number(id).toStdString()+"; content - "+content);
         break;
@@ -167,6 +178,29 @@ void ClientManager::addPlayer(std::string player) {
 void ClientManager::sheriffResult(std::string content) {
     bool res = *(bool*)(&content.data()[0]);
     // notify about sheriff vote
+}
+
+void ClientManager::showTextInfo(std::string info){
+    //здесь надо сделать просто окошко с информацией
+}
+
+void ClientManager::showCandidates(std::string candidates){
+    char* source = (char*)candidates.c_str();
+    int size = candidates.length() / 4;
+    int *candidatesIndexes = new int[size];
+    for(int i = 0; i < size; i++){
+        candidatesIndexes[i] = *(int*)(source + 4 * i);
+    }
+    //это нужно для голосовалки - здесь надо отобразить кандидатов.
+}
+
+void ClientManager::getKeyFromServer(std::string key){
+    //это ключ, который надо отправить остальным посетителям комнаты для входа
+}
+
+void ClientManager::currentMafiaFather(std::string fatherId){
+    int index = *(int*)((char*)fatherId.c_str());
+    //это индекс дона мафии. Он приходит всем мафиям.
 }
 
 void ClientManager::leaveRoom() {

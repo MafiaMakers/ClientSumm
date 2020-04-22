@@ -30,6 +30,10 @@ private:
     void sheriffResult(std::string content);
     void addPlayer(std::string player);
     void enableSpeaking(std::string status);
+    void showTextInfo(std::string info);
+    void getKeyFromServer(std::string key);
+    void currentMafiaFather(std::string fatherId);
+    void showCandidates(std::string candidates);
     int curStage;
     int curRole;
     int muchPlayers;

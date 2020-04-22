@@ -4,9 +4,9 @@
 #include "systemfunctions_c.h"
 
 namespace Mafia {
-    NetWorker_c::NetWorker_c(std::string servIp){
+    NetWorker_c::NetWorker_c(){
         _initSocket();
-        ipServer = servIp;
+        ipServer = SERVER_ADDR;
         // Setup the TCP listening socket
         _setAddr();
     }
@@ -45,14 +45,20 @@ namespace Mafia {
 
 
     //recommended to run in another thread
-    int NetWorker_c::connect(){
-        //Send connecting message
-        if(sendMessage(serverAddr, CONNECT_MESSAGE_ID, nickname, strlen(nickname)) == -1){
-            return(WSAGetLastError());
-        }
+    int NetWorker_c::connect(std::string key){
+        char* mes = new char[KEY_SIZE + 1];
+                mes[0] = (char)roomId;
+                for (int i = 0; i < KEY_SIZE; i++)
+                {
+                    mes[i + 1] = key[i];
+                }
+                //Send connecting message
+                if(sendMessage(serverAddr, CONNECT_MESSAGE_ID, mes, KEY_SIZE + 1) == -1){
+                    return(WSAGetLastError());
+                }
 
-        //get room Id
-        return receiveMessage();
+                //get room Id
+                return receiveMessage();
     }
 
 	NetWorker_c::~NetWorker_c() {
