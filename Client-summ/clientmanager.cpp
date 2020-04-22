@@ -5,7 +5,8 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
 {
     mafUi =new UIManager();
     mafUi->show();
-    muchPlayers = 30;
+    muchPlayers = 2;
+    mafUi->setPlayersCount(1);
     mafUi->setPlayersCount(muchPlayers);
     setWind = new SettingsWindow();
     //setWind->show();
@@ -18,7 +19,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     meAdmin = false;
     canSpeak = false;
     camActive = true;
-    myIdx = 5;
+    myIdx = 0;
     hardSender = new QTimer();
     hardSender->setInterval(40);
     connect(hardSender, &QTimer::timeout, this, &ClientManager::sendHardware);
@@ -33,9 +34,9 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     }
 //    votings[3].append(QList<int>() << 1 << 8 << 5);
 //    votings[7].append(QList<int>() << 3 << 4 << 2 << 0 << 6 << 8 << 9);
-    for(int i = 0; i < muchPlayers; i++) {
-        votings[3].append(i);
-    }
+//    for(int i = 0; i < muchPlayers; i++) {
+//        votings[3].append(i);
+//    }
     mafUi->updateVotings(votings);
 }
 
