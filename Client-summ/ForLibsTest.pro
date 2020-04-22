@@ -20,31 +20,30 @@ LIBS += -lws2_32
 RESOURCES += imgs.qrc
 
 SOURCES += \
-   # audioplayer.cpp \
     audioplayer.cpp \
     clientmanager.cpp \
     main.cpp \
     camhelper.cpp \
-   # videoplayer.cpp \
     micphonehelper.cpp \
     samplerelative.cpp \
+    settingswindow.cpp \
     systemfunctions_c.cpp \
     uimanager.cpp \
     networker_c.cpp \
     userbuttonpanel.cpp \
     videoplayer.cpp \
     videospace.cpp \
-    votingsfield.cpp
+    votingsfield.cpp \
+    showrole.cpp
 
 HEADERS += \
-    audioplayer.h \
     camhelper.h \
-   # audioplayer.h \
+    audioplayer.h \
     clientmanager.h \
     include_c.h \
     micphonehelper.h \
-   # videoplayer.h
     samplerelative.h \
+    settingswindow.h \
     systemfunctions_c.h \
     uimanager.h \
     networker_c.h \
@@ -52,7 +51,8 @@ HEADERS += \
     userbuttonpanel.h \
     videoplayer.h \
     videospace.h \
-    votingsfield.h
+    votingsfield.h \
+    showrole.h
 
 FORMS +=
 

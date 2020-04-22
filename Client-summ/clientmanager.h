@@ -8,6 +8,7 @@
 #include <camhelper.h>
 #include <micphonehelper.h>
 #include <QTimer>
+#include <settingswindow.h>
 
 namespace Mafia {
 class ClientManager : public QObject
@@ -51,6 +52,7 @@ private:
     NetWorker_c *net;
     MicphoneHelper *micphone;
     CamHelper *webcam;
+    SettingsWindow *setWind;
 
 signals:
 

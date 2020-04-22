@@ -12,6 +12,17 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
     exitButton->setFont(QFont("Times", 15, QFont::Bold));
     microButton = new QPushButton(parent);
     cameraButton = new QPushButton(parent);
+    startButton = new QPushButton(parent);
+    startButton->setText("Начать игру");
+    startButton->setStyleSheet("color: blue;");
+    startButton->setFont(QFont("Times", 15, QFont::Bold));
+    stopContinueButton = new QPushButton(parent);
+    stopContinueButton->setIcon(iconStopGame);
+    endGameButton = new QPushButton(parent);
+    endGameButton->setIcon(iconEndGame);
+    modeGame = 0;
+    stopContinueButton->hide();
+    endGameButton->hide();
     setCamera(true);
     setMicro(true);
     myDimens = QList<double>() << 0 << 0 << 0 << 0;
@@ -21,6 +32,9 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
     connect(exitButton, &QPushButton::clicked, this, &UserButtonPanel::passExit);
     connect(microButton, &QPushButton::clicked, this, &UserButtonPanel::microChanged);
     connect(cameraButton, &QPushButton::clicked, this, &UserButtonPanel::cameraChanged);
+    connect(startButton, &QPushButton::clicked, this, &UserButtonPanel::startGameSlot);
+    connect(stopContinueButton, &QPushButton::clicked, this, &UserButtonPanel::stopContinueSlot);
+    connect(endGameButton, &QPushButton::clicked, this, &UserButtonPanel::endGameSlot);
 }
 
 void Mafia::UserButtonPanel::setRelatives(QList<double> dimens)
@@ -37,6 +51,8 @@ void Mafia::UserButtonPanel::updateBounds(QSize nsize)
 
 void Mafia::UserButtonPanel::passExit()
 {
+    exitButton->hide();
+    exitButton->show();
     emit exitApp();
 }
 
@@ -50,6 +66,11 @@ void Mafia::UserButtonPanel::repaint()
     microButton->setIconSize(QSize((myHeight - 20) * 0.9, (myHeight - 20) * 0.8));
     cameraButton->setGeometry(myX + myHeight, myY + 10, myHeight - 20, myHeight - 20);
     cameraButton->setIconSize(QSize((myHeight - 20) * 0.9, (myHeight - 20) * 0.8));
+    startButton->setGeometry(myX + 2 * myHeight, myY + 10, 150, myHeight - 20);
+    stopContinueButton->setGeometry(myX + 2 * myHeight, myY + 10, myHeight - 20, myHeight - 20);
+    stopContinueButton->setIconSize(QSize((myHeight - 20) * 0.8, (myHeight - 20) * 0.8));
+    endGameButton->setGeometry(myX + 3 * myHeight - 10, myY + 10, myHeight - 20, myHeight - 20);
+    endGameButton->setIconSize(QSize((myHeight - 20) * 0.8, (myHeight - 20) * 0.8));
 }
 
 void Mafia::UserButtonPanel::setCamera(bool on)
@@ -100,4 +121,39 @@ void Mafia::UserButtonPanel::microChanged()
         microButton->setIcon(iconMicroON);
         emit microStatus(true);
     }
+}
+
+void Mafia::UserButtonPanel::startGameSlot()
+{
+    modeGame = 1;
+    emit startGame();
+    startButton->hide();
+    stopContinueButton->setIcon(iconStopGame);
+    stopContinueButton->show();
+    endGameButton->show();
+}
+
+void Mafia::UserButtonPanel::stopContinueSlot()
+{
+    if (modeGame == 1)
+    {
+        modeGame = 2;
+        emit gamePause(true);
+        stopContinueButton->setIcon(iconContinue);
+    }
+    else
+    {
+        modeGame = 1;
+        emit gamePause(false);
+        stopContinueButton->setIcon(iconStopGame);
+    }
+}
+
+void Mafia::UserButtonPanel::endGameSlot()
+{
+    modeGame = 0;
+    emit endGame();
+    startButton->show();
+    stopContinueButton->hide();
+    endGameButton->hide();
 }
