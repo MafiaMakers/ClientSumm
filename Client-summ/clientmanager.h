@@ -3,12 +3,12 @@
 
 #include <QObject>
 #include <QTextStream>
-#include <uimanager.h>
-#include <networker_c.h>
-#include <camhelper.h>
-#include <micphonehelper.h>
 #include <QTimer>
-#include <settingswindow.h>
+#include "Main-widget/uimanager.h"
+#include "Network/networker_c.h"
+#include "Backend/camhelper.h"
+#include "Backend/micphonehelper.h"
+#include "Settings-widget/settingswindow.h"
 
 namespace Mafia {
 class ClientManager : public QObject

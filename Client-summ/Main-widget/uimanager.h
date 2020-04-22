@@ -3,18 +3,18 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <camhelper.h>
-#include <videoplayer.h>
-#include <audioplayer.h>
-#include <micphonehelper.h>
+#include "Backend/camhelper.h"
+#include "videoplayer.h"
+#include "Backend/audioplayer.h"
+#include "Backend/micphonehelper.h"
 #include <QResizeEvent>
 #include <QTextEdit>
 #include <QList>
-#include <samplerelative.h>
-#include <videospace.h>
-#include <userbuttonpanel.h>
-#include <votingsfield.h>
-#include <showrole.h>
+#include "samplerelative.h"
+#include "videospace.h"
+#include "userbuttonpanel.h"
+#include "votingsfield.h"
+#include "showrole.h"
 
 QT_BEGIN_NAMESPACE
 

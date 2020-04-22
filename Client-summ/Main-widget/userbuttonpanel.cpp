@@ -1,7 +1,5 @@
 #include "userbuttonpanel.h"
 #include <QPushButton>
-#include <QMessageBox>
-#include <QFrame>
 
 Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
 {

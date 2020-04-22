@@ -8,7 +8,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     muchPlayers = 30;
     mafUi->setPlayersCount(muchPlayers);
     setWind = new SettingsWindow();
-    setWind->show();
+    //setWind->show();
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
     serverIP = "192.168.8.1";
