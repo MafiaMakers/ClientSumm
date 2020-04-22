@@ -74,7 +74,6 @@ namespace Mafia {
         int cCSize = sizeof(currentClient);
         //receive message
         int bytesReceived = recvfrom(sock,buffer,BUF_SIZE,0,(sockaddr *)&currentClient,&cCSize);
-
         //check if message is OK
         if (bytesReceived > 0) {
             char mes[BUF_SIZE];
@@ -87,6 +86,7 @@ namespace Mafia {
                     return(err);
                 }
                 //if error was in control sum - it means that not all message received, then ask for resending
+                std::cout << "CONTROL SUM!!!" << std::endl;
                 char resendMes[2];
                 zeroMemSys(resendMes, 2);
                 resendMes[0] = ((char*)&mId)[0];
@@ -130,7 +130,14 @@ namespace Mafia {
         if(err != 0){
             return(err);
         }
-        return(sendto(sock, resMes, mesLen + 7, 0, (sockaddr *)&client, sizeof(client)));
+        try{
+
+            int e = sendto(sock, resMes, mesLen + 7, MSG_DONTROUTE, (sockaddr *)&client, sizeof(client));
+            return(e);
+        } catch(std::exception e){
+
+        }
+        return 0;
     }
 
     //codes message to Prot which we use
@@ -169,7 +176,7 @@ namespace Mafia {
             break;
         }
 		case CHECK_CONNECTION_MESAGE_ID: {
-			//std::cout << "check connection received" << std::endl;
+            std::cout << "check connection received" << std::endl;
 			sendMessage(serverAddr, CHECK_CONNECTION_MESAGE_ID, (char*)"recv", 5);
 			break;
 		}
@@ -239,6 +246,7 @@ namespace Mafia {
             //check if roomId is ok
             char room = bytes[0];
             if(room != roomId){
+                std::cout << (int)room << " / " << (int)roomId << std::endl;
                 return ROOM_ID_ERROR;
             }
         }

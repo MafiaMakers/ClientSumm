@@ -24,6 +24,7 @@ void ClientManager::inputFirstData(){
         net->connect(key);
 
     }
+    canSpeak = true;
     std::thread recTh(&NetWorker_c::processMessages, net);
     recTh.detach();
 
@@ -173,12 +174,13 @@ void ClientManager::changeStage(std::string nstage) {
 }
 
 void ClientManager::processAudio(char* data, int size){
+
     int id = (int)data[0];
     QByteArray sound = QByteArray(data + 1, size - 1);
     if(id != myIdx){
+        std::cout << "PROCESS_AUDIO_OK" << std::endl;
         aplayer->appendAudio(sound);
     }
-
 }
 
 void ClientManager::processVideo(char* data, int size){
@@ -187,7 +189,6 @@ void ClientManager::processVideo(char* data, int size){
     if(id != myIdx){
         mafUi->updateFrame(id, frame);
     }
-
 }
 
 void ClientManager::setRole(std::string role) {
@@ -227,12 +228,13 @@ void ClientManager::enableSpeaking(std::string status) {
 
 void ClientManager::sendHardware() {
     if(net->isConnected()){
+        //
         if(canSpeak) {
             QByteArray audio = micphone->getAudio();
+            aplayer->appendAudio(audio);
         //send audio via net
             net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size());
         }
-
         QByteArray video = webcam->getFrame();
         if(camActive) {
             mafUi->updateFrame(myIdx, video);

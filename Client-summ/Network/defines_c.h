@@ -1,7 +1,7 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
-#define BUF_SIZE 4096
+#define BUF_SIZE 16384
 #define CLIENTS_MAX_COUNT 64
 #define CASUAL_PORT 53000
 #define IP_PROTO AF_INET
