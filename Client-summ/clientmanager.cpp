@@ -82,15 +82,19 @@ void ClientManager::getMessage(int id, std::string content) {
         enableSpeaking(content);
     break;
     case TEXT_MESSAGE_ID:{
+        showTextInfo(content);
         break;
     }
     case KEY_MESSAGE_ID:{
+        getKeyFromServer(content);
         break;
     }
     case FATHER_MESSAGE_ID:{
+        currentMafiaFather(content);
         break;
     }
     case CANDIDATES_MESSAGE_ID:{
+        showCandidates(content);
         break;
     }
     default:
