@@ -1,5 +1,5 @@
 #include "uimanager.h"
-
+#include <iostream>
 using namespace Mafia;
 UIManager::UIManager(QWidget *parent): QMainWindow(parent)
 {

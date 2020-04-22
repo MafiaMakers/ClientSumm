@@ -152,8 +152,13 @@ namespace Mafia {
         return(0);
     }
 
+    void NetWorker_c::setRoomId(char rId){
+       this->roomId = rId;
+    }
+
     //Works with given decoded message of size size, with messageId
     int NetWorker_c::_processMessage(char* message, int size, short messageId){
+
         switch(messageId){
         case SUCCESS_MESSAGE_ID:{
             int* a = (int*)message;
@@ -169,9 +174,14 @@ namespace Mafia {
 			break;
 		}
         default:{
-            std::string toProc = "";
-            toProc.insert(toProc.begin(), size, *message);
-            emit messageReceived(messageId, toProc);
+            std::cout << messageId << " " << message << " " << size << std::endl;
+            char* newMes = new char[size];
+            int id = (int)messageId;
+            int newSize = size;
+            for(int i = 0; i < size; i++){
+                newMes[i] = message[i];
+            }
+            emit messageReceived(id, newMes, newSize);
             break;
         }
     }

@@ -71,7 +71,7 @@ namespace Mafia {
         char* nickname = (char*)"User";
 
 signals:
-    void messageReceived(int id, std::string content);
+    void messageReceived(int id, char* data, int size);
     void gotToRoom(int roomId);
 
 };

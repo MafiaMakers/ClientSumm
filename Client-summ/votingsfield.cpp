@@ -1,5 +1,6 @@
 #include "votingsfield.h"
 using namespace Mafia;
+#include <iostream>
 VotingsField::VotingsField(QWidget *parent) : QObject()
 {
     iconSource = QImage(":switch/img/treug");

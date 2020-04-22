@@ -1,4 +1,5 @@
 #include "videospace.h"
+#include <iostream>
 using namespace Mafia;
 VideoSpace::VideoSpace(QWidget *parent)
 {

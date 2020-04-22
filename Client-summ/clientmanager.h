@@ -35,12 +35,15 @@ private:
     void getKeyFromServer(std::string key);
     void currentMafiaFather(std::string fatherId);
     void showCandidates(std::string candidates);
+    void inputFirstData();
+    void processAudio(char* data, int size);
+    void processVideo(char* data, int size);
     int curStage;
     int curRole;
     int muchPlayers;
     int myIdx;
     bool meAdmin;
-    bool canSpeak;
+    bool canSpeak = true;
     bool camActive;
     QString curName;
     QTextStream *out;
@@ -53,11 +56,12 @@ private:
     MicphoneHelper *micphone;
     CamHelper *webcam;
     SettingsWindow *setWind;
+    AudioPlayer *aplayer;
 
 signals:
 
 private slots:
-    void getMessage(int id, std::string content);
+    void getMessage(int id, char* data, int size);
     void sendHardware();
 };
 }

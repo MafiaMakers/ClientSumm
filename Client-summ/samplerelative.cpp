@@ -1,5 +1,5 @@
 #include "samplerelative.h"
-
+#include "iostream"
 using namespace Mafia;
 SampleRelative::SampleRelative(QWidget* parent)
 {
