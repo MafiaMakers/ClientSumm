@@ -139,125 +139,17 @@ DESTDIR_TARGET = release\ForLibsTest.exe
 
 .SUFFIXES: .c .cpp .cc .cxx
 
-{Backend}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
+.cpp.obj:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fo$@ $<
 
-{Backend}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
+.cc.obj:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fo$@ $<
 
-{Backend}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
+.cxx.obj:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fo$@ $<
 
-{Backend}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Settings-widget}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Settings-widget}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Settings-widget}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Settings-widget}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Main-widget}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Main-widget}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Main-widget}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Main-widget}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{release}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{release}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{release}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{release}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{.}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{.}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{.}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{.}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Network}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Network}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Network}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
-
-{Network}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
-	$<
-<<
+.c.obj:
+	$(CC) -c $(CFLAGS) $(INCPATH) -Fo$@ $<
 
 ####### Build rules
 
@@ -1454,6 +1346,7 @@ release\audioplayer.obj: Backend\audioplayer.cpp Backend\audioplayer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QBuffer \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbuffer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QAudioFormat
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\audioplayer.obj Backend\audioplayer.cpp
 
 release\camhelper.obj: Backend\camhelper.cpp Backend\camhelper.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -1563,6 +1456,7 @@ release\camhelper.obj: Backend\camhelper.cpp Backend\camhelper.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediabindableinterface.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QBuffer \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbuffer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\camhelper.obj Backend\camhelper.cpp
 
 release\micphonehelper.obj: Backend\micphonehelper.cpp Backend\micphonehelper.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -1632,6 +1526,7 @@ release\micphonehelper.obj: Backend\micphonehelper.cpp Backend\micphonehelper.h 
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qhash.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudiodeviceinfo.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QIODevice
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\micphonehelper.obj Backend\micphonehelper.cpp
 
 release\samplerelative.obj: Main-widget\samplerelative.cpp Main-widget\samplerelative.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QTextEdit \
@@ -1746,6 +1641,7 @@ release\samplerelative.obj: Main-widget\samplerelative.cpp Main-widget\samplerel
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtextcursor.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtextformat.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qpen.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\samplerelative.obj Main-widget\samplerelative.cpp
 
 release\showrole.obj: Main-widget\showrole.cpp Main-widget\showrole.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QLabel \
@@ -1854,6 +1750,7 @@ release\showrole.obj: Main-widget\showrole.cpp Main-widget\showrole.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\showrole.obj Main-widget\showrole.cpp
 
 release\uimanager.obj: Main-widget\uimanager.cpp Main-widget\uimanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QMainWindow \
@@ -2034,6 +1931,7 @@ release\uimanager.obj: Main-widget\uimanager.cpp Main-widget\uimanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\QIcon \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\QImage \
 		Main-widget\showrole.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\uimanager.obj Main-widget\uimanager.cpp
 
 release\userbuttonpanel.obj: Main-widget\userbuttonpanel.cpp Main-widget\userbuttonpanel.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QFrame \
@@ -2145,6 +2043,7 @@ release\userbuttonpanel.obj: Main-widget\userbuttonpanel.cpp Main-widget\userbut
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qicon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\userbuttonpanel.obj Main-widget\userbuttonpanel.cpp
 
 release\videoplayer.obj: Main-widget\videoplayer.cpp Main-widget\videoplayer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -2254,6 +2153,7 @@ release\videoplayer.obj: Main-widget\videoplayer.cpp Main-widget\videoplayer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\videoplayer.obj Main-widget\videoplayer.cpp
 
 release\videospace.obj: Main-widget\videospace.cpp Main-widget\videospace.h \
 		Main-widget\videoplayer.h \
@@ -2364,6 +2264,7 @@ release\videospace.obj: Main-widget\videospace.cpp Main-widget\videospace.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\videospace.obj Main-widget\videospace.cpp
 
 release\votingsfield.obj: Main-widget\votingsfield.cpp Main-widget\votingsfield.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -2489,6 +2390,7 @@ release\votingsfield.obj: Main-widget\votingsfield.cpp Main-widget\votingsfield.
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qicon.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\QIcon \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\QImage
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\votingsfield.obj Main-widget\votingsfield.cpp
 
 release\networker_c.obj: Network\networker_c.cpp Network\include_c.h \
 		Network\defines_c.h \
@@ -2547,10 +2449,12 @@ release\networker_c.obj: Network\networker_c.cpp Network\include_c.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject_impl.h \
 		Network\systemfunctions_c.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\networker_c.obj Network\networker_c.cpp
 
 release\systemfunctions_c.obj: Network\systemfunctions_c.cpp Network\include_c.h \
 		Network\defines_c.h \
 		Network\systemfunctions_c.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\systemfunctions_c.obj Network\systemfunctions_c.cpp
 
 release\settingswindow.obj: Settings-widget\settingswindow.cpp Settings-widget\settingswindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QWidget \
@@ -2657,6 +2561,7 @@ release\settingswindow.obj: Settings-widget\settingswindow.cpp Settings-widget\s
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\settingswindow.obj Settings-widget\settingswindow.cpp
 
 release\clientmanager.obj: clientmanager.cpp C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QTextStream \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtextstream.h \
@@ -2850,6 +2755,7 @@ release\clientmanager.obj: clientmanager.cpp C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\i
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qlineedit.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\clientmanager.obj clientmanager.cpp
 
 release\main.obj: main.cpp clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -3044,26 +2950,37 @@ release\main.obj: main.cpp clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qguiapplication.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qinputmethod.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\main.obj main.cpp
 
 release\qrc_imgs.obj: release\qrc_imgs.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\qrc_imgs.obj release\qrc_imgs.cpp
 
 release\moc_audioplayer.obj: release\moc_audioplayer.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_audioplayer.obj release\moc_audioplayer.cpp
 
 release\moc_camhelper.obj: release\moc_camhelper.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_camhelper.obj release\moc_camhelper.cpp
 
 release\moc_micphonehelper.obj: release\moc_micphonehelper.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_micphonehelper.obj release\moc_micphonehelper.cpp
 
 release\moc_uimanager.obj: release\moc_uimanager.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_uimanager.obj release\moc_uimanager.cpp
 
 release\moc_userbuttonpanel.obj: release\moc_userbuttonpanel.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_userbuttonpanel.obj release\moc_userbuttonpanel.cpp
 
 release\moc_votingsfield.obj: release\moc_votingsfield.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_votingsfield.obj release\moc_votingsfield.cpp
 
 release\moc_networker_c.obj: release\moc_networker_c.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_networker_c.obj release\moc_networker_c.cpp
 
 release\moc_settingswindow.obj: release\moc_settingswindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_settingswindow.obj release\moc_settingswindow.cpp
 
 release\moc_clientmanager.obj: release\moc_clientmanager.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\moc_clientmanager.obj release\moc_clientmanager.cpp
 
 ####### Install
 
