@@ -1,4 +1,3 @@
-
 #include <QTextStream>
 #include "clientmanager.h"
 #include <iostream>
@@ -26,7 +25,6 @@ void ClientManager::inputFirstData(){
     }
     std::thread recTh(&NetWorker_c::processMessages, net);
     recTh.detach();
-
 }
 
 ClientManager::ClientManager(QObject *parent) : QObject(parent)
@@ -45,11 +43,11 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     aplayer = new AudioPlayer();
     votings.clear();
     meAdmin = false;
-    canSpeak = false;
+    canSpeak = true;
     camActive = true;
     myIdx = 0;
     hardSender = new QTimer();
-    hardSender->setInterval(100);
+    hardSender->setInterval(40);
     //qRegisterMetaType<std::string>("std::string");
     connect(hardSender, &QTimer::timeout, this, &ClientManager::sendHardware);
     connect(net, &NetWorker_c::messageReceived, this, &ClientManager::getMessage);
@@ -226,9 +224,12 @@ void ClientManager::enableSpeaking(std::string status) {
 }
 
 void ClientManager::sendHardware() {
-    if(net->isConnected()){
+    if(net->isConnected()){ // Эхо не работает, пока оно внутри этого ифа
         if(canSpeak) {
+            //std::cout << "CheckOK" << std::endl;
             QByteArray audio = micphone->getAudio();
+            aplayer->appendAudio(audio);
+           // std::cout << audio.size() << std::endl;
         //send audio via net
             net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size());
         }
