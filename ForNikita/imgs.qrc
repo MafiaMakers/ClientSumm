@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/role">
+        <file>img/civilian.jpg</file>
+        <file>img/doctor.jpg</file>
+        <file>img/mafia.jpg</file>
+        <file>img/sheriff.jpg</file>
+    </qresource>
+    <qresource prefix="/UserPanel">
+        <file>img/Camera_OFF.png</file>
+        <file>img/Camera_ON.png</file>
+        <file>img/ContinueButton.png</file>
+        <file>img/EndGameButton.png</file>
+        <file>img/Microphone_OFF.png</file>
+        <file>img/Microphone_ON.png</file>
+        <file>img/StopGameButton.png</file>
+    </qresource>
+    <qresource prefix="/switch">
+        <file>img/treug.png</file>
+    </qresource>
+</RCC>
