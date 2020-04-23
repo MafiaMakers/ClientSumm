@@ -13,7 +13,7 @@ AudioPlayer::AudioPlayer(QObject *parent) : QObject(parent)
     outAudio = new QAudioOutput(format);
     player = new QBuffer(whole);
     player->open(QBuffer::ReadOnly);
-    outAudio->setBufferSize(10000);
+    outAudio->setBufferSize(30000);
     outAudio->start(player);
 }
 

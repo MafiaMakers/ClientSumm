@@ -11,7 +11,7 @@ MicphoneHelper::MicphoneHelper(QObject *parent) : QObject(parent)
     format.setByteOrder(QAudioFormat::LittleEndian);
     format.setSampleType(QAudioFormat::SignedInt);
     audio = new QAudioInput(info->availableDevices(QAudio::AudioInput)[0], format);
-    audio->setBufferSize(4000);
+    audio->setBufferSize(10000);
     buff = audio->start();
 }
 
