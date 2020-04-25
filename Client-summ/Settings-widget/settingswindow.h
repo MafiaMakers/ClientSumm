@@ -23,6 +23,7 @@ private:
     QGridLayout *gl;
     QPushButton *addRole;
     QComboBox *chRole;
+    QLabel *valBorder;
 
 private slots:
     void addPressed();

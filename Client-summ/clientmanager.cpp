@@ -39,7 +39,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     muchPlayers = 2;
     mafUi->setPlayersCount(1);
     mafUi->setPlayersCount(muchPlayers);
-    setWind = new SettingsWindow();
+   // setWind = new SettingsWindow();
     //setWind->show();
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
@@ -59,7 +59,6 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(videoSender, &QTimer::timeout, this, &ClientManager::sendVideo);
     connect(net, &NetWorker_c::messageReceived, this, &ClientManager::getMessage);
     connect(mafUi, &UIManager::leaveRoomSignal, this, &ClientManager::leaveRoom);
-
 //    net->connect();
     mafUi->enableVotings(true);
     for(int i = 0; i < muchPlayers; i++) {
@@ -180,15 +179,8 @@ void ClientManager::changeStage(std::string nstage) {
 }
 
 void ClientManager::processAudio(char* data, int size){
-    int id = (int)data[0];
-    QByteArray sound = QByteArray(data + 1, size - 1);
-    if(id != myIdx){
-       // std::cout << sound.size() << std::endl;
-        aplayer->appendAudio(sound);
-        //qWarning() << "appended";
-        //std::cout << "Recieved audio: " << size << std::endl;
-        //audCheck->write(sound);
-    }
+    QByteArray sound = QByteArray(data, size);
+    aplayer->appendAudio(sound);
 }
 
 void ClientManager::processVideo(char* data, int size){
