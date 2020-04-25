@@ -289,7 +289,7 @@ debug\moc_audioplayer.cpp: Backend\audioplayer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QAudioFormat \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Backend\audioplayer.h -o debug\moc_audioplayer.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Backend\audioplayer.h -o debug\moc_audioplayer.cpp
 
 debug\moc_camhelper.cpp: Backend\camhelper.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -401,7 +401,7 @@ debug\moc_camhelper.cpp: Backend\camhelper.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbuffer.h \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Backend\camhelper.h -o debug\moc_camhelper.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Backend\camhelper.h -o debug\moc_camhelper.cpp
 
 debug\moc_micphonehelper.cpp: Backend\micphonehelper.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -473,7 +473,7 @@ debug\moc_micphonehelper.cpp: Backend\micphonehelper.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QIODevice \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Backend\micphonehelper.h -o debug\moc_micphonehelper.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Backend\micphonehelper.h -o debug\moc_micphonehelper.cpp
 
 debug\moc_uimanager.cpp: Main-widget\uimanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QMainWindow \
@@ -656,7 +656,7 @@ debug\moc_uimanager.cpp: Main-widget\uimanager.h \
 		Main-widget\showrole.h \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Main-widget\uimanager.h -o debug\moc_uimanager.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Main-widget\uimanager.h -o debug\moc_uimanager.cpp
 
 debug\moc_userbuttonpanel.cpp: Main-widget\userbuttonpanel.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QFrame \
@@ -770,7 +770,7 @@ debug\moc_userbuttonpanel.cpp: Main-widget\userbuttonpanel.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qicon.h \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Main-widget\userbuttonpanel.h -o debug\moc_userbuttonpanel.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Main-widget\userbuttonpanel.h -o debug\moc_userbuttonpanel.cpp
 
 debug\moc_votingsfield.cpp: Main-widget\votingsfield.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -898,15 +898,13 @@ debug\moc_votingsfield.cpp: Main-widget\votingsfield.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\QImage \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Main-widget\votingsfield.h -o debug\moc_votingsfield.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Main-widget\votingsfield.h -o debug\moc_votingsfield.cpp
 
 debug\moc_networker_c.cpp: Network\networker_c.h \
 		Network\include_c.h \
-		Network\defines_c.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qglobal.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qconfig.h \
@@ -928,6 +926,12 @@ debug\moc_networker_c.cpp: Network\networker_c.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmutex.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qnumeric.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qnamespace.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstring.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qchar.h \
@@ -956,9 +960,23 @@ debug\moc_networker_c.cpp: Network\networker_c.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		Network\defines_c.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Network\networker_c.h -o debug\moc_networker_c.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Network\networker_c.h -o debug\moc_networker_c.cpp
 
 debug\moc_settingswindow.cpp: Settings-widget\settingswindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QWidget \
@@ -1065,9 +1083,22 @@ debug\moc_settingswindow.cpp: Settings-widget\settingswindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QScrollArea \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qscrollarea.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QGridLayout \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qgridlayout.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qlayout.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QPushButton \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qpushbutton.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qicon.h \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Settings-widget\settingswindow.h -o debug\moc_settingswindow.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" Settings-widget\settingswindow.h -o debug\moc_settingswindow.cpp
 
 debug\moc_clientmanager.cpp: clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
@@ -1139,12 +1170,40 @@ debug\moc_clientmanager.cpp: clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QSaveFile \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsavefile.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QMediaPlayer \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaplayer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimediaglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimedia-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmultimedia.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediacontent.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaresource.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QSharedDataPointer \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QString \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QUrl \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QVariant \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaenumdebug.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudio.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qnetworkconfiguration.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QDir \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qdir.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfile.h \
 		Main-widget\uimanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QMainWindow \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qmainwindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtguiglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtgui-config.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qwidget.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qwindowdefs.h \
@@ -1175,10 +1234,6 @@ debug\moc_clientmanager.cpp: clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qcursor.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qkeysequence.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qevent.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurl.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfile.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtabwidget.h \
@@ -1187,14 +1242,8 @@ debug\moc_clientmanager.cpp: clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QCamera \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcamera.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediacontrol.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimediaglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimedia-config.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaobject.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmultimedia.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaservice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraexposure.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaenumdebug.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmetaobject.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcamerafocus.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraimageprocessing.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraviewfindersettings.h \
@@ -1213,7 +1262,6 @@ debug\moc_clientmanager.cpp: clientmanager.h \
 		Backend\audioplayer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QAudioOutput \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudiooutput.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudio.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudioformat.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudiodeviceinfo.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QAudioFormat \
@@ -1252,12 +1300,16 @@ debug\moc_clientmanager.cpp: clientmanager.h \
 		Main-widget\showrole.h \
 		Network\networker_c.h \
 		Network\include_c.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qhostaddress.h \
 		Network\defines_c.h \
 		Settings-widget\settingswindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QWidget \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/Client-summ -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" clientmanager.h -o debug\moc_clientmanager.cpp
+	C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita/debug/moc_predefs.h -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/mkspecs/win32-msvc -ID:/Dropbox/Dropbox/Nikita/Programs_1/c++/Mafia/ClientSumm/ClientSumm/ForNikita -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimediaWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.1/5.14.1/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.7.2\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" clientmanager.h -o debug\moc_clientmanager.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -2394,12 +2446,9 @@ debug\votingsfield.obj: Main-widget\votingsfield.cpp Main-widget\votingsfield.h 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\votingsfield.obj Main-widget\votingsfield.cpp
 
 debug\networker_c.obj: Network\networker_c.cpp Network\include_c.h \
-		Network\defines_c.h \
-		Network\networker_c.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qglobal.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qconfig.h \
@@ -2421,6 +2470,12 @@ debug\networker_c.obj: Network\networker_c.cpp Network\include_c.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmutex.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qnumeric.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qnamespace.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstring.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qchar.h \
@@ -2449,10 +2504,95 @@ debug\networker_c.obj: Network\networker_c.cpp Network\include_c.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		Network\defines_c.h \
+		Network\networker_c.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QObject \
 		Network\systemfunctions_c.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\networker_c.obj Network\networker_c.cpp
 
 debug\systemfunctions_c.obj: Network\systemfunctions_c.cpp Network\include_c.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcontainertools_impl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qhostaddress.h \
 		Network\defines_c.h \
 		Network\systemfunctions_c.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\systemfunctions_c.obj Network\systemfunctions_c.cpp
@@ -2561,7 +2701,20 @@ debug\settingswindow.obj: Settings-widget\settingswindow.cpp Settings-widget\set
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfile.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QScrollArea \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qscrollarea.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QGridLayout \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qgridlayout.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qlayout.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QPushButton \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qpushbutton.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\settingswindow.obj Settings-widget\settingswindow.cpp
 
 debug\clientmanager.obj: clientmanager.cpp C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QTextStream \
@@ -2634,12 +2787,40 @@ debug\clientmanager.obj: clientmanager.cpp C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\inc
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QSaveFile \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsavefile.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QMediaPlayer \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaplayer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimediaglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimedia-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmultimedia.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediacontent.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaresource.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QSharedDataPointer \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QString \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QUrl \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QVariant \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaenumdebug.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudio.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qnetworkconfiguration.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QDir \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qdir.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfile.h \
 		Main-widget\uimanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QMainWindow \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qmainwindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtguiglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtgui-config.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qwidget.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qwindowdefs.h \
@@ -2670,10 +2851,6 @@ debug\clientmanager.obj: clientmanager.cpp C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\inc
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qcursor.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qkeysequence.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qevent.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurl.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfile.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtabwidget.h \
@@ -2682,14 +2859,8 @@ debug\clientmanager.obj: clientmanager.cpp C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\inc
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QCamera \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcamera.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediacontrol.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimediaglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimedia-config.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaobject.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmultimedia.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaservice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraexposure.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaenumdebug.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmetaobject.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcamerafocus.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraimageprocessing.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraviewfindersettings.h \
@@ -2708,7 +2879,6 @@ debug\clientmanager.obj: clientmanager.cpp C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\inc
 		Backend\audioplayer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QAudioOutput \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudiooutput.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudio.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudioformat.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudiodeviceinfo.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QAudioFormat \
@@ -2747,6 +2917,10 @@ debug\clientmanager.obj: clientmanager.cpp C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\inc
 		Main-widget\showrole.h \
 		Network\networker_c.h \
 		Network\include_c.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qhostaddress.h \
 		Network\defines_c.h \
 		Settings-widget\settingswindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QWidget \
@@ -2828,12 +3002,40 @@ debug\main.obj: main.cpp clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QSaveFile \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qsavefile.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QMediaPlayer \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaplayer.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimediaglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimedia-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmultimedia.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediacontent.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaresource.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QSharedDataPointer \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QString \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QUrl \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QVariant \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaenumdebug.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudio.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qnetworkconfiguration.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\QDir \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qdir.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfile.h \
 		Main-widget\uimanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QMainWindow \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qmainwindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtguiglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtgui-config.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qwidget.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qwindowdefs.h \
@@ -2864,10 +3066,6 @@ debug\main.obj: main.cpp clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qcursor.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qkeysequence.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qevent.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurl.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfile.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\qtabwidget.h \
@@ -2876,14 +3074,8 @@ debug\main.obj: main.cpp clientmanager.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QCamera \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcamera.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediacontrol.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimediaglobal.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qtmultimedia-config.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaobject.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmultimedia.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaservice.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraexposure.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qmediaenumdebug.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtCore\qmetaobject.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcamerafocus.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraimageprocessing.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qcameraviewfindersettings.h \
@@ -2902,7 +3094,6 @@ debug\main.obj: main.cpp clientmanager.h \
 		Backend\audioplayer.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QAudioOutput \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudiooutput.h \
-		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudio.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudioformat.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\qaudiodeviceinfo.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtMultimedia\QAudioFormat \
@@ -2941,6 +3132,10 @@ debug\main.obj: main.cpp clientmanager.h \
 		Main-widget\showrole.h \
 		Network\networker_c.h \
 		Network\include_c.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtNetwork\qhostaddress.h \
 		Network\defines_c.h \
 		Settings-widget\settingswindow.h \
 		C:\Qt\Qt5.14.1\5.14.1\msvc2017_64\include\QtWidgets\QWidget \
