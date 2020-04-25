@@ -16,13 +16,8 @@ AudioPlayer::AudioPlayer(QObject *parent) : QObject(parent)
     outAudio->setVolume(1.0);
     outAudio->setBufferSize(30000);
     player = outAudio->start();
-    connect(outAudio, &QAudioOutput::stateChanged, this, &AudioPlayer::stch);
 }
 
 void AudioPlayer::appendAudio(QByteArray audio) {
     player->write(audio);
-}
-
-void AudioPlayer::stch(QAudio::State ns) {
-    std::cout << "New state: " << ns << std::endl;
 }
