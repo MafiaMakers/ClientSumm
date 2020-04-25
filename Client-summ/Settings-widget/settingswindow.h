@@ -5,20 +5,27 @@
 #include <QScrollArea>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QComboBox>
+#include <QFont>
+#include <QLabel>
+#include <QSpinBox>
+#include <Network/defines_c.h>
 
 namespace Mafia {
 class SettingsWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SettingsWindow();
+    explicit SettingsWindow(QList<QString> avaiRoles);
 
 private:
-    QScrollArea *roles;
+    QScrollArea *scrollRoles;
     QGridLayout *gl;
     QPushButton *addRole;
+    QComboBox *chRole;
 
-signals:
+private slots:
+    void addPressed();
 
 };
 }
