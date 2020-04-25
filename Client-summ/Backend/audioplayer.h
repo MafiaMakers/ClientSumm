@@ -14,8 +14,11 @@ public:
     void appendAudio(QByteArray audio);
 private:
     QAudioOutput *outAudio;
-    QBuffer *player;
+    QIODevice *player;
     QByteArray *whole;
+
+private slots:
+    void stch(QAudio::State ns);
 
 signals:
 

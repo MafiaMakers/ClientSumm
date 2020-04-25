@@ -176,7 +176,6 @@ namespace Mafia {
             break;
         }
 		case CHECK_CONNECTION_MESAGE_ID: {
-            std::cout << "check connection received" << std::endl;
 			sendMessage(serverAddr, CHECK_CONNECTION_MESAGE_ID, (char*)"recv", 5);
 			break;
 		}

@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QAudioInput>
 #include <QIODevice>
+#include <QBuffer>
+
 namespace Mafia {
 class MicphoneHelper : public QObject
 {
@@ -14,8 +16,12 @@ public:
 private:
     QAudioInput* audio;
     QIODevice *buff;
+    QByteArray whole;
 public:
-    QByteArray getAudio();
+    QByteArray getAudio(int muchBytes);
+    int bytesCount();
+    void start();
+    void stop();
 
 signals:
 

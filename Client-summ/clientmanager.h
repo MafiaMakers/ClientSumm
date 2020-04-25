@@ -4,6 +4,9 @@
 #include <QObject>
 #include <QTextStream>
 #include <QTimer>
+#include <QSaveFile>
+#include <QMediaPlayer>
+#include <QDir>
 #include "Main-widget/uimanager.h"
 #include "Network/networker_c.h"
 #include "Backend/camhelper.h"
@@ -49,7 +52,8 @@ private:
     QTextStream *out;
     UIManager *mafUi;
     QString serverIP;
-    QTimer *hardSender;
+    QTimer *audioSender;
+    QTimer *videoSender;
     QList<QList<int>> votings;
     //SystemNotifier notifier; notifier
     NetWorker_c *net;
@@ -57,12 +61,14 @@ private:
     CamHelper *webcam;
     SettingsWindow *setWind;
     AudioPlayer *aplayer;
+    QBuffer *audCheck;
 
 signals:
 
 private slots:
     void getMessage(int id, char* data, int size);
-    void sendHardware();
+    void sendAudio();
+    void sendVideo();
 };
 }
 

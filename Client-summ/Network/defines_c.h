@@ -1,6 +1,7 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
+#define SOUND_SIZE 200
 #define BUF_SIZE 16384
 #define CLIENTS_MAX_COUNT 64
 #define CASUAL_PORT 53000
