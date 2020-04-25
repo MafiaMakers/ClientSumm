@@ -17,9 +17,6 @@ private:
     QIODevice *player;
     QByteArray *whole;
 
-private slots:
-    void stch(QAudio::State ns);
-
 signals:
 
 };
