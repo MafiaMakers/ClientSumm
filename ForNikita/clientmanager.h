@@ -52,7 +52,8 @@ private:
     QTextStream *out;
     UIManager *mafUi;
     QString serverIP;
-    QTimer *hardSender;
+    QTimer *audioSender;
+    QTimer *videoSender;
     QList<QList<int>> votings;
     //SystemNotifier notifier; notifier
     NetWorker_c *net;
@@ -66,7 +67,8 @@ signals:
 
 private slots:
     void getMessage(int id, char* data, int size);
-    void sendHardware();
+    void sendAudio();
+    void sendVideo();
 };
 }
 

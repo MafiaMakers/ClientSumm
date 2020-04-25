@@ -50,13 +50,18 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     canSpeak = true;
     camActive = true;
     myIdx = 0;
-    hardSender = new QTimer();
-    hardSender->setInterval(40);
+    audioSender = new QTimer();
+    audioSender->setInterval(20);
+
+    videoSender = new QTimer();
+    videoSender->setInterval(100);
     //qRegisterMetaType<std::string>("std::string");
-    connect(hardSender, &QTimer::timeout, this, &ClientManager::sendHardware);
+    connect(audioSender, &QTimer::timeout, this, &ClientManager::sendAudio);
+    connect(videoSender, &QTimer::timeout, this, &ClientManager::sendVideo);
     connect(net, &NetWorker_c::messageReceived, this, &ClientManager::getMessage);
     connect(mafUi, &UIManager::leaveRoomSignal, this, &ClientManager::leaveRoom);
-    hardSender->start();
+    audioSender->start();
+    videoSender->start();
 
 //    net->connect();
     mafUi->enableVotings(true);
@@ -229,7 +234,7 @@ void ClientManager::enableSpeaking(std::string status) {
     mafUi->enableSpeaking(canSpeak);
 }
 
-void ClientManager::sendHardware() {
+void ClientManager::sendAudio() {
         //
         if(canSpeak) {
             QByteArray audio = micphone->getAudio();
@@ -239,14 +244,17 @@ void ClientManager::sendHardware() {
                 net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size());
             }
         }
-        QByteArray video = webcam->getFrame();
-        if(camActive) {
-            mafUi->updateFrame(myIdx, video);
-        // send video via net
-            if(net->isConnected()) {
-                net->sendMessage(*net->getAddrIn(), VIDEO_MESSAGE_ID, (char*)video.data(), video.size());
-            }
+}
+
+void ClientManager::sendVideo(){
+    QByteArray video = webcam->getFrame();
+    if(camActive) {
+        mafUi->updateFrame(myIdx, video);
+    // send video via net
+        if(net->isConnected()) {
+            net->sendMessage(*net->getAddrIn(), VIDEO_MESSAGE_ID, (char*)video.data(), video.size());
         }
+    }
 
 }
 void ClientManager::addPlayer(std::string player) {

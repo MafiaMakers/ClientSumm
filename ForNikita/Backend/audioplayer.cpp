@@ -7,9 +7,14 @@ AudioPlayer::AudioPlayer(QObject *parent) : QObject(parent)
     whole = new QByteArray();
     QAudioFormat format = info->availableDevices(QAudio::AudioOutput)[0].preferredFormat();
    // std::cout << "Output format prefered: " << format.channelCount() << " " << format.sampleRate() << " " << format.sampleSize() << " " << format.codec().toStdString() << " " << format.byteOrder() << " " <<format.sampleType() << std::endl;
-
+    format.setChannelCount(1);
+    format.setSampleRate(8000);
+    format.setSampleSize(16);
+    format.setCodec("audio/pcm");
+    format.setByteOrder(QAudioFormat::LittleEndian);
+    format.setSampleType(QAudioFormat::UnSignedInt);
 //    format.setChannelCount(2);
-    format.setSampleRate(11025);
+//    format.setSampleRate(11025);
 //    format.setSampleSize(16);
 //    format.setCodec("audio/pcm");
 //    format.setByteOrder(QAudioFormat::LittleEndian);
@@ -33,9 +38,9 @@ void AudioPlayer::appendAudio(QByteArray audio) {
 
     player->write(audio);
     //outAudio->start();
-    std::cout << "Whole size: " <<player->size() << std::endl;
+    //std::cout << "Whole size: " <<player->size() << std::endl;
 }
 
 void AudioPlayer::stch(QAudio::State ns) {
-    std::cout << "New state: " << ns << std::endl;
+    //std::cout << "New state: " << ns << std::endl;
 }
