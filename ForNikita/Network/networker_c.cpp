@@ -1,4 +1,3 @@
-#pragma warning(disable:4996)
 #include "include_c.h"
 #include "networker_c.h"
 #include "systemfunctions_c.h"
@@ -10,7 +9,7 @@ namespace Mafia {
         // Setup the TCP listening socket
         _setAddr();
     }
-    SOCKET NetWorker_c::getSock(){
+    QUdpSocket* NetWorker_c::getSock(){
         return(sock);
     }
 
@@ -18,11 +17,7 @@ namespace Mafia {
         return((char*)ipServer.c_str());
     }
 
-    sockaddr* NetWorker_c::getAddr(){
-        return((sockaddr*)&serverAddr);
-    }
-
-    sockaddr_in* NetWorker_c::getAddrIn(){
+    QHostAddress* NetWorker_c::getAddrIn(){
         return(&serverAddr);
     }
 
@@ -36,11 +31,11 @@ namespace Mafia {
 
     int NetWorker_c::leave(){
         if(sendMessage(serverAddr, EXIT_ROOM_MESSAGE_ID, (char*)"EXIT!", 6) == -1){
-            std::cout << WSAGetLastError() << std::endl;
-			return WSAGetLastError();
+            //std::cout << WSAGetLastError() << std::endl;
+            return SEND_ERROR;
         }
-		std::cout << (sock, SD_SEND) << std::endl;
-		return 0;
+        //std::cout << (sock, SD_SEND) << std::endl;
+        return 0;
     }
 
 
@@ -54,68 +49,72 @@ namespace Mafia {
                 }
                 //Send connecting message
                 if(sendMessage(serverAddr, CONNECT_MESSAGE_ID, mes, KEY_SIZE + 1) == -1){
-                    return(WSAGetLastError());
+                    //WSAGetLastError()
+                    return(SEND_ERROR);
                 }
 
                 //get room Id
                 return receiveMessage();
     }
 
-	NetWorker_c::~NetWorker_c() {
-		leave();
-	}
+    NetWorker_c::~NetWorker_c() {
+        leave();
+    }
 
     //recommended to run in another thread
     int NetWorker_c::receiveMessage(){
         //buffer to write there received message
-        char buffer[BUF_SIZE];
-        zeroMemSys(buffer, BUF_SIZE);
-        sockaddr_in currentClient;
+        char *buffer = new char[BUF_SIZE];
+        QHostAddress currentClient;
         int cCSize = sizeof(currentClient);
         //receive message
-        int bytesReceived = recvfrom(sock,buffer,BUF_SIZE,0,(sockaddr *)&currentClient,&cCSize);
+        qint64 bytesReceived = sock->readDatagram(buffer, BUF_SIZE, &currentClient);
         //check if message is OK
         if (bytesReceived > 0) {
-            char mes[BUF_SIZE];
-            zeroMemSys(mes, BUF_SIZE);
+            char* mes = new char[BUF_SIZE];
             short mId = 0;
             int err = _decodeMessage(buffer, bytesReceived, mes, &mId);
             if(err != 0){
                 //if message is wrong, throw it away
                 if(err != CONTROL_SUM_ERROR){
+                    delete[] buffer;
+                    delete[] mes;
                     return(err);
                 }
                 //if error was in control sum - it means that not all message received, then ask for resending
                 std::cout << "CONTROL SUM!!!" << std::endl;
-                char resendMes[2];
-                zeroMemSys(resendMes, 2);
+                char *resendMes = new char[2];
                 resendMes[0] = ((char*)&mId)[0];
                 resendMes[1] = ((char*)&mId)[1];
                 int error = sendMessage(currentClient, RESEND_MESSAGE_ID, resendMes, 2);
                 if(error != 0){
+                    delete[] buffer;
+                    delete[] mes;
                     return(error);
                 }
+                delete[] buffer;
+                delete[] mes;
                 return receiveMessage();
 
             }
-            return(_processMessage(mes, bytesReceived-7, mId));
+            int errorerr = _processMessage(mes, bytesReceived-7, mId);
+            return(errorerr);
         }
         else  {
-            closesocket(sock);
-            WSACleanup();
-            return RECEIVING_ERROR;
+            delete[] buffer;
+            return 0;
         }
     }
 
-	//run in another thread
-	void NetWorker_c::processMessages() {
-		while (true) {
-			int err = receiveMessage();
-			if (err != 0) {
-				std::cout << err << std::endl;
-			}
-		}
-	}
+    //run in another thread
+    void NetWorker_c::processMessages() {
+        while (true) {
+            int err = receiveMessage();
+            if (err != 0) {
+                std::cout << err << std::endl;
+            }
+        }
+    }
 
     //is this client connected to any room?
     bool NetWorker_c::isConnected(){
@@ -123,20 +122,23 @@ namespace Mafia {
     }
 
     //sends message with length mesLen and id messageId to client. Returns 0 if succes, error id if error
-    int NetWorker_c::sendMessage(sockaddr_in client, short messageId, char* message, int mesLen){
-        char resMes[BUF_SIZE];
-        zeroMemSys(resMes, BUF_SIZE);
+    int NetWorker_c::sendMessage(QHostAddress client, short messageId, char* message, int mesLen){
+        char *resMes = new char[BUF_SIZE];
+        //zeroMemSys(resMes, BUF_SIZE);
         int err = _wrapMessage(message, mesLen, messageId, resMes);
         if(err != 0){
             return(err);
         }
         try{
-
-            int e = sendto(sock, resMes, mesLen + 7, MSG_DONTROUTE, (sockaddr *)&client, sizeof(client));
+            //std::cout << QByteArray(resMes, mesLen + 7).toStdString() << std::endl;
+            int e = sock->writeDatagram(QByteArray(resMes, mesLen + 7), client, CASUAL_PORT);
+            delete[] resMes;
             return(e);
         } catch(std::exception e){
-
+            delete[] resMes;
+            return SEND_ERROR;
         }
+        delete[] resMes;
         return 0;
     }
 
@@ -175,11 +177,10 @@ namespace Mafia {
             emit gotToRoom(roomId);
             break;
         }
-		case CHECK_CONNECTION_MESAGE_ID: {
-            std::cout << "check connection received" << std::endl;
-			sendMessage(serverAddr, CHECK_CONNECTION_MESAGE_ID, (char*)"recv", 5);
-			break;
-		}
+        case CHECK_CONNECTION_MESAGE_ID: {
+            sendMessage(serverAddr, CHECK_CONNECTION_MESAGE_ID, (char*)"recv", 5);
+            break;
+        }
         default:{
             char* newMes = new char[size];
             int id = (int)messageId;
@@ -194,43 +195,43 @@ namespace Mafia {
     return(0);
  }
 
-	void NetWorker_c::_nextStage() {
-		std::cout << "Write anything to go to next stage" << std::endl;
-		std::string a;
-		std::cin >> a;
-		sendMessage(serverAddr, NEXT_STAGE_MESSAGE_ID, (char*)"a", 1);
-	}
+    void NetWorker_c::_nextStage() {
+        std::cout << "Write anything to go to next stage" << std::endl;
+        std::string a;
+        std::cin >> a;
+        sendMessage(serverAddr, NEXT_STAGE_MESSAGE_ID, (char*)"a", 1);
+    }
 
-	void NetWorker_c::_inputVote(char* message) {
-		std::cout << "Choose who to " << message << std::endl;
-		int answer;
-		std::cin >> answer;
-		sendMessage(serverAddr, VOTE_MESSAGE_ID, (char*)& answer, 4);
-		if (currentStage == ARGUMENT_STAGE) {
-			sendMessage(serverAddr, STOP_SPEAK_MESSAGE_ID, (char*)& answer, 4);
-		}
-	}
+    void NetWorker_c::_inputVote(char* message) {
+        std::cout << "Choose who to " << message << std::endl;
+        int answer;
+        std::cin >> answer;
+        sendMessage(serverAddr, VOTE_MESSAGE_ID, (char*)& answer, 4);
+        if (currentStage == ARGUMENT_STAGE) {
+            sendMessage(serverAddr, STOP_SPEAK_MESSAGE_ID, (char*)& answer, 4);
+        }
+    }
 
-	void NetWorker_c::_inputRoles() {
-		if (myIndex == 0) {
-			std::cout << "Who will be the next admin?" << std::endl;
-			int idx;
-			std::cin >> idx;
-			sendMessage(serverAddr, SET_ADMIN_MESSAGE_ID, (char*)& idx, 4);
-		}
-		else {
-			char* count = new char[MAX_ROLE_ID];
-			for (int i = 0; i < MAX_ROLE_ID; i++)
-			{
-				std::cout << "How many players with role " << i << std::endl;
-				int c;
-				std::cin >> c;
-				count[i] = (char)c;
-			}
-			sendMessage(serverAddr, NEXT_STAGE_MESSAGE_ID, count, MAX_ROLE_ID);
-			sendMessage(serverAddr, SETUP_MESSAGE_ID, count, MAX_ROLE_ID);
-		}
-	}
+    void NetWorker_c::_inputRoles() {
+        if (myIndex == 0) {
+            std::cout << "Who will be the next admin?" << std::endl;
+            int idx;
+            std::cin >> idx;
+            sendMessage(serverAddr, SET_ADMIN_MESSAGE_ID, (char*)& idx, 4);
+        }
+        else {
+            char* count = new char[MAX_ROLE_ID];
+            for (int i = 0; i < MAX_ROLE_ID; i++)
+            {
+                std::cout << "How many players with role " << i << std::endl;
+                int c;
+                std::cin >> c;
+                count[i] = (char)c;
+            }
+            sendMessage(serverAddr, NEXT_STAGE_MESSAGE_ID, count, MAX_ROLE_ID);
+            sendMessage(serverAddr, SETUP_MESSAGE_ID, count, MAX_ROLE_ID);
+        }
+    }
     /*
     **  decodes message recieved from client using our message proto. Returns 0 if success, return error id (from defines.h) if error
     **  bytes is received message, size is size of message, result is INITIALIZED array with size BUF_SIZE of char to put there decoded message,
@@ -282,16 +283,11 @@ namespace Mafia {
 
 
     void NetWorker_c::_initSocket(){
-        WSADATA wsaData;
-        // Initialize Winsock
-        WSAStartup(MAKEWORD(2,2), &wsaData);
-        // Create a SOCKET for connecting to server
-        sock = socket(IP_PROTO, SOCK_DGRAM, IPPROTO_UDP);
+        sock = new QUdpSocket(this);
+
     }
 
     void NetWorker_c::_setAddr(){
-        serverAddr.sin_family=IP_PROTO;
-        serverAddr.sin_addr.s_addr = inet_addr(ipServer.c_str());
-        serverAddr.sin_port=htons(CASUAL_PORT);
+        serverAddr = QHostAddress(SERVER_ADDR);
     }
 }

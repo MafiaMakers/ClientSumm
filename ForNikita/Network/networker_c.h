@@ -12,20 +12,18 @@ namespace Mafia {
     public:
         explicit NetWorker_c();
 
-        SOCKET getSock();
+        QUdpSocket* getSock();
 
         char* getIP();
 
-        sockaddr* getAddr();
-
-        sockaddr_in* getAddrIn();
+        QHostAddress* getAddrIn();
 
 		void processMessages();
 
         //recommended to run in another thread
         int receiveMessage();
         //sends message with length mesLen and id messageId to client. Returns 0 if succes, error id if error
-        int sendMessage(sockaddr_in client, short messageId, char* message, int mesLen);
+        int sendMessage(QHostAddress client, short messageId, char* message, int mesLen);
 
         int connect(std::string key);
 
@@ -61,10 +59,10 @@ namespace Mafia {
 		int adminIndex = 0;
 		int currentStage = 0;
         //Current server socket
-        SOCKET sock;
+        QUdpSocket* sock;
         std::string ipServer;
         //Current address
-        sockaddr_in serverAddr;
+        QHostAddress serverAddr;
 
         bool connected = false;
 
