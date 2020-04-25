@@ -33,7 +33,8 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles) : QWidget()
     addRole->setGeometry(400, 45, 140, 40);
 
     valBorder = new QLabel(this);
-    valBorder->setGeometry(50, 45, 185, 40);
+    valBorder->setGeometry(50, 45, 490, 40);
+    valBorder->setStyleSheet("border: 5px solid #88FFBB;");
 
     connect(addRole, &QPushButton::clicked, this, &SettingsWindow::addPressed);
 }
