@@ -32,6 +32,8 @@ SOURCES += \
     Main-widget/votingsfield.cpp \
     Network/networker_c.cpp \
     Network/systemfunctions_c.cpp \
+    Settings-widget/idcheckbox.cpp \
+    Settings-widget/idpushbutton.cpp \
     Settings-widget/settingswindow.cpp \
     clientmanager.cpp \
     main.cpp
@@ -51,6 +53,8 @@ HEADERS += \
     Network/include_c.h \
     Network/networker_c.h \
     Network/systemfunctions_c.h \
+    Settings-widget/idcheckbox.h \
+    Settings-widget/idpushbutton.h \
     Settings-widget/settingswindow.h \
     clientmanager.h
 

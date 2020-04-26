@@ -8,7 +8,7 @@ MicphoneHelper::MicphoneHelper(QObject *parent) : QObject(parent)
     format.setSampleRate(8000); //set frequency to 8000
     format.setChannelCount(1); //set channels to mono
     format.setSampleSize(16); //set sample sze to 16 bit
-    format.setSampleType(QAudioFormat::UnSignedInt ); //Sample type as usigned integer sample
+    format.setSampleType(QAudioFormat::UnSignedInt); //Sample type as usigned integer sample
     format.setByteOrder(QAudioFormat::LittleEndian); //Byte order
     format.setCodec("audio/pcm");
 

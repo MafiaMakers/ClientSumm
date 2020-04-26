@@ -227,12 +227,14 @@ void ClientManager::enableSpeaking(std::string status) {
 }
 
 void ClientManager::sendAudio() {
+    std::cout << micphone->bytesCount() << std::endl;
     if(canSpeak && micphone->bytesCount() >= SOUND_SIZE) {
+    micphone->bytesCount();
         QByteArray audio = micphone->getAudio(SOUND_SIZE);
-        if(net->isConnected() && audio.size() > 0) {
+        if(net->isConnected()) {
             net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size());
         }
-    }
+          }
 }
 
 void ClientManager::sendVideo() {
