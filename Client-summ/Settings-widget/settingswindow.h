@@ -13,6 +13,7 @@
 #include <Network/defines_c.h>
 #include "idcheckbox.h"
 #include "idpushbutton.h"
+#include "idspinbox.h"
 
 namespace Mafia {
 class SettingsWindow : public QWidget
@@ -36,14 +37,18 @@ private:
     QList<QString> mapRoles;
     QList<QString> roomParts;
     QWidget *toaddP, *toaddR;
+    QList<int> playersToPlay;
+    QList<int> rolesToPlay;
 private slots:
     void addPressed();
     void selectChanged(int idCh);
     void playerStch(int id, bool status);
     void delRole(int id);
+    void applyPressed();
+    void updateRoleCount(int id, int nval);
 
 signals:
-    void applySignal(QList<int> selections);
+    void applySignal(QList<int> selections, QList<int> playersToPlay);
 
 };
 }

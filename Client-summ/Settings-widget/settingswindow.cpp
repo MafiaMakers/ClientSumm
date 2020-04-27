@@ -5,6 +5,10 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
     mapRoles = avaiRoles;
     roomParts = participants;
 
+    for(int i = 0; i < avaiRoles.size(); i++) {
+        rolesToPlay.append(i);
+    }
+
     this->setGeometry(650, 200, 600, 500);
     this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     scrollRoles = new QScrollArea(this);
@@ -105,12 +109,13 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
 
     connect(addRole, &QPushButton::clicked, this, &SettingsWindow::addPressed);
     connect(chRole, SIGNAL(currentIndexChanged(int)), this, SLOT(selectChanged(int)));
+    connect(apply, &QPushButton::clicked, this, &SettingsWindow::applyPressed);
 }
 
 void SettingsWindow::addPressed() {
     int curRow = glRoles->rowCount();
 
-    QSpinBox *spb = new QSpinBox(this);
+    IdSpinBox *spb = new IdSpinBox(mapRoles.indexOf(chRole->currentText()), this);
     spb->setButtonSymbols(QAbstractSpinBox::NoButtons);
     spb->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     spb->setMaximumHeight(40);
@@ -135,6 +140,7 @@ void SettingsWindow::addPressed() {
     chRole->setCurrentIndex(0);
 
     connect(delItem, &IdPushButton::idClicked, this, &SettingsWindow::delRole);
+    connect(spb, &IdSpinBox::idValueChanged, this, &SettingsWindow::updateRoleCount);
 }
 
 void SettingsWindow::selectChanged(int idCh) {
@@ -149,6 +155,8 @@ void SettingsWindow::selectChanged(int idCh) {
 
 void SettingsWindow::playerStch(int id, bool status) {
     if(status) {
+        playersToPlay.append(id);
+
         glPlayers->itemAtPosition(id, 0)->widget()->setStyleSheet("background-color: #0EE834;"
                                                                   "font-size: 20px;"
                                                                   "border-bottom: 4px solid #000000;");
@@ -158,6 +166,8 @@ void SettingsWindow::playerStch(int id, bool status) {
         glPlayers->itemAtPosition(id, 2)->widget()->setStyleSheet("background-color: #0EE834;"
                                                                   "border-bottom: 4px solid #000000;");
     } else {
+        playersToPlay.removeAt(playersToPlay.indexOf(id));
+
         glPlayers->itemAtPosition(id, 0)->widget()->setStyleSheet("background-color: #FF2714;"
                                                                   "font-size: 20px;"
                                                                   "border-bottom: 4px solid #000000;");
@@ -192,5 +202,14 @@ void SettingsWindow::delRole(int id) {
     scrollRoles->setWidget(toaddR);
 
     readyRoles->removeAt(id-1);
+    rolesToPlay[id-1] = 0;
     selectChanged(chRole->currentIndex());
+}
+
+void SettingsWindow::applyPressed() {
+    emit applySignal(rolesToPlay, playersToPlay);
+}
+
+void SettingsWindow::updateRoleCount(int id, int nval) {
+    rolesToPlay[id] = nval;
 }
