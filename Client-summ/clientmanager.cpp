@@ -179,8 +179,9 @@ void ClientManager::changeStage(std::string nstage) {
 }
 
 void ClientManager::processAudio(char* data, int size){
-    QByteArray sound = QByteArray(data, size);
-    aplayer->appendAudio(sound);
+    int index = (int)data[0];
+    QByteArray sound = QByteArray(data+1, size-1);
+    aplayer->appendAudio(sound, index);
 }
 
 void ClientManager::processVideo(char* data, int size){
@@ -206,6 +207,9 @@ void ClientManager::voteResult(std::string res) {
 
 void ClientManager::setupOthers(std::string count) {
     muchPlayers = *(int*)count.data();
+    for(int i = 0; i < muchPlayers; i++){
+        aplayer->addPlayer();
+    }
     this->myIdx = muchPlayers;
     mafUi->setPlayersCount(muchPlayers);
 }
@@ -248,6 +252,7 @@ void ClientManager::sendVideo() {
 
 void ClientManager::addPlayer(std::string player) {
     muchPlayers += 1;
+    aplayer->addPlayer();
     mafUi->setPlayersCount(muchPlayers);
 }
 

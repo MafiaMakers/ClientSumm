@@ -12,7 +12,7 @@
 #define VOTE_TIME 15000
 #define TALK_TIME 60000
 #define KEY_SIZE 20
-//здесь укажите Ip сервера
+//здесь укажите Ip сервера "91.214.71.57"
 #define SERVER_ADDR "91.214.71.57"
 
 #define SERVER_INITIALIZATION_ERROR 100

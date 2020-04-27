@@ -11,11 +11,13 @@ class AudioPlayer : public QObject
     Q_OBJECT
 public:
     explicit AudioPlayer(QObject *parent = nullptr);
-    void appendAudio(QByteArray audio);
+    void appendAudio(QByteArray audio, int index);
+    void addPlayer();
 private:
-    QAudioOutput *outAudio;
-    QIODevice *player;
+    QList<QAudioOutput*> outAudio;
+    QList<QIODevice*> player;
     QByteArray *whole;
+    QAudioFormat format;
 
 signals:
 

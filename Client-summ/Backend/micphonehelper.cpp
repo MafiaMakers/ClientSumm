@@ -13,7 +13,7 @@ MicphoneHelper::MicphoneHelper(QObject *parent) : QObject(parent)
     format.setCodec("audio/pcm");
 
     audio = new QAudioInput(info->availableDevices(QAudio::AudioInput)[0], format);
-    audio->setBufferSize(2000);
+    audio->setBufferSize(6000);
 }
 
 QByteArray MicphoneHelper::getAudio(int muchBytes) {

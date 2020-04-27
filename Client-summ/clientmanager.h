@@ -41,6 +41,7 @@ private:
     void inputFirstData();
     void processAudio(char* data, int size);
     void processVideo(char* data, int size);
+
     int curStage;
     int curRole;
     int muchPlayers;
