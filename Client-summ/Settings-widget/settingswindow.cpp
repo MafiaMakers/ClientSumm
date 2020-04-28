@@ -185,7 +185,6 @@ void SettingsWindow::playerStch(int id, bool status) {
 }
 
 void SettingsWindow::applyPressed() {
-    std::cout << "Apply\n";
     emit applySignal(rolesToPlay, playersToPlay);
 }
 

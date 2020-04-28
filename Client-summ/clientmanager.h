@@ -71,6 +71,9 @@ private slots:
     void sendAudio();
     void sendVideo();
     void rolesSettingsSlot(QList<int> selections, QList<int> playersToPlay);
+    void nextStageSlot();
+    void startGameSlot();
+    void stopGameSlot();
 };
 }
 
