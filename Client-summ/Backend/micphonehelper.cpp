@@ -16,15 +16,12 @@ MicphoneHelper::MicphoneHelper(QObject *parent) : QObject(parent)
     audio->setBufferSize(6000);
 }
 
-QByteArray MicphoneHelper::getAudio(int muchBytes) {
-    QByteArray res = whole.left(muchBytes);
-    whole = whole.right(whole.size()-muchBytes);
-    return res;
+QByteArray MicphoneHelper::getAudio() {
+    return buff->readAll();
 }
 
 int MicphoneHelper::bytesCount() {
-    whole.append(buff->readAll());
-    return whole.size();
+
 }
 
 void MicphoneHelper::start() {

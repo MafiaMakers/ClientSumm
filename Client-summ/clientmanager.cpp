@@ -39,8 +39,9 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     muchPlayers = 2;
     mafUi->setPlayersCount(1);
     mafUi->setPlayersCount(muchPlayers);
-   // setWind = new SettingsWindow();
-    //setWind->show();
+    QList<QString> avroles = QList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор";
+    QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
+    setWind = new SettingsWindow(avroles, avplayers);
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
     net = new NetWorker_c();
@@ -59,6 +60,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(videoSender, &QTimer::timeout, this, &ClientManager::sendVideo);
     connect(net, &NetWorker_c::messageReceived, this, &ClientManager::getMessage);
     connect(mafUi, &UIManager::leaveRoomSignal, this, &ClientManager::leaveRoom);
+    connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
 //    net->connect();
     mafUi->enableVotings(true);
     for(int i = 0; i < muchPlayers; i++) {
@@ -66,7 +68,8 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
         votings.append(l);
     }
     //mafUi->updateVotings(votings);
-    inputFirstData();
+    setWind->show();
+    //inputFirstData();
     micphone->start();
     audioSender->start();
     videoSender->start();
@@ -231,14 +234,14 @@ void ClientManager::enableSpeaking(std::string status) {
 }
 
 void ClientManager::sendAudio() {
-    std::cout << micphone->bytesCount() << std::endl;
-    if(canSpeak && micphone->bytesCount() >= SOUND_SIZE) {
-    micphone->bytesCount();
-        QByteArray audio = micphone->getAudio(SOUND_SIZE);
+//    std::cout << micphone->bytesCount() << std::endl;
+//    if(canSpeak && micphone->bytesCount() >= SOUND_SIZE) {
+//    micphone->bytesCount();
+        QByteArray audio = micphone->getAudio();
         if(net->isConnected()) {
             net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size());
         }
-          }
+    //      }
 }
 
 void ClientManager::sendVideo() {
@@ -306,4 +309,10 @@ void ClientManager::addVote(std::string vote) {
     int voted = *(int*)((char*)vote.data() + 4);
     votings[voted].append(voter);
     mafUi->updateVotings(votings);
+}
+
+void ClientManager::rolesSettingsSlot(QList<int> rolesToPlay, QList<int> playersToPlay) {
+   // std::cout << "Slosodsodsa\n";
+    qWarning() << rolesToPlay;
+    qWarning() << playersToPlay;
 }
