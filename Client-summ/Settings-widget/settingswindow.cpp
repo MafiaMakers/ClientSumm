@@ -6,8 +6,9 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
     roomParts = participants;
 
     for(int i = 0; i < avaiRoles.size(); i++) {
-        rolesToPlay.append(i);
+        rolesToPlay.append(0);
     }
+    playersToPlay = QList<int>();
 
     this->setGeometry(650, 200, 600, 500);
     this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -80,6 +81,15 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
     scrollPlayers->setGeometry(320, 125, 260, 300);
     scrollPlayers->setStyleSheet("background-color: #FFFFFF;");
 
+    summRoles = new QLabel(this);
+    summPlayers = new QLabel(this);
+    summRoles->setGeometry(70, 440, 100, 30);
+    summPlayers->setGeometry(430, 440, 100, 30);
+    summRoles->setStyleSheet("background-color: #FFFFFF;");
+    summPlayers->setStyleSheet("background-color: #FFFFFF;");
+    summRoles->setText("Сумма: 0");
+    summPlayers->setText("Сумма: 0");
+
     for(int i = 0; i < roomParts.size(); i++) {
         QLabel *serial = new QLabel(QString::number(i), this);
         QLabel *label = new QLabel(roomParts[i], this);
@@ -107,6 +117,7 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
     }
 
 
+
     connect(addRole, &QPushButton::clicked, this, &SettingsWindow::addPressed);
     connect(chRole, SIGNAL(currentIndexChanged(int)), this, SLOT(selectChanged(int)));
     connect(apply, &QPushButton::clicked, this, &SettingsWindow::applyPressed);
@@ -121,30 +132,23 @@ void SettingsWindow::addPressed() {
     spb->setMaximumHeight(40);
     spb->setStyleSheet("font-size: 24px;");
     spb->setValue(1);
+    updateRoleCount(mapRoles.indexOf(chRole->currentText()), 1);
 
     QLabel *label = new QLabel(chRole->currentText());
     label->setStyleSheet("font-size: 24px;");
 
-    IdPushButton *delItem = new IdPushButton(curRow, "del", this);
-    delItem->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    delItem->setMaximumWidth(40);
-    delItem->setMaximumHeight(40);
-    delItem->setStyleSheet("background-color: #FF00AA;");
-
     glRoles->setRowMinimumHeight(curRow, 40);
     glRoles->addWidget(spb, curRow, 0);
     glRoles->addWidget(label, curRow, 1);
-    glRoles->addWidget(delItem, curRow, 2);
 
     readyRoles->append(mapRoles.indexOf(chRole->currentText()));
     chRole->setCurrentIndex(0);
 
-    connect(delItem, &IdPushButton::idClicked, this, &SettingsWindow::delRole);
     connect(spb, &IdSpinBox::idValueChanged, this, &SettingsWindow::updateRoleCount);
 }
 
 void SettingsWindow::selectChanged(int idCh) {
-    if(readyRoles->contains(idCh) or idCh == 0) {
+    if(rolesToPlay[idCh] != 0 || idCh == 0) {
         addRole->setEnabled(false);
         valBorder->setStyleSheet("border: 5px solid #FF2714;");
     } else {
@@ -177,8 +181,36 @@ void SettingsWindow::playerStch(int id, bool status) {
         glPlayers->itemAtPosition(id, 2)->widget()->setStyleSheet("background-color: #FF2714;"
                                                                   "border-bottom: 4px solid #000000;");
     }
+    updateSumm();
 }
 
+void SettingsWindow::applyPressed() {
+    std::cout << "Apply\n";
+    emit applySignal(rolesToPlay, playersToPlay);
+}
+
+void SettingsWindow::updateRoleCount(int id, int nval) {
+    rolesToPlay[id] = nval;
+    updateSumm();
+}
+
+void SettingsWindow::updateSumm() {
+    int sumRoles = 0;
+    int sumPlayers = playersToPlay.size();
+    for(int i = 0; i < rolesToPlay.size(); i++) {
+        sumRoles += rolesToPlay[i];
+    }
+    summRoles->setText("Сумма: " + QString::number(sumRoles));
+    summPlayers->setText("Сумма: " + QString::number(sumPlayers));
+
+    if(sumRoles == sumPlayers) {
+        apply->setEnabled(true);
+    } else {
+        apply->setEnabled(false);
+    }
+}
+
+/*
 void SettingsWindow::delRole(int id) {
     QGridLayout *ng = new QGridLayout();
     ng->setAlignment(Qt::AlignTop);
@@ -187,9 +219,11 @@ void SettingsWindow::delRole(int id) {
     ng->setColumnStretch(1, 1000);
     ng->setColumnStretch(2, 0);
 
+    int dichId = readyRoles->indexOf(id-1);
+
     for(int a = 1; a < glRoles->rowCount()-1; a++) {
         for(int i = 0; i < 3; i++) {
-            if(a < id) {
+            if(a < dichId) {
                 ng->addWidget(glRoles->itemAtPosition(a, i)->widget(), a, i);
             } else {
                 ng->addWidget(glRoles->itemAtPosition(a+1, i)->widget(), a, i);
@@ -201,15 +235,9 @@ void SettingsWindow::delRole(int id) {
     toaddR->setLayout(glRoles);
     scrollRoles->setWidget(toaddR);
 
-    readyRoles->removeAt(id-1);
-    rolesToPlay[id-1] = 0;
+    std::cout << id << "\n";
+    rolesToPlay[id] = 0;
+    readyRoles->removeAt(readyRoles->indexOf(id-1));
     selectChanged(chRole->currentIndex());
-}
-
-void SettingsWindow::applyPressed() {
-    emit applySignal(rolesToPlay, playersToPlay);
-}
-
-void SettingsWindow::updateRoleCount(int id, int nval) {
-    rolesToPlay[id] = nval;
-}
+    updateSumm();
+}*/

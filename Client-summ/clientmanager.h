@@ -70,6 +70,7 @@ private slots:
     void getMessage(int id, char* data, int size);
     void sendAudio();
     void sendVideo();
+    void rolesSettingsSlot(QList<int> selections, QList<int> playersToPlay);
 };
 }
 

@@ -39,16 +39,19 @@ private:
     QWidget *toaddP, *toaddR;
     QList<int> playersToPlay;
     QList<int> rolesToPlay;
+    QLabel *summPlayers, *summRoles;
+
+    void updateSumm();
 private slots:
     void addPressed();
     void selectChanged(int idCh);
     void playerStch(int id, bool status);
-    void delRole(int id);
+  //  void delRole(int id);
     void applyPressed();
     void updateRoleCount(int id, int nval);
 
 signals:
-    void applySignal(QList<int> selections, QList<int> playersToPlay);
+    void applySignal(QList<int> rolesToPlay, QList<int> playersToPlay);
 
 };
 }
