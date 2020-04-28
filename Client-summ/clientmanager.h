@@ -14,9 +14,9 @@
 #include "Settings-widget/settingswindow.h"
 
 namespace Mafia {
-class ClientManager : public QObject
-{
-    Q_OBJECT
+    class ClientManager : public QObject
+    {
+        Q_OBJECT
 public:
     explicit ClientManager(QObject *parent = nullptr);
     ~ClientManager();

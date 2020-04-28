@@ -171,7 +171,7 @@ namespace Mafia {
             int* a = (int*)message;
             roomId = *a;
             connected = true;
-            std::cout << "RoomId - " << (int)roomId << std::endl;
+            std::cout << "RoomId - "     << (int)roomId << std::endl;
             emit gotToRoom(roomId);
             break;
         }

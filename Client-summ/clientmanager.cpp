@@ -26,7 +26,6 @@ void ClientManager::inputFirstData(){
     canSpeak = true;
     std::thread recTh(&NetWorker_c::processMessages, net);
     recTh.detach();
-
 }
 
 ClientManager::ClientManager(QObject *parent) : QObject(parent)
