@@ -6,6 +6,7 @@
 #include <QInputDialog>
 using namespace Mafia;
 void ClientManager::inputFirstData(){
+    std::string name = QInputDialog::getText(0, "Nickname","Введите свой никнейм").toStdString();
     QMessageBox *myBox = new QMessageBox();
 
     myBox->setText("Вы хотите создать новую комнату?");
@@ -15,10 +16,12 @@ void ClientManager::inputFirstData(){
     myBox->setDefaultButton(QMessageBox::Ok);
     int res = myBox->exec();
     if(res == QMessageBox::Ok){
-        net->sendMessage(*net->getAddrIn(), CREATE_ROOM_MESSAGE_ID, (char*)"123", 4);
+        net->setNickname(name);
+        net->sendMessage(*net->getAddrIn(), CREATE_ROOM_MESSAGE_ID, (char*)name.c_str(), name.length()+1);
     } else{
         int id = QInputDialog::getInt(0,"RoomId","Введите id комнаты");
         std::string key = QInputDialog::getText(0, "Key","Введите ключ комнаты").toStdString();
+        net->setNickname(name);
         net->setRoomId((char)id);
         net->connect(key);
 
@@ -146,11 +149,19 @@ void ClientManager::getMessage(int id, char* data, int size) {
         processAudio(data, size);
         break;
     }
+    case CLIENT_INDEX_MESSAGE_ID:{
+        setMyIdx(content);
+        break;
+    }
     default:
         std::cout << content << " error" << std::endl;
         throwError("Messge id - "+QString::number(id).toStdString()+"; content - "+content);
         break;
     }
+}
+
+void ClientManager::setMyIdx(std::string newIdx){
+    myIdx = *(int*)((char*)newIdx.c_str());
 }
 
 void ClientManager::throwError(std::string err) {
@@ -259,6 +270,7 @@ void ClientManager::sendVideo() {
 void ClientManager::addPlayer(std::string player) {
     muchPlayers += 1;
     aplayer->addPlayer();
+    std::cout << player << std::endl;
     mafUi->setPlayersCount(muchPlayers);
 }
 

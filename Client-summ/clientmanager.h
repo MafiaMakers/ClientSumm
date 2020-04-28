@@ -41,7 +41,7 @@ private:
     void inputFirstData();
     void processAudio(char* data, int size);
     void processVideo(char* data, int size);
-
+    void setMyIdx(std::string newIdx);
     int curStage;
     int curRole;
     int muchPlayers;

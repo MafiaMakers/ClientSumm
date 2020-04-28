@@ -26,12 +26,12 @@ namespace Mafia {
         return(&serverAddr);
     }
 
-    int NetWorker_c::setNickname(char* newName){
+    int NetWorker_c::setNickname(std::string newName){
         nickname = newName;
         if(!connected){
             return 0;
         }
-        return sendMessage(serverAddr, CHANGE_NAME_MESSAGE_ID, newName, strlen(newName));
+        return sendMessage(serverAddr, CHANGE_NAME_MESSAGE_ID, (char*)newName.c_str(), newName.length());
     }
 
     int NetWorker_c::leave(){
@@ -46,14 +46,17 @@ namespace Mafia {
 
     //recommended to run in another thread
     int NetWorker_c::connect(std::string key){
-        char* mes = new char[KEY_SIZE + 1];
+        char* mes = new char[KEY_SIZE + 1 + nickname.length()];
                 mes[0] = (char)roomId;
                 for (int i = 0; i < KEY_SIZE; i++)
                 {
                     mes[i + 1] = key[i];
                 }
+                for(int i = 0; i < nickname.length(); i++){
+                    mes[KEY_SIZE + 1 + i] = nickname[i];
+                }
                 //Send connecting message
-                if(sendMessage(serverAddr, CONNECT_MESSAGE_ID, mes, KEY_SIZE + 1) == -1){
+                if(sendMessage(serverAddr, CONNECT_MESSAGE_ID, mes, KEY_SIZE + 1 + nickname.length()) == -1){
                     return(WSAGetLastError());
                 }
 
