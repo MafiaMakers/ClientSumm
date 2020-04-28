@@ -36,7 +36,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     audCheck->open(QBuffer::ReadWrite);
     mafUi =new UIManager();
     mafUi->show();
-    muchPlayers = 2;
+    muchPlayers = 8;
     mafUi->setPlayersCount(1);
     mafUi->setPlayersCount(muchPlayers);
     QList<QString> avroles = QList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор";
@@ -61,6 +61,9 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(net, &NetWorker_c::messageReceived, this, &ClientManager::getMessage);
     connect(mafUi, &UIManager::leaveRoomSignal, this, &ClientManager::leaveRoom);
     connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
+    connect(mafUi, &UIManager::nextStageSignal, this, &ClientManager::nextStageSlot);
+    connect(mafUi, &UIManager::startGameSignal, this, &ClientManager::startGameSlot);
+    connect(mafUi, &UIManager::stopGameSignal, this, &ClientManager::stopGameSlot);
 //    net->connect();
     mafUi->enableVotings(true);
     for(int i = 0; i < muchPlayers; i++) {
@@ -68,7 +71,6 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
         votings.append(l);
     }
     //mafUi->updateVotings(votings);
-    setWind->show();
     inputFirstData();
     micphone->start();
     audioSender->start();
@@ -159,24 +161,23 @@ void ClientManager::throwError(std::string err) {
 void ClientManager::changeStage(std::string nstage) {
     int nst = int(nstage.data()[0]);
     // update voting status requered
-    if(curStage == ARGUMENT_STAGE && nst == DEATH_STAGE) {
+    if(nst == DEATH_STAGE || nst == ARGUMENT_STAGE) {
         votings.clear();
         for(int i = 0; i < muchPlayers; i++) {
             QList<int> l;
             votings.append(l);
         }
         mafUi->updateVotings(votings);
-    } else if(nst == ARGUMENT_STAGE) {
-        for(int i = 0; i < muchPlayers; i++) {
-            QList<int> l;
-            votings.append(l);
-        }
         mafUi->enableVotings(true);
-        mafUi->updateVotings(votings);
-    } else {
+    }  else {
         votings.clear();
         mafUi->enableVotings(false);
     }
+
+    if(nst == SPEAKING_STAGE && meAdmin) {
+        mafUi->askNextStage();
+    }
+
     curStage = nst;
     mafUi->setStage(curStage);
 }
@@ -313,7 +314,34 @@ void ClientManager::addVote(std::string vote) {
 }
 
 void ClientManager::rolesSettingsSlot(QList<int> rolesToPlay, QList<int> playersToPlay) {
-   // std::cout << "Slosodsodsa\n";
-    qWarning() << rolesToPlay;
-    qWarning() << playersToPlay;
+    setWind->close();
+
+    int dontPlaySend[muchPlayers-playersToPlay.size()];
+    int co = 0;
+    for(int i = 0; i < muchPlayers; i++) {
+        if(!playersToPlay.contains(i)) {
+            dontPlaySend[co] = i;
+            co += 1;
+        }
+    }
+    int rolesToSend[rolesToPlay.size()-1];
+    for(int i = 1; i < rolesToPlay.size(); i++) {
+        rolesToSend[i-1] = rolesToPlay[i];
+    }
+    //net->sendMessage(*net->getAddrIn(), DONT_PLAY_MESSAGE_ID, (char*)dontPlaySend, (muchPlayers-playersToPlay.size())*4);
+    //net->sendMessage(*net->getAddrIn(), SETUP_MESSAGE_ID, (char*)rolesToSend, rolesToPlay.size()*4);
+}
+
+void ClientManager::nextStageSlot() {
+    net->sendMessage(*net->getAddrIn(), NEXT_STAGE_MESSAGE_ID, (char*)"a", 2);
+}
+
+void ClientManager::startGameSlot() {
+    //net->sendMessage(*net->getAddrIn(), NEXT_STAGE_MESSAGE_ID, (char*)"a", 2);
+    setWind->show(); // сюда надо еще список игроков и доступных ролей передавать, пока что это делается в конструкторе
+
+}
+
+void ClientManager::stopGameSlot() {
+
 }

@@ -19,6 +19,8 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     chat->setRelatives(QList<double>() << 960/1280.0 << 270/700.0 << 310/1280.0 << 420.0/700.0); // chat
 
     connect(bottomBox, &UserButtonPanel::exitApp, this, &UIManager::leaveRoomSlot);
+    connect(bottomBox, &UserButtonPanel::startGame, this, &UIManager::startGameSlot);
+    connect(bottomBox, &UserButtonPanel::endGame, this, &UIManager::stopGameSlot);
 }
 
 UIManager::~UIManager() {
@@ -79,4 +81,16 @@ void UIManager::enableVotings(bool status) {
         chat->setRelatives(QList<double>() << 960/1280.0 << 140/700.0 << 310/1280.0 << 550.0/700.0);
         votings->setVisible(false);
     }
+}
+
+void UIManager::askNextStage() {
+
+}
+
+void UIManager::startGameSlot() {
+    emit startGameSignal();
+}
+
+void UIManager::stopGameSlot() {
+    emit stopGameSignal();
 }

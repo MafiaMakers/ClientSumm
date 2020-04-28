@@ -35,6 +35,7 @@ public:
     void updateVotings(QList<QList<int>> votws);
     void updateFrame(int idx, QByteArray frame);
     void enableVotings(bool status);
+    void askNextStage();
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;
@@ -49,11 +50,16 @@ private slots:
     void micphoneSlot(bool status);
     void webkamSlot(bool status);
     void leaveRoomSlot();
+    void startGameSlot();
+    void stopGameSlot();
 
 signals:
     void micphoneSignal(bool status);
     void webkamSignal(bool status);
     void leaveRoomSignal();
+    void nextStageSignal();
+    void startGameSignal();
+    void stopGameSignal();
 };
 }
 QT_END_NAMESPACE
