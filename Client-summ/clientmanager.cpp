@@ -69,7 +69,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     }
     //mafUi->updateVotings(votings);
     setWind->show();
-    //inputFirstData();
+    inputFirstData();
     micphone->start();
     audioSender->start();
     videoSender->start();
