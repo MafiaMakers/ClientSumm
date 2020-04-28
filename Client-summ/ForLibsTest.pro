@@ -23,6 +23,7 @@ SOURCES += \
     Backend/audioplayer.cpp \
     Backend/camhelper.cpp \
     Backend/micphonehelper.cpp \
+    Chat/chatwidget.cpp \
     Main-widget/samplerelative.cpp \
     Main-widget/showrole.cpp \
     Main-widget/uimanager.cpp \
@@ -36,6 +37,7 @@ SOURCES += \
     Settings-widget/idpushbutton.cpp \
     Settings-widget/idspinbox.cpp \
     Settings-widget/settingswindow.cpp \
+    chatwidget.cpp \
     clientmanager.cpp \
     main.cpp
 
@@ -43,6 +45,7 @@ HEADERS += \
     Backend/audioplayer.h \
     Backend/camhelper.h \
     Backend/micphonehelper.h \
+    Chat/chatwidget.h \
     Main-widget/samplerelative.h \
     Main-widget/showrole.h \
     Main-widget/uimanager.h \
@@ -58,6 +61,7 @@ HEADERS += \
     Settings-widget/idpushbutton.h \
     Settings-widget/idspinbox.h \
     Settings-widget/settingswindow.h \
+    chatwidget.h \
     clientmanager.h
 
 FORMS +=

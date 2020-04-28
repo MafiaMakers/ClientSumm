@@ -337,7 +337,7 @@ void ClientManager::nextStageSlot() {
 }
 
 void ClientManager::startGameSlot() {
-    net->sendMessage(*net->getAddrIn(), NEXT_STAGE_MESSAGE_ID, (char*)"a", 2);
+    //net->sendMessage(*net->getAddrIn(), NEXT_STAGE_MESSAGE_ID, (char*)"a", 2);
     setWind->show(); // сюда надо еще список игроков и доступных ролей передавать, пока что это делается в конструкторе
 
 }
