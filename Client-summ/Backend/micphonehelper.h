@@ -18,7 +18,7 @@ private:
     QIODevice *buff;
     QByteArray whole;
 public:
-    QByteArray getAudio(int muchBytes);
+    QByteArray getAudio();
     int bytesCount();
     void start();
     void stop();

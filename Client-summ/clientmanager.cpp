@@ -181,6 +181,7 @@ void ClientManager::changeStage(std::string nstage) {
 void ClientManager::processAudio(char* data, int size){
     int index = (int)data[0];
     QByteArray sound = QByteArray(data+1, size-1);
+    //std::cout << "e" << std::endl;
     aplayer->appendAudio(sound, index);
 }
 
@@ -231,14 +232,17 @@ void ClientManager::enableSpeaking(std::string status) {
 }
 
 void ClientManager::sendAudio() {
-    std::cout << micphone->bytesCount() << std::endl;
-    if(canSpeak && micphone->bytesCount() >= SOUND_SIZE) {
-    micphone->bytesCount();
-        QByteArray audio = micphone->getAudio(SOUND_SIZE);
+    //std::cout << micphone->bytesCount() << std::endl;
+    if(canSpeak/* && micphone->bytesCount() >= SOUND_SIZE*/) {
+        //micphone->bytesCount();
+        //std::cout << "next" << std::endl;
+        QByteArray audio = micphone->getAudio();
         if(net->isConnected()) {
+            //std::cout << "connected" << std::endl;
+            //std::cout << audio.size() << std::endl;
             net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size());
         }
-          }
+    }
 }
 
 void ClientManager::sendVideo() {
