@@ -21,7 +21,7 @@ QByteArray MicphoneHelper::getAudio() {
 }
 
 int MicphoneHelper::bytesCount() {
-
+    return 0;
 }
 
 void MicphoneHelper::start() {
