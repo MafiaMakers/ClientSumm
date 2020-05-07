@@ -23,6 +23,7 @@ public:
     ~ClientManager();
 
 private:
+    void vote(std::string voteType);
     void throwError(std::string error);
     void changeStage(std::string nstage);
     void setRole(std::string role);

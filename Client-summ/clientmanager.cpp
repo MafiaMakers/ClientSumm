@@ -127,6 +127,10 @@ void ClientManager::getMessage(int id, char* data, int size) {
         showTextInfo(content);
         break;
     }
+    case VOTE_MESSAGE_ID:{
+        vote(content);
+        break;
+    }
     case KEY_MESSAGE_ID:{
         getKeyFromServer(content);
         break;
@@ -167,12 +171,20 @@ void ClientManager::getMessage(int id, char* data, int size) {
     }
 }
 
+void ClientManager::vote(std::string voteType){
+    std::cout << "voting - " << voteType << std::endl;
+}
+
 void ClientManager::processResults(int* resState, int size){
+    std::cout << "results processing - " << size - 1 << " " << playersNames.length() << std::endl;
+    std::cout << resState[0] << " " << resState[1] << std::endl;
     QList<int> rolesRevealed = QList<int>();
     for(int i = 1; i < size; i++){
+        std::cout << resState[1] << std::endl;
         rolesRevealed.append(resState[i]);
     }
     ResultsWindow* rw = new ResultsWindow(resState[0], rolesRevealed, playersNames);
+    std::cout << "window created" << std::endl;
     rw->show();
     switch (resState[0]) {
     case -1:{
@@ -188,6 +200,7 @@ void ClientManager::processResults(int* resState, int size){
         break;
     }
     }
+    std::cout << "results processing successfully finished" << std::endl;
 }
 void ClientManager::setClientsInfo(std::string info){
     muchPlayers = (int)info[0];
@@ -223,6 +236,7 @@ void ClientManager::throwError(std::string err) {
 void ClientManager::changeStage(std::string nstage) {
     int nst = int(nstage.data()[0]);
     // update voting status requered
+    std::cout << "stage - " << nst << std::endl;
     if(nst == DEATH_STAGE || nst == ARGUMENT_STAGE) {
         votings.clear();
         for(int i = 0; i < muchPlayers; i++) {
@@ -238,6 +252,10 @@ void ClientManager::changeStage(std::string nstage) {
 
     if(nst == SPEAKING_STAGE && meAdmin) {
         mafUi->askNextStage();
+    }
+
+    if(nst == SPEAKING_STAGE && meAdmin){
+        mafUi->showNextStageButton();
     }
 
     curStage = nst;
@@ -266,8 +284,10 @@ void ClientManager::setRole(std::string role) {
 }
 
 void ClientManager::voteResult(std::string res) {
+
     const char* data = res.data();
     int idx = *(int*)(data + 1);
+    std::cout << idx << " dead" << std::endl;
     bool flag = *(bool*)data;
     // notify about results
 

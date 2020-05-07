@@ -15,6 +15,7 @@ public:
     void updateBounds(QSize nsize);
     void setMicro(bool on);
     void setCamera(bool on);
+    void showNextStageButton();
 
 signals:
     void microStatus(bool on);
@@ -23,6 +24,7 @@ signals:
     void startGame();
     void gamePause(bool isPaused);
     void endGame();
+    void nextStageButtonPressed();
 
 private slots:
     void passExit();
@@ -31,6 +33,7 @@ private slots:
     void startGameSlot();
     void stopContinueSlot();
     void endGameSlot();
+    void nextStage();
 
 private:
     QFrame * frame;
@@ -40,6 +43,7 @@ private:
     QPushButton * startButton;
     QPushButton * endGameButton;
     QPushButton * stopContinueButton;
+    QPushButton * nextStageButton;
     QList<double> myDimens;
     QSize winsize;
     bool microState, cameraState;

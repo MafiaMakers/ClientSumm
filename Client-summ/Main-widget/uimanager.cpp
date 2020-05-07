@@ -21,10 +21,21 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     connect(bottomBox, &UserButtonPanel::exitApp, this, &UIManager::leaveRoomSlot);
     connect(bottomBox, &UserButtonPanel::startGame, this, &UIManager::startGameSlot);
     connect(bottomBox, &UserButtonPanel::endGame, this, &UIManager::stopGameSlot);
+    connect(bottomBox, &UserButtonPanel::nextStageButtonPressed, this, &UIManager::nextStageSlot);
+
 }
 
 UIManager::~UIManager() {
 
+}
+
+void UIManager::showNextStageButton(){
+    std::cout << "ask show" << std::endl;
+    bottomBox->showNextStageButton();
+}
+
+void UIManager::nextStageSlot(){
+    emit nextStageSignal();
 }
 
 void UIManager::resizeEvent(QResizeEvent *event) {

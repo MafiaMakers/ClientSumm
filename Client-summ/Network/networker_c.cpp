@@ -182,6 +182,9 @@ namespace Mafia {
 			sendMessage(serverAddr, CHECK_CONNECTION_MESAGE_ID, (char*)"recv", 5);
 			break;
 		}
+        case EXIT_ROOM_MESSAGE_ID:{
+            connected = false;
+        }
         default:{
             char* newMes = new char[size];
             int id = (int)messageId;

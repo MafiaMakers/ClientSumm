@@ -21,7 +21,7 @@ ResultsWindow::ResultsWindow(int resState, QList<int> rolesIndexes, QList<QStrin
     playersData->setGeometry(170, 125, 260, 300);
     QList<QString> rolesNames = QList<QString>() << "зритель" << "мирный" << "мафия" << "комиссар" << "доктор";
     for(int i = 0; i < names.length(); i++){
-
+        std::cout << rolesIndexes[i] + 1 << std::endl;
         QLabel* label = new QLabel(names[i] + " - " + rolesNames[rolesIndexes[i] + 1], this);
         label->setMaximumWidth(190);
         label->setStyleSheet("font-size: 16px;");
