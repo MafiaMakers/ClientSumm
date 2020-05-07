@@ -13,14 +13,14 @@
 #include <Network/defines_c.h>
 
 namespace Mafia {
-    class ResultsWindow : public QWidget
+    class ResultsWindow : public QFrame
     {
         Q_OBJECT
     public:
         explicit ResultsWindow(int winId, QList<int> rolesIndexes, QList<QString> names);
     private:
         QScrollArea* playersData;
-
+        QLabel* resultsLabel;
     };
 }
 #endif
