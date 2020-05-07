@@ -1,6 +1,7 @@
 #include "userbuttonpanel.h"
 #include <QPushButton>
 #include <iostream>
+#include "Network/defines_c.h"
 Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
 {
     frame = new QFrame(parent);
@@ -24,6 +25,12 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
     setCamera(true);
     setMicro(true);
     myDimens = QList<double>() << 0 << 0 << 0 << 0;
+
+    currentGameStateLabel = new QLabel("Текущая стадия : ожидание игроков", parent);
+    currentGameStateLabel->setGeometry(170, 70, 500, 30);
+    currentGameStateLabel->setAlignment(Qt::AlignCenter);
+    currentGameStateLabel->setStyleSheet("background-color: #FFFFFF;"
+                            "font-size: 20px;");
     winsize = QSize(0, 0);
     exitButton->setGeometry(20, 20, 50, 50);
     exitButton->setText("Выйти");
@@ -90,6 +97,7 @@ void Mafia::UserButtonPanel::repaint()
     stopContinueButton->setIconSize(QSize((myHeight - 20) * 0.8, (myHeight - 20) * 0.8));
     endGameButton->setGeometry(myX + 3 * myHeight - 10, myY + 10, myHeight - 20, myHeight - 20);
     endGameButton->setIconSize(QSize((myHeight - 20) * 0.8, (myHeight - 20) * 0.8));
+    currentGameStateLabel->setGeometry(myX + myWidth - 540, myY + 10, 400, myHeight - 20);
 }
 
 void Mafia::UserButtonPanel::setCamera(bool on)
@@ -99,6 +107,12 @@ void Mafia::UserButtonPanel::setCamera(bool on)
         cameraButton->setIcon(iconCameraON);
     else
         cameraButton->setIcon(iconCameraOFF);
+}
+
+void Mafia::UserButtonPanel::setCurrentStage(int stateId){
+    QList<QString> stateNames = QList<QString>() << "ожидание других игроков" << "свободный разговор"
+                                            << "ночь" << "стадия аргументации" << "стадия повешанья" << "результаты";
+    currentGameStateLabel->setText("Текущая стадия : " + stateNames[stateId]);
 }
 
 void Mafia::UserButtonPanel::setMicro(bool on)

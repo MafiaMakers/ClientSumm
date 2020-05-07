@@ -65,7 +65,7 @@ void UIManager::setAdminActive(bool status) {
 }
 
 void UIManager::setStage(int stage) {
-
+    bottomBox->setCurrentStage(stage);
 }
 
 void UIManager::setPlayersCount(int count) {
