@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'uimanager.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'uimanager.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.14.1. It"
+#error "This file was generated using the moc from 5.14.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Mafia__UIManager_t {
-    QByteArrayData data[14];
-    char stringdata0[181];
+    QByteArrayData data[15];
+    char stringdata0[195];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,14 +45,16 @@ QT_MOC_LITERAL(9, 116, 12), // "micphoneSlot"
 QT_MOC_LITERAL(10, 129, 10), // "webkamSlot"
 QT_MOC_LITERAL(11, 140, 13), // "leaveRoomSlot"
 QT_MOC_LITERAL(12, 154, 13), // "startGameSlot"
-QT_MOC_LITERAL(13, 168, 12) // "stopGameSlot"
+QT_MOC_LITERAL(13, 168, 12), // "stopGameSlot"
+QT_MOC_LITERAL(14, 181, 13) // "nextStageSlot"
 
     },
     "Mafia::UIManager\0micphoneSignal\0\0"
     "status\0webkamSignal\0leaveRoomSignal\0"
     "nextStageSignal\0startGameSignal\0"
     "stopGameSignal\0micphoneSlot\0webkamSlot\0"
-    "leaveRoomSlot\0startGameSlot\0stopGameSlot"
+    "leaveRoomSlot\0startGameSlot\0stopGameSlot\0"
+    "nextStageSlot"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,7 +64,7 @@ static const uint qt_meta_data_Mafia__UIManager[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,19 +72,20 @@ static const uint qt_meta_data_Mafia__UIManager[] = {
        6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   69,    2, 0x06 /* Public */,
-       4,    1,   72,    2, 0x06 /* Public */,
-       5,    0,   75,    2, 0x06 /* Public */,
-       6,    0,   76,    2, 0x06 /* Public */,
-       7,    0,   77,    2, 0x06 /* Public */,
-       8,    0,   78,    2, 0x06 /* Public */,
+       1,    1,   74,    2, 0x06 /* Public */,
+       4,    1,   77,    2, 0x06 /* Public */,
+       5,    0,   80,    2, 0x06 /* Public */,
+       6,    0,   81,    2, 0x06 /* Public */,
+       7,    0,   82,    2, 0x06 /* Public */,
+       8,    0,   83,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    1,   79,    2, 0x08 /* Private */,
-      10,    1,   82,    2, 0x08 /* Private */,
-      11,    0,   85,    2, 0x08 /* Private */,
-      12,    0,   86,    2, 0x08 /* Private */,
-      13,    0,   87,    2, 0x08 /* Private */,
+       9,    1,   84,    2, 0x08 /* Private */,
+      10,    1,   87,    2, 0x08 /* Private */,
+      11,    0,   90,    2, 0x08 /* Private */,
+      12,    0,   91,    2, 0x08 /* Private */,
+      13,    0,   92,    2, 0x08 /* Private */,
+      14,    0,   93,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -95,6 +98,7 @@ static const uint qt_meta_data_Mafia__UIManager[] = {
  // slots: parameters
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -119,6 +123,7 @@ void Mafia::UIManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 8: _t->leaveRoomSlot(); break;
         case 9: _t->startGameSlot(); break;
         case 10: _t->stopGameSlot(); break;
+        case 11: _t->nextStageSlot(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -197,13 +202,13 @@ int Mafia::UIManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

@@ -41,6 +41,11 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
     nextStageButton->setFont(QFont("Times", 15, QFont::Bold));
     nextStageButton->hide();
 
+    stopSpeakButton = new QPushButton(parent);
+    stopSpeakButton->setText("Завершить речь");
+    stopSpeakButton->setStyleSheet("color: blue;");
+    stopSpeakButton->setFont(QFont("Times", 15, QFont::Bold));
+    stopSpeakButton->hide();
 
     connect(exitButton, &QPushButton::clicked, this, &UserButtonPanel::passExit);
     connect(microButton, &QPushButton::clicked, this, &UserButtonPanel::microChanged);
@@ -49,6 +54,16 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
     connect(stopContinueButton, &QPushButton::clicked, this, &UserButtonPanel::stopContinueSlot);
     connect(endGameButton, &QPushButton::clicked, this, &UserButtonPanel::endGameSlot);
     connect(nextStageButton, &QPushButton::clicked, this, &UserButtonPanel::nextStage);
+    connect(stopSpeakButton, &QPushButton::clicked, this, &UserButtonPanel::stopSpeakingPressed);
+}
+
+void Mafia::UserButtonPanel::stopSpeakingPressed(){
+    stopSpeakButton->hide();
+    emit stopSpeaking();
+}
+
+void Mafia::UserButtonPanel::startSpeking(){
+    stopSpeakButton->show();
 }
 
 void Mafia::UserButtonPanel::setRelatives(QList<double> dimens)
@@ -91,6 +106,7 @@ void Mafia::UserButtonPanel::repaint()
     cameraButton->setIconSize(QSize((myHeight - 20) * 0.9, (myHeight - 20) * 0.8));
     startButton->setGeometry(myX + 2 * myHeight, myY + 10, 150, myHeight - 20);
     nextStageButton->setGeometry(myX + 2 * myHeight, myY + 10, 200, myHeight - 20);
+    stopSpeakButton->setGeometry(myX + 2 * myHeight, myY + 10, 200, myHeight - 20);
     stopContinueButton->setGeometry(myX + 2 * myHeight, myY + 10, myHeight - 20, myHeight - 20);
     stopContinueButton->setIconSize(QSize((myHeight - 20) * 0.8, (myHeight - 20) * 0.8));
     endGameButton->setGeometry(myX + 3 * myHeight - 10, myY + 10, myHeight - 20, myHeight - 20);

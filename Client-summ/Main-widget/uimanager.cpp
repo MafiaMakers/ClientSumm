@@ -22,7 +22,16 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     connect(bottomBox, &UserButtonPanel::startGame, this, &UIManager::startGameSlot);
     connect(bottomBox, &UserButtonPanel::endGame, this, &UIManager::stopGameSlot);
     connect(bottomBox, &UserButtonPanel::nextStageButtonPressed, this, &UIManager::nextStageSlot);
+    connect(bottomBox, &UserButtonPanel::stopSpeaking, this, &UIManager::stopSpeakSlot);
 
+}
+
+void UIManager::stopSpeakSlot(){
+    emit stopSpeakSignal();
+}
+
+void UIManager::startSpeak(){
+    bottomBox->startSpeking();
 }
 
 UIManager::~UIManager() {

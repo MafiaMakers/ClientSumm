@@ -75,6 +75,7 @@ private:
 signals:
 
 private slots:
+    void stopSpeak();
     void getMessage(int id, char* data, int size);
     void sendAudio();
     void sendVideo();

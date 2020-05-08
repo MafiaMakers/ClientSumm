@@ -67,6 +67,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(mafUi, &UIManager::nextStageSignal, this, &ClientManager::nextStageSlot);
     connect(mafUi, &UIManager::startGameSignal, this, &ClientManager::startGameSlot);
     connect(mafUi, &UIManager::stopGameSignal, this, &ClientManager::stopGameSlot);
+    connect(mafUi, &UIManager::stopSpeakSignal, this, &ClientManager::stopSpeak);
 //    net->connect();
     mafUi->enableVotings(true);
     for(int i = 0; i < muchPlayers; i++) {
@@ -327,7 +328,14 @@ void ClientManager::checkAdmin(std::string content) {
 
 void ClientManager::enableSpeaking(std::string status) {
     canSpeak = *(bool*)status.data();
+    if(canSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE)){
+        mafUi->startSpeak();
+    }
     mafUi->enableSpeaking(canSpeak);
+}
+
+void ClientManager::stopSpeak(){
+    net->sendMessage(*net->getAddrIn(), STOP_SPEAK_MESSAGE_ID, (char*)"a", 2);
 }
 
 void ClientManager::sendAudio() {

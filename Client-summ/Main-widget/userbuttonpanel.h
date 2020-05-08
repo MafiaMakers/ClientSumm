@@ -17,6 +17,7 @@ public:
     void setCamera(bool on);
     void showNextStageButton();
     void setCurrentStage(int stateId);
+    void startSpeking();
 
 signals:
     void microStatus(bool on);
@@ -26,6 +27,7 @@ signals:
     void gamePause(bool isPaused);
     void endGame();
     void nextStageButtonPressed();
+    void stopSpeaking();
 
 private slots:
     void passExit();
@@ -35,6 +37,7 @@ private slots:
     void stopContinueSlot();
     void endGameSlot();
     void nextStage();
+    void stopSpeakingPressed();
 
 private:
     QFrame * frame;
@@ -45,6 +48,7 @@ private:
     QPushButton * endGameButton;
     QPushButton * stopContinueButton;
     QPushButton * nextStageButton;
+    QPushButton * stopSpeakButton;
     QLabel * currentGameStateLabel;
     QList<double> myDimens;
     QSize winsize;
