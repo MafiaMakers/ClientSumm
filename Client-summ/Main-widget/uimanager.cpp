@@ -30,7 +30,6 @@ UIManager::~UIManager() {
 }
 
 void UIManager::showNextStageButton(){
-    std::cout << "ask show" << std::endl;
     bottomBox->showNextStageButton();
 }
 

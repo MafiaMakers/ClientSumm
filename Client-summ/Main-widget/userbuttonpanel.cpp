@@ -71,13 +71,11 @@ void Mafia::UserButtonPanel::passExit()
 }
 
 void Mafia::UserButtonPanel::nextStage(){
-    std::cout << "pressed" << std::endl;
     nextStageButton->hide();
     emit nextStageButtonPressed();
 }
 
 void Mafia::UserButtonPanel::showNextStageButton(){
-    std::cout << "show" << std::endl;
     nextStageButton->show();
 }
 

@@ -13,6 +13,7 @@
 #include "Backend/micphonehelper.h"
 #include "Settings-widget/settingswindow.h"
 #include "Results-widget/resultswidget.h"
+#include "EnterWindow/mainmenu.h"
 
 namespace Mafia {
     class ClientManager : public QObject
@@ -46,6 +47,7 @@ private:
     void setMyIdx(std::string newIdx);
     void setClientsInfo(std::string info);
     void processResults(int* resState, int size);
+    void changedName(char* data, int size);
     int curStage;
     QList<QString> playersNames;
     int curRole;
@@ -68,6 +70,7 @@ private:
     SettingsWindow *setWind;
     AudioPlayer *aplayer;
     QBuffer *audCheck;
+    MainMenu* menu;
 
 signals:
 

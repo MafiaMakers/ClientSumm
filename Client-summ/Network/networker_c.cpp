@@ -142,6 +142,9 @@ namespace Mafia {
         }
         return 0;
     }
+    int NetWorker_c::getRoom(){
+        return (int)roomId;
+    }
 
     //codes message to Prot which we use
     int NetWorker_c::_wrapMessage(char* message, int mesLen, short messageId, char* result){

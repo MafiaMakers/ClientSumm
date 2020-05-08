@@ -23,6 +23,9 @@ SOURCES += \
     Backend/audioplayer.cpp \
     Backend/camhelper.cpp \
     Backend/micphonehelper.cpp \
+    EnterWindow/createwindow.cpp \
+    EnterWindow/enterwindow.cpp \
+    EnterWindow/mainmenu.cpp \
     Main-widget/samplerelative.cpp \
     Main-widget/showrole.cpp \
     Main-widget/uimanager.cpp \
@@ -45,6 +48,9 @@ HEADERS += \
     Backend/audioplayer.h \
     Backend/camhelper.h \
     Backend/micphonehelper.h \
+    EnterWindow/createwindow.h \
+    EnterWindow/enterwindow.h \
+    EnterWindow/mainmenu.h \
     Main-widget/samplerelative.h \
     Main-widget/showrole.h \
     Main-widget/uimanager.h \

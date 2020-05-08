@@ -29,6 +29,8 @@ namespace Mafia {
 
         int connect(std::string key);
 
+        int getRoom();
+
         int setNickname(std::string newName);
 
         void setRoomId(char rId);

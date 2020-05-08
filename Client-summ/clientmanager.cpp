@@ -4,9 +4,11 @@
 #include <thread>
 #include <QMessageBox>
 #include <QInputDialog>
+#include "EnterWindow/mainmenu.h"
+
 using namespace Mafia;
 void ClientManager::inputFirstData(){
-    std::string name = QInputDialog::getText(0, "Nickname","Введите свой никнейм").toStdString();
+    /*std::string name = QInputDialog::getText(0, "Nickname","Введите свой никнейм").toStdString();
     QMessageBox *myBox = new QMessageBox();
 
     myBox->setText("Вы хотите создать новую комнату?");
@@ -25,10 +27,11 @@ void ClientManager::inputFirstData(){
         net->setRoomId((char)id);
         net->connect(key);
 
-    }
+    }*/
+
+    menu = new MainMenu(nullptr, net);
+    menu->show();
     canSpeak = true;
-    std::thread recTh(&NetWorker_c::processMessages, net);
-    recTh.detach();
 }
 
 ClientManager::ClientManager(QObject *parent) : QObject(parent)
@@ -164,11 +167,22 @@ void ClientManager::getMessage(int id, char* data, int size) {
         processResults((int*)data, size/4);
         break;
     }
+    case CHANGE_NAME_MESSAGE_ID:{
+        changedName(data, size);
+        break;
+    }
     default:
         std::cout << content << " error" << std::endl;
         throwError("Messge id - "+QString::number(id).toStdString()+"; content - "+content);
         break;
     }
+}
+
+void ClientManager::changedName(char *data, int size){
+    int index = (int)data[0];
+    char* name = data+1;
+    playersNames[index] = QString::fromStdString(std::string(name, size - 1));
+    std::cout << index << " changed name to " << std::string(name, size - 1) << std::endl;
 }
 
 void ClientManager::vote(std::string voteType){
@@ -214,9 +228,7 @@ void ClientManager::setClientsInfo(std::string info){
             tmp += info[i];
         }
     }
-    std::cout << "point" << std::endl;
     if(meAdmin){
-        std::cout << "meAdmin" << std::endl;
         QList<QString> avroles = QList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор";
         //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
         setWind = new SettingsWindow(avroles, playersNames);
@@ -343,10 +355,7 @@ void ClientManager::sendVideo() {
 void ClientManager::addPlayer(std::string player) {
     muchPlayers += 1;
     aplayer->addPlayer();
-    QMessageBox* myMsgBox = new QMessageBox();
-    myMsgBox->setText(QString((char*)("Подключился игрок " + player).c_str()));
-    myMsgBox->show();
-    std::cout << player << std::endl;
+    playersNames.append(QString::fromStdString(player));
     mafUi->setPlayersCount(muchPlayers);
 }
 
@@ -370,13 +379,14 @@ void ClientManager::showCandidates(std::string candidates){
 }
 
 void ClientManager::getKeyFromServer(std::string key){
-    QMessageBox *myBox = new QMessageBox();
+    /*QMessageBox *myBox = new QMessageBox();
     myBox->setText("Key");
     myBox->setTextInteractionFlags(Qt::TextSelectableByMouse);
     myBox->setText("Вот ключ от вашей комнаты : " + QString(key.c_str()));
     //myBox->setInformativeText();
 
-    myBox->exec();
+    myBox->exec();*/
+    menu->gameCreated(net->getRoom(), QString::fromStdString(key));
     //это ключ, который надо отправить остальным посетителям комнаты для входа
 }
 
