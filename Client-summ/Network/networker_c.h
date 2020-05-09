@@ -29,7 +29,9 @@ namespace Mafia {
 
         int connect(std::string key);
 
-        int setNickname(char* newName);
+        int getRoom();
+
+        int setNickname(std::string newName);
 
         void setRoomId(char rId);
 
@@ -68,7 +70,7 @@ namespace Mafia {
 
         bool connected = false;
 
-        char* nickname = (char*)"User";
+        std::string nickname = "User";
 
 signals:
     void messageReceived(int id, char* data, int size);

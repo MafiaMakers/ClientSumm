@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'userbuttonpanel.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'userbuttonpanel.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.14.1. It"
+#error "This file was generated using the moc from 5.14.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Mafia__UserButtonPanel_t {
-    QByteArrayData data[16];
-    char stringdata0[176];
+    QByteArrayData data[18];
+    char stringdata0[209];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,19 +42,22 @@ QT_MOC_LITERAL(6, 60, 9), // "startGame"
 QT_MOC_LITERAL(7, 70, 9), // "gamePause"
 QT_MOC_LITERAL(8, 80, 8), // "isPaused"
 QT_MOC_LITERAL(9, 89, 7), // "endGame"
-QT_MOC_LITERAL(10, 97, 8), // "passExit"
-QT_MOC_LITERAL(11, 106, 12), // "microChanged"
-QT_MOC_LITERAL(12, 119, 13), // "cameraChanged"
-QT_MOC_LITERAL(13, 133, 13), // "startGameSlot"
-QT_MOC_LITERAL(14, 147, 16), // "stopContinueSlot"
-QT_MOC_LITERAL(15, 164, 11) // "endGameSlot"
+QT_MOC_LITERAL(10, 97, 22), // "nextStageButtonPressed"
+QT_MOC_LITERAL(11, 120, 8), // "passExit"
+QT_MOC_LITERAL(12, 129, 12), // "microChanged"
+QT_MOC_LITERAL(13, 142, 13), // "cameraChanged"
+QT_MOC_LITERAL(14, 156, 13), // "startGameSlot"
+QT_MOC_LITERAL(15, 170, 16), // "stopContinueSlot"
+QT_MOC_LITERAL(16, 187, 11), // "endGameSlot"
+QT_MOC_LITERAL(17, 199, 9) // "nextStage"
 
     },
     "Mafia::UserButtonPanel\0microStatus\0\0"
     "on\0cameraStatus\0exitApp\0startGame\0"
-    "gamePause\0isPaused\0endGame\0passExit\0"
+    "gamePause\0isPaused\0endGame\0"
+    "nextStageButtonPressed\0passExit\0"
     "microChanged\0cameraChanged\0startGameSlot\0"
-    "stopContinueSlot\0endGameSlot"
+    "stopContinueSlot\0endGameSlot\0nextStage"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,28 +67,30 @@ static const uint qt_meta_data_Mafia__UserButtonPanel[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       6,       // signalCount
+       7,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   74,    2, 0x06 /* Public */,
-       4,    1,   77,    2, 0x06 /* Public */,
-       5,    0,   80,    2, 0x06 /* Public */,
-       6,    0,   81,    2, 0x06 /* Public */,
-       7,    1,   82,    2, 0x06 /* Public */,
-       9,    0,   85,    2, 0x06 /* Public */,
+       1,    1,   84,    2, 0x06 /* Public */,
+       4,    1,   87,    2, 0x06 /* Public */,
+       5,    0,   90,    2, 0x06 /* Public */,
+       6,    0,   91,    2, 0x06 /* Public */,
+       7,    1,   92,    2, 0x06 /* Public */,
+       9,    0,   95,    2, 0x06 /* Public */,
+      10,    0,   96,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      10,    0,   86,    2, 0x08 /* Private */,
-      11,    0,   87,    2, 0x08 /* Private */,
-      12,    0,   88,    2, 0x08 /* Private */,
-      13,    0,   89,    2, 0x08 /* Private */,
-      14,    0,   90,    2, 0x08 /* Private */,
-      15,    0,   91,    2, 0x08 /* Private */,
+      11,    0,   97,    2, 0x08 /* Private */,
+      12,    0,   98,    2, 0x08 /* Private */,
+      13,    0,   99,    2, 0x08 /* Private */,
+      14,    0,  100,    2, 0x08 /* Private */,
+      15,    0,  101,    2, 0x08 /* Private */,
+      16,    0,  102,    2, 0x08 /* Private */,
+      17,    0,  103,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -94,8 +99,10 @@ static const uint qt_meta_data_Mafia__UserButtonPanel[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,    8,
     QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -118,12 +125,14 @@ void Mafia::UserButtonPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _
         case 3: _t->startGame(); break;
         case 4: _t->gamePause((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 5: _t->endGame(); break;
-        case 6: _t->passExit(); break;
-        case 7: _t->microChanged(); break;
-        case 8: _t->cameraChanged(); break;
-        case 9: _t->startGameSlot(); break;
-        case 10: _t->stopContinueSlot(); break;
-        case 11: _t->endGameSlot(); break;
+        case 6: _t->nextStageButtonPressed(); break;
+        case 7: _t->passExit(); break;
+        case 8: _t->microChanged(); break;
+        case 9: _t->cameraChanged(); break;
+        case 10: _t->startGameSlot(); break;
+        case 11: _t->stopContinueSlot(); break;
+        case 12: _t->endGameSlot(); break;
+        case 13: _t->nextStage(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -170,6 +179,13 @@ void Mafia::UserButtonPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _
                 return;
             }
         }
+        {
+            using _t = void (UserButtonPanel::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&UserButtonPanel::nextStageButtonPressed)) {
+                *result = 6;
+                return;
+            }
+        }
     }
 }
 
@@ -202,13 +218,13 @@ int Mafia::UserButtonPanel::qt_metacall(QMetaObject::Call _c, int _id, void **_a
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 14)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }
@@ -250,6 +266,12 @@ void Mafia::UserButtonPanel::gamePause(bool _t1)
 void Mafia::UserButtonPanel::endGame()
 {
     QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
+}
+
+// SIGNAL 6
+void Mafia::UserButtonPanel::nextStageButtonPressed()
+{
+    QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

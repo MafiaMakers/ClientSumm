@@ -21,10 +21,29 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     connect(bottomBox, &UserButtonPanel::exitApp, this, &UIManager::leaveRoomSlot);
     connect(bottomBox, &UserButtonPanel::startGame, this, &UIManager::startGameSlot);
     connect(bottomBox, &UserButtonPanel::endGame, this, &UIManager::stopGameSlot);
+    connect(bottomBox, &UserButtonPanel::nextStageButtonPressed, this, &UIManager::nextStageSlot);
+    connect(bottomBox, &UserButtonPanel::stopSpeaking, this, &UIManager::stopSpeakSlot);
+
+}
+
+void UIManager::stopSpeakSlot(){
+    emit stopSpeakSignal();
+}
+
+void UIManager::startSpeak(){
+    bottomBox->startSpeking();
 }
 
 UIManager::~UIManager() {
 
+}
+
+void UIManager::showNextStageButton(){
+    bottomBox->showNextStageButton();
+}
+
+void UIManager::nextStageSlot(){
+    emit nextStageSignal();
 }
 
 void UIManager::resizeEvent(QResizeEvent *event) {
@@ -54,7 +73,7 @@ void UIManager::setAdminActive(bool status) {
 }
 
 void UIManager::setStage(int stage) {
-
+    bottomBox->setCurrentStage(stage);
 }
 
 void UIManager::setPlayersCount(int count) {

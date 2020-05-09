@@ -23,6 +23,9 @@ SOURCES += \
     Backend/audioplayer.cpp \
     Backend/camhelper.cpp \
     Backend/micphonehelper.cpp \
+    EnterWindow/createwindow.cpp \
+    EnterWindow/enterwindow.cpp \
+    EnterWindow/mainmenu.cpp \
     Main-widget/samplerelative.cpp \
     Main-widget/showrole.cpp \
     Main-widget/uimanager.cpp \
@@ -32,6 +35,7 @@ SOURCES += \
     Main-widget/votingsfield.cpp \
     Network/networker_c.cpp \
     Network/systemfunctions_c.cpp \
+    Results-widget/resultswidget.cpp \
     Settings-widget/idcheckbox.cpp \
     Settings-widget/idpushbutton.cpp \
     Settings-widget/idspinbox.cpp \
@@ -44,6 +48,9 @@ HEADERS += \
     Backend/audioplayer.h \
     Backend/camhelper.h \
     Backend/micphonehelper.h \
+    EnterWindow/createwindow.h \
+    EnterWindow/enterwindow.h \
+    EnterWindow/mainmenu.h \
     Main-widget/samplerelative.h \
     Main-widget/showrole.h \
     Main-widget/uimanager.h \
@@ -55,6 +62,7 @@ HEADERS += \
     Network/include_c.h \
     Network/networker_c.h \
     Network/systemfunctions_c.h \
+    Results-widget/resultswidget.h \
     Settings-widget/idcheckbox.h \
     Settings-widget/idpushbutton.h \
     Settings-widget/idspinbox.h \

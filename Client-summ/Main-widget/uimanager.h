@@ -36,6 +36,8 @@ public:
     void updateFrame(int idx, QByteArray frame);
     void enableVotings(bool status);
     void askNextStage();
+    void showNextStageButton();
+    void startSpeak();
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;
@@ -52,10 +54,13 @@ private slots:
     void leaveRoomSlot();
     void startGameSlot();
     void stopGameSlot();
+    void nextStageSlot();
+    void stopSpeakSlot();
 
 signals:
     void micphoneSignal(bool status);
     void webkamSignal(bool status);
+    void stopSpeakSignal();
     void leaveRoomSignal();
     void nextStageSignal();
     void startGameSignal();

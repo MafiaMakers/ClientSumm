@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'uimanager.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'uimanager.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.14.1. It"
+#error "This file was generated using the moc from 5.14.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Mafia__UIManager_t {
-    QByteArrayData data[9];
-    char stringdata0[107];
+    QByteArrayData data[15];
+    char stringdata0[195];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,14 +38,23 @@ QT_MOC_LITERAL(2, 32, 0), // ""
 QT_MOC_LITERAL(3, 33, 6), // "status"
 QT_MOC_LITERAL(4, 40, 12), // "webkamSignal"
 QT_MOC_LITERAL(5, 53, 15), // "leaveRoomSignal"
-QT_MOC_LITERAL(6, 69, 12), // "micphoneSlot"
-QT_MOC_LITERAL(7, 82, 10), // "webkamSlot"
-QT_MOC_LITERAL(8, 93, 13) // "leaveRoomSlot"
+QT_MOC_LITERAL(6, 69, 15), // "nextStageSignal"
+QT_MOC_LITERAL(7, 85, 15), // "startGameSignal"
+QT_MOC_LITERAL(8, 101, 14), // "stopGameSignal"
+QT_MOC_LITERAL(9, 116, 12), // "micphoneSlot"
+QT_MOC_LITERAL(10, 129, 10), // "webkamSlot"
+QT_MOC_LITERAL(11, 140, 13), // "leaveRoomSlot"
+QT_MOC_LITERAL(12, 154, 13), // "startGameSlot"
+QT_MOC_LITERAL(13, 168, 12), // "stopGameSlot"
+QT_MOC_LITERAL(14, 181, 13) // "nextStageSlot"
 
     },
     "Mafia::UIManager\0micphoneSignal\0\0"
     "status\0webkamSignal\0leaveRoomSignal\0"
-    "micphoneSlot\0webkamSlot\0leaveRoomSlot"
+    "nextStageSignal\0startGameSignal\0"
+    "stopGameSignal\0micphoneSlot\0webkamSlot\0"
+    "leaveRoomSlot\0startGameSlot\0stopGameSlot\0"
+    "nextStageSlot"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,31 +64,43 @@ static const uint qt_meta_data_Mafia__UIManager[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x06 /* Public */,
-       4,    1,   47,    2, 0x06 /* Public */,
-       5,    0,   50,    2, 0x06 /* Public */,
+       1,    1,   74,    2, 0x06 /* Public */,
+       4,    1,   77,    2, 0x06 /* Public */,
+       5,    0,   80,    2, 0x06 /* Public */,
+       6,    0,   81,    2, 0x06 /* Public */,
+       7,    0,   82,    2, 0x06 /* Public */,
+       8,    0,   83,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   51,    2, 0x08 /* Private */,
-       7,    1,   54,    2, 0x08 /* Private */,
-       8,    0,   57,    2, 0x08 /* Private */,
+       9,    1,   84,    2, 0x08 /* Private */,
+      10,    1,   87,    2, 0x08 /* Private */,
+      11,    0,   90,    2, 0x08 /* Private */,
+      12,    0,   91,    2, 0x08 /* Private */,
+      13,    0,   92,    2, 0x08 /* Private */,
+      14,    0,   93,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -94,9 +115,15 @@ void Mafia::UIManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 0: _t->micphoneSignal((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 1: _t->webkamSignal((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 2: _t->leaveRoomSignal(); break;
-        case 3: _t->micphoneSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 4: _t->webkamSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 5: _t->leaveRoomSlot(); break;
+        case 3: _t->nextStageSignal(); break;
+        case 4: _t->startGameSignal(); break;
+        case 5: _t->stopGameSignal(); break;
+        case 6: _t->micphoneSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: _t->webkamSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 8: _t->leaveRoomSlot(); break;
+        case 9: _t->startGameSlot(); break;
+        case 10: _t->stopGameSlot(); break;
+        case 11: _t->nextStageSlot(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -119,6 +146,27 @@ void Mafia::UIManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
             using _t = void (UIManager::*)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&UIManager::leaveRoomSignal)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            using _t = void (UIManager::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&UIManager::nextStageSignal)) {
+                *result = 3;
+                return;
+            }
+        }
+        {
+            using _t = void (UIManager::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&UIManager::startGameSignal)) {
+                *result = 4;
+                return;
+            }
+        }
+        {
+            using _t = void (UIManager::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&UIManager::stopGameSignal)) {
+                *result = 5;
                 return;
             }
         }
@@ -154,13 +202,13 @@ int Mafia::UIManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 12;
     }
     return _id;
 }
@@ -183,6 +231,24 @@ void Mafia::UIManager::webkamSignal(bool _t1)
 void Mafia::UIManager::leaveRoomSignal()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void Mafia::UIManager::nextStageSignal()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
+}
+
+// SIGNAL 4
+void Mafia::UIManager::startGameSignal()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void Mafia::UIManager::stopGameSignal()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

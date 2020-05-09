@@ -3,7 +3,7 @@
 
 #include <QFrame>
 #include <QPushButton>
-
+#include <QLabel>
 namespace Mafia {
 
 class UserButtonPanel: public QObject
@@ -15,6 +15,9 @@ public:
     void updateBounds(QSize nsize);
     void setMicro(bool on);
     void setCamera(bool on);
+    void showNextStageButton();
+    void setCurrentStage(int stateId);
+    void startSpeking();
 
 signals:
     void microStatus(bool on);
@@ -23,6 +26,8 @@ signals:
     void startGame();
     void gamePause(bool isPaused);
     void endGame();
+    void nextStageButtonPressed();
+    void stopSpeaking();
 
 private slots:
     void passExit();
@@ -31,6 +36,8 @@ private slots:
     void startGameSlot();
     void stopContinueSlot();
     void endGameSlot();
+    void nextStage();
+    void stopSpeakingPressed();
 
 private:
     QFrame * frame;
@@ -40,6 +47,9 @@ private:
     QPushButton * startButton;
     QPushButton * endGameButton;
     QPushButton * stopContinueButton;
+    QPushButton * nextStageButton;
+    QPushButton * stopSpeakButton;
+    QLabel * currentGameStateLabel;
     QList<double> myDimens;
     QSize winsize;
     bool microState, cameraState;

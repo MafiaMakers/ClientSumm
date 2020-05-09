@@ -12,6 +12,8 @@
 #include "Backend/camhelper.h"
 #include "Backend/micphonehelper.h"
 #include "Settings-widget/settingswindow.h"
+#include "Results-widget/resultswidget.h"
+#include "EnterWindow/mainmenu.h"
 
 namespace Mafia {
     class ClientManager : public QObject
@@ -22,6 +24,7 @@ public:
     ~ClientManager();
 
 private:
+    void vote(std::string voteType);
     void throwError(std::string error);
     void changeStage(std::string nstage);
     void setRole(std::string role);
@@ -41,8 +44,12 @@ private:
     void inputFirstData();
     void processAudio(char* data, int size);
     void processVideo(char* data, int size);
-
+    void setMyIdx(std::string newIdx);
+    void setClientsInfo(std::string info);
+    void processResults(int* resState, int size);
+    void changedName(char* data, int size);
     int curStage;
+    QList<QString> playersNames;
     int curRole;
     int muchPlayers;
     int myIdx;
@@ -63,10 +70,12 @@ private:
     SettingsWindow *setWind;
     AudioPlayer *aplayer;
     QBuffer *audCheck;
+    MainMenu* menu;
 
 signals:
 
 private slots:
+    void stopSpeak();
     void getMessage(int id, char* data, int size);
     void sendAudio();
     void sendVideo();
