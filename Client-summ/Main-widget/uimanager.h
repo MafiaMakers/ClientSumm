@@ -26,7 +26,8 @@ class UIManager : public QMainWindow
 public:
     UIManager(QWidget *parent = nullptr);
     ~UIManager();
-
+    void startVoting(int candidateIndex = -1, QString action = "Убить");
+    void stopVoting();
     void setStage(int stage);
     void updateRole(int role);
     void setPlayersCount(int count);
@@ -56,6 +57,7 @@ private slots:
     void stopGameSlot();
     void nextStageSlot();
     void stopSpeakSlot();
+    void votedSlot(int votedForIndex);
 
 signals:
     void micphoneSignal(bool status);
@@ -65,6 +67,7 @@ signals:
     void nextStageSignal();
     void startGameSignal();
     void stopGameSignal();
+    void votedSignal(int votedForIndex);
 };
 }
 QT_END_NAMESPACE
