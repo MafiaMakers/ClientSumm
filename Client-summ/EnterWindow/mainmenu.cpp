@@ -51,6 +51,7 @@ void MainMenu::GoIn(QString key, QString name, int roomId){
     net->setNickname(name.toStdString());
     net->setRoomId(roomId);
     net->connect(key.toStdString());
+    this->close();
 }
 
 void MainMenu::gameCreated(int roomId, QString key){

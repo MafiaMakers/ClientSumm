@@ -120,6 +120,7 @@ void ClientManager::getMessage(int id, char* data, int size) {
         leaveRoom();
     break;
     case SHERIFF_MESSAGE_ID:
+        std::cout << "sheriff mes" << std::endl;
         sheriffResult(content);
         qWarning() << "sheriff mes";
     break;
@@ -197,6 +198,7 @@ void ClientManager::changedName(char *data, int size){
 
 void ClientManager::vote(std::string voteType){
     std::string trueString = std::string(voteType.c_str(), voteType.length() - 1);
+    std::cout << "vote - " << trueString << std::endl;
     int index = *(int*)(char*)voteType.c_str();
     if(index > -1 && index < muchPlayers){
         mafUi->startVoting(index+1);
@@ -257,6 +259,7 @@ void ClientManager::setClientsInfo(std::string info){
     if(meAdmin){
         QList<QString> avroles = QList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор";
         //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
+        std::cout << "done!!!!!!!!!!!!!" << std::endl;
         setWind = new SettingsWindow(avroles, playersNames);
         connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
         setWind->show();
@@ -275,6 +278,7 @@ void ClientManager::changeStage(std::string nstage) {
     int nst = int(nstage.data()[0]);
     // update voting status requered
     std::cout << "stage - " << nst << std::endl;
+    mafUi->stopVoting();
     if(nst == DEATH_STAGE || nst == ARGUMENT_STAGE) {
         votings.clear();
         for(int i = 0; i < muchPlayers; i++) {
@@ -361,7 +365,11 @@ void ClientManager::stopSpeak(){
 }
 
 void ClientManager::sendAudio() {
+<<<<<<< HEAD
     if(true/* && micphone->bytesCount() >= SOUND_SIZE*/) {
+=======
+    if(true/*canSpeak*//* && micphone->bytesCount() >= SOUND_SIZE*/) {
+>>>>>>> d9cad60d44f0669d14e41dff3f7cba016bfe67f7
         QByteArray audio = micphone->getAudio();
         if(net->isConnected()) {
             //std::cout << "connected" << std::endl;
@@ -373,7 +381,11 @@ void ClientManager::sendAudio() {
 
 void ClientManager::sendVideo() {
     QByteArray video = webcam->getFrame();
+<<<<<<< HEAD
     if(true) {
+=======
+    if(true /*camActive*/) {
+>>>>>>> d9cad60d44f0669d14e41dff3f7cba016bfe67f7
         mafUi->updateFrame(myIdx, video);
     // send video via net
         if(net->isConnected()) {
@@ -391,13 +403,9 @@ void ClientManager::addPlayer(std::string player) {
 
 void ClientManager::sheriffResult(std::string content) {
     bool res = *(bool*)(&content.data()[0]);
-<<<<<<< HEAD
-    mafUi->sheriffResult(99, res);
-=======
     std::cout << "sher" << std::endl;
     mafUi->sheriffResult(0, res);
     // notify about sheriff vote
->>>>>>> bc3966cfce0b1bccc29045945af226f33e89c0b0
 }
 
 void ClientManager::showTextInfo(std::string info){

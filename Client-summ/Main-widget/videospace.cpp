@@ -150,6 +150,13 @@ void VideoSpace::endVoting()
 {
     if (curVotePlayer > 0)
         webcams[curVotePlayer - 1]->setVotesCount(curVotes);
+    else{
+        if(curVotePlayer == -1){
+            for(int i = 0; i < muchPlayers; i++){
+                webcams[i]->endVoting();
+            }
+        }
+    }
 }
 
 void VideoSpace::startAllVoting(QString action){
