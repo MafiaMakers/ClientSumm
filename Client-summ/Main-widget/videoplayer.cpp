@@ -77,8 +77,6 @@ void Mafia::VideoPlayer::setNumPlayer(int num)
 void Mafia::VideoPlayer::startVoting(QString action)
 {
     voteButton->setText(action);
-    QMessageBox *msg = new QMessageBox(parent);
-    msg->exec();
     textVotes->hide();
     textVoteOn->hide();
     if (canVote)
@@ -99,7 +97,7 @@ void Mafia::VideoPlayer::setVotesCount(int votes)
     else
         str = QString::number(votes) + " голосов";
     textVotes->setText(str);
-    voteButton->hide();
+    //voteButton->hide();
     textVotes->show();
 }
 
@@ -142,8 +140,9 @@ void Mafia::VideoPlayer::killPlayer(bool is_died)
 void Mafia::VideoPlayer::voteSlot()
 {
     voteButton->hide();
-    textVotes->setText("Вы проголосовали");
     textVotes->show();
+    //textVotes->setText("Вы проголосовали");
+    //textVotes->show();
     emit this->vote(myIndex);
 }
 

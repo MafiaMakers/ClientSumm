@@ -42,6 +42,7 @@ public:
     void sheriffResult(int idx, bool res);
     void dayKill(int idx);
     void nominate(int idx);
+    void addVote(int voter, int votedFor);
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;

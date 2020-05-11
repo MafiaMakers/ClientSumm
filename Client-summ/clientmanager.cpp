@@ -41,7 +41,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     audCheck->open(QBuffer::ReadWrite);
     mafUi =new UIManager();
     mafUi->show();
-    muchPlayers = 8;
+    muchPlayers = 1;
     mafUi->setPlayersCount(1);
     mafUi->setPlayersCount(muchPlayers);
 
@@ -202,7 +202,8 @@ void ClientManager::vote(std::string voteType){
     } else{
         QString action = (trueString == "kill" ? "Убить"
                        : (trueString == "check" ? "Проверить"
-                       : "Вылечить"));
+                       : (trueString == "move for voting" ? "Выдвинуть"
+                       : (trueString == "hill" ? "Вылечить" : "Ошибка!!"))));
         mafUi->startVoting(-1, action);
     }
 }
@@ -433,8 +434,9 @@ void ClientManager::updateIndex(std::string content) {
 void ClientManager::addVote(std::string vote) {
     int voter = *(int*)((char*)vote.data());
     int voted = *(int*)((char*)vote.data() + 4);
-    votings[voted].append(voter);
-    mafUi->updateVotings(votings);
+    //votings[voted].append(voter);
+    mafUi->addVote(voter, voted);
+   // mafUi->updateVotings(votings);
 }
 
 void ClientManager::rolesSettingsSlot(QList<int> rolesToPlay, QList<int> playersToPlay) {

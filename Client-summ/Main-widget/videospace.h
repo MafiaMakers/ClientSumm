@@ -20,6 +20,8 @@ public:
     void startAllVoting(QString action);
     void setCanVote(int player, bool yes);
 
+    void addVoter(int voter, int votedFor);
+
 signals:
     void vote(int player);
 
