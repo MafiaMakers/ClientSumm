@@ -39,6 +39,7 @@ public:
     void askNextStage();
     void showNextStageButton();
     void startSpeak();
+    void addVote(int voter, int votedFor);
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;

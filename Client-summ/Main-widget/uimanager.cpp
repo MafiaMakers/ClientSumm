@@ -27,6 +27,10 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
 
 }
 
+void UIManager::addVote(int voter, int votedFor){
+    camsSpace->addVoter(voter, votedFor);
+}
+
 void UIManager::stopSpeakSlot(){
     emit stopSpeakSignal();
 }

@@ -54,6 +54,7 @@ void VideoSpace::setPlayersCount(int count) {
         webcams[i]->updateBounds(QRect(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), myWidth, myHeight));
         connect(webcams[i], &VideoPlayer::vote, this, &VideoSpace::voteSlot);
     }
+    repaint();
 }
 
 void VideoSpace::setRelatives(QList<double> dimens) {
@@ -64,6 +65,13 @@ void VideoSpace::setRelatives(QList<double> dimens) {
 void VideoSpace::updateBounds(QSize nsize) {
     parSize = nsize;
     repaint();
+}
+
+void VideoSpace::addVoter(int voter, int votedFor){
+    if(curVotePlayer == votedFor){
+        webcams[voter]->setVoteOn(votedFor+1);
+        webcams[votedFor]->setVotesCount(++curVotes);
+    }
 }
 
 void VideoSpace::repaint() {
@@ -124,12 +132,13 @@ void VideoSpace::voteSlot(int index)
 
 void VideoSpace::startVoting(int player, QString action)
 {
-    if (curVotePlayer) {
+
+    if (curVotePlayer > 0) {
         webcams[curVotePlayer - 1]->setVotesCount(curVotes);
     }
     curVotes = 0;
     curVotePlayer = player;
-    webcams[player - 1]->startVoting();
+    webcams[player - 1]->startVoting(action);
 }
 
 void VideoSpace::setCanVote(int player, bool yes)
@@ -139,13 +148,15 @@ void VideoSpace::setCanVote(int player, bool yes)
 
 void VideoSpace::endVoting()
 {
-    if (curVotePlayer)
+    if (curVotePlayer > 0)
         webcams[curVotePlayer - 1]->setVotesCount(curVotes);
 }
 
 void VideoSpace::startAllVoting(QString action){
     for(int i = 0; i < muchPlayers; i++){
-        webcams[i]->startVoting(action);
+        startVoting(i+1, action);
     }
+    curVotes = 0;
+    curVotePlayer = -1;
 }
 
