@@ -322,6 +322,7 @@ void ClientManager::voteResult(std::string res) {
     int idx = *(int*)(data + 1);
     std::cout << idx << " dead" << std::endl;
     bool flag = *(bool*)data;
+    mafUi->dayKill(idx);
     // notify about results
 
 }
@@ -389,6 +390,8 @@ void ClientManager::addPlayer(std::string player) {
 
 void ClientManager::sheriffResult(std::string content) {
     bool res = *(bool*)(&content.data()[0]);
+    std::cout << "sher" << std::endl;
+    mafUi->sheriffResult(0, res);
     // notify about sheriff vote
 }
 
@@ -435,6 +438,9 @@ void ClientManager::addVote(std::string vote) {
     int voter = *(int*)((char*)vote.data());
     int voted = *(int*)((char*)vote.data() + 4);
     //votings[voted].append(voter);
+    if(curStage == ARGUMENT_STAGE){
+        mafUi->nominate(voted);
+    }
     mafUi->addVote(voter, voted);
    // mafUi->updateVotings(votings);
 }

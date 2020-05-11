@@ -10,16 +10,20 @@ NotifyShower::NotifyShower(QWidget *parent) : QLabel(parent)
 
 void NotifyShower::dayKill(int idx) {
     msg = "Игрок "+QString::number(idx)+" убит";
+    showMessage();
 }
 
 void NotifyShower::nominate(int idx) {
     msg = "Игрок "+QString::number(idx)+" выдвинут";
+        showMessage();
 }
 
 void NotifyShower::sheriffResult(int idx, bool res) {
-    msg = "Игрок "+QString::number(idx)+" ";
+    /*"+QString::number(idx)+*/
+    msg = "Игрок, которого вы проверили, ";
     if(res) msg += "мафия";
     else msg += "мирный";
+        showMessage();
 }
 
 void NotifyShower::updateBounds(QSize nbounds) {
