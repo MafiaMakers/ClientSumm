@@ -35,6 +35,7 @@ SOURCES += \
     Main-widget/votingsfield.cpp \
     Network/networker_c.cpp \
     Network/systemfunctions_c.cpp \
+    Notifies/notifyshower.cpp \
     Results-widget/resultswidget.cpp \
     Settings-widget/idcheckbox.cpp \
     Settings-widget/idpushbutton.cpp \
@@ -62,6 +63,7 @@ HEADERS += \
     Network/include_c.h \
     Network/networker_c.h \
     Network/systemfunctions_c.h \
+    Notifies/notifyshower.h \
     Results-widget/resultswidget.h \
     Settings-widget/idcheckbox.h \
     Settings-widget/idpushbutton.h \

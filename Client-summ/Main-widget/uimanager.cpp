@@ -43,10 +43,6 @@ UIManager::~UIManager() {
 
 }
 
-void UIManager::showNextStageButton(){
-    bottomBox->showNextStageButton();
-}
-
 void UIManager::nextStageSlot(){
     emit nextStageSignal();
 }
@@ -121,7 +117,7 @@ void UIManager::stopVoting(){
 }
 
 void UIManager::askNextStage() {
-
+    bottomBox->showNextStageButton();
 }
 
 void UIManager::votedSlot(int votedForIndex){
