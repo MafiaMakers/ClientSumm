@@ -120,6 +120,7 @@ void ClientManager::getMessage(int id, char* data, int size) {
         leaveRoom();
     break;
     case SHERIFF_MESSAGE_ID:
+        std::cout << "sheriff mes" << std::endl;
         sheriffResult(content);
     break;
     case CLIENT_CONNECTED_DISCONNECTED_MESSAGE_ID:
@@ -196,6 +197,7 @@ void ClientManager::changedName(char *data, int size){
 
 void ClientManager::vote(std::string voteType){
     std::string trueString = std::string(voteType.c_str(), voteType.length() - 1);
+    std::cout << "vote - " << trueString << std::endl;
     int index = *(int*)(char*)voteType.c_str();
     if(index > -1 && index < muchPlayers){
         mafUi->startVoting(index+1);
@@ -256,6 +258,7 @@ void ClientManager::setClientsInfo(std::string info){
     if(meAdmin){
         QList<QString> avroles = QList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор";
         //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
+        std::cout << "done!!!!!!!!!!!!!" << std::endl;
         setWind = new SettingsWindow(avroles, playersNames);
         connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
         setWind->show();
@@ -274,6 +277,7 @@ void ClientManager::changeStage(std::string nstage) {
     int nst = int(nstage.data()[0]);
     // update voting status requered
     std::cout << "stage - " << nst << std::endl;
+    mafUi->stopVoting();
     if(nst == DEATH_STAGE || nst == ARGUMENT_STAGE) {
         votings.clear();
         for(int i = 0; i < muchPlayers; i++) {
@@ -360,7 +364,7 @@ void ClientManager::stopSpeak(){
 }
 
 void ClientManager::sendAudio() {
-    if(canSpeak/* && micphone->bytesCount() >= SOUND_SIZE*/) {
+    if(true/*canSpeak*//* && micphone->bytesCount() >= SOUND_SIZE*/) {
         QByteArray audio = micphone->getAudio();
         if(net->isConnected()) {
             //std::cout << "connected" << std::endl;
@@ -372,7 +376,7 @@ void ClientManager::sendAudio() {
 
 void ClientManager::sendVideo() {
     QByteArray video = webcam->getFrame();
-    if(camActive) {
+    if(true /*camActive*/) {
         mafUi->updateFrame(myIdx, video);
     // send video via net
         if(net->isConnected()) {
