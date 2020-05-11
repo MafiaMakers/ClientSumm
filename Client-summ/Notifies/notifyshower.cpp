@@ -19,7 +19,8 @@ void NotifyShower::nominate(int idx) {
 }
 
 void NotifyShower::sheriffResult(int idx, bool res) {
-    msg = "Игрок "+QString::number(idx)+" ";
+    /*"+QString::number(idx)+*/
+    msg = "Игрок, которого вы проверили, ";
     if(res) msg += "мафия";
     else msg += "мирный";
     showMessage();
