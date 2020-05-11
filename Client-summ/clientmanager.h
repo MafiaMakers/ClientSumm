@@ -48,6 +48,7 @@ private:
     void setClientsInfo(std::string info);
     void processResults(int* resState, int size);
     void changedName(char* data, int size);
+    void finishVoting();
     int curStage;
     QList<QString> playersNames;
     int curRole;
@@ -75,6 +76,7 @@ private:
 signals:
 
 private slots:
+    void voted(int votedForIndex);
     void stopSpeak();
     void getMessage(int id, char* data, int size);
     void sendAudio();

@@ -1,4 +1,4 @@
-#include <QTextStream>
+    #include <QTextStream>
 #include "clientmanager.h"
 #include <iostream>
 #include <thread>
@@ -68,6 +68,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(mafUi, &UIManager::startGameSignal, this, &ClientManager::startGameSlot);
     connect(mafUi, &UIManager::stopGameSignal, this, &ClientManager::stopGameSlot);
     connect(mafUi, &UIManager::stopSpeakSignal, this, &ClientManager::stopSpeak);
+    connect(mafUi, &UIManager::votedSignal, this, &ClientManager::voted);
 //    net->connect();
     mafUi->enableVotings(true);
     for(int i = 0; i < muchPlayers; i++) {
@@ -172,11 +173,18 @@ void ClientManager::getMessage(int id, char* data, int size) {
         changedName(data, size);
         break;
     }
+    case FINISH_VOTING_MESSAGE_ID:{
+        break;
+    }
     default:
         std::cout << content << " error" << std::endl;
         throwError("Messge id - "+QString::number(id).toStdString()+"; content - "+content);
         break;
     }
+}
+
+void ClientManager::finishVoting(){
+    mafUi->stopVoting();
 }
 
 void ClientManager::changedName(char *data, int size){
@@ -187,7 +195,16 @@ void ClientManager::changedName(char *data, int size){
 }
 
 void ClientManager::vote(std::string voteType){
-    std::cout << "voting - " << voteType << std::endl;
+    std::string trueString = std::string(voteType.c_str(), voteType.length() - 1);
+    int index = *(int*)(char*)voteType.c_str();
+    if(index > -1 && index < muchPlayers){
+        mafUi->startVoting(index+1);
+    } else{
+        QString action = (trueString == "kill" ? "Убить"
+                       : (trueString == "check" ? "Проверить"
+                       : "Вылечить"));
+        mafUi->startVoting(-1, action);
+    }
 }
 
 void ClientManager::processResults(int* resState, int size){
@@ -217,6 +234,12 @@ void ClientManager::processResults(int* resState, int size){
     }
     std::cout << "results processing successfully finished" << std::endl;
 }
+
+void ClientManager::voted(int index){
+    net->sendMessage(*net->getAddrIn(), VOTE_MESSAGE_ID, (char*)&index, 4);
+    std::cout << "Me voted for " << index << std::endl;
+}
+
 void ClientManager::setClientsInfo(std::string info){
     muchPlayers = (int)info[0];
     playersNames = QList<QString>();

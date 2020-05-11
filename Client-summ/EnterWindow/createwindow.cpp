@@ -73,6 +73,7 @@ void MyCreateWindow::setup(QString key, int roomId){
 }
 
 void MyCreateWindow::OkButton() {
+    std::cout << Name->text().toStdString() << std::endl;
     emit this->sendName(Name->text());
     this->close();
 }

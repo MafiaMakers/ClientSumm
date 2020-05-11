@@ -23,6 +23,7 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     connect(bottomBox, &UserButtonPanel::endGame, this, &UIManager::stopGameSlot);
     connect(bottomBox, &UserButtonPanel::nextStageButtonPressed, this, &UIManager::nextStageSlot);
     connect(bottomBox, &UserButtonPanel::stopSpeaking, this, &UIManager::stopSpeakSlot);
+    connect(camsSpace, &VideoSpace::vote, this, &UIManager::votedSlot);
 
 }
 
@@ -102,8 +103,25 @@ void UIManager::enableVotings(bool status) {
     }
 }
 
+void UIManager::startVoting(int candidateIndex, QString action){
+    if(candidateIndex != -1){
+        camsSpace->startVoting(candidateIndex, action);
+    } else{
+        camsSpace->startAllVoting(action);
+    }
+
+}
+
+void UIManager::stopVoting(){
+    camsSpace->endVoting();
+}
+
 void UIManager::askNextStage() {
 
+}
+
+void UIManager::votedSlot(int votedForIndex){
+    emit votedSignal(votedForIndex);
 }
 
 void UIManager::startGameSlot() {
