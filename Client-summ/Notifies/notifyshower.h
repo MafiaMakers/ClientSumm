@@ -15,7 +15,7 @@ public:
     void dayKill(int idx);
     void nominate(int idx);
     void updateBounds(QSize nbounds);
-    void updateRelatives(QList<double> nbounds);
+    void setRelatives(QList<double> nbounds);
 
 private:
     QList<double> myDimens = QList<double>();

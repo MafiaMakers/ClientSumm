@@ -26,7 +26,7 @@ void NotifyShower::updateBounds(QSize nbounds) {
     parBounds = nbounds;
 }
 
-void NotifyShower::updateRelatives(QList<double> rels) {
+void NotifyShower::setRelatives(QList<double> rels) {
     myDimens = rels;
 }
 

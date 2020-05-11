@@ -15,6 +15,7 @@
 #include "userbuttonpanel.h"
 #include "votingsfield.h"
 #include "showrole.h"
+#include "Notifies/notifyshower.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -38,6 +39,9 @@ public:
     void enableVotings(bool status);
     void askNextStage();
     void startSpeak();
+    void sheriffResult(int idx, bool res);
+    void dayKill(int idx);
+    void nominate(int idx);
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;
@@ -46,6 +50,7 @@ private:
     VotingsField *votings;
     VideoSpace *camsSpace;
     UserButtonPanel *bottomBox;
+    NotifyShower *notifies;
 
 
 private slots:
