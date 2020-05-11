@@ -1,4 +1,4 @@
-    #include <QTextStream>
+#include <QTextStream>
 #include "clientmanager.h"
 #include <iostream>
 #include <thread>
@@ -121,6 +121,7 @@ void ClientManager::getMessage(int id, char* data, int size) {
     break;
     case SHERIFF_MESSAGE_ID:
         sheriffResult(content);
+        qWarning() << "sheriff mes";
     break;
     case CLIENT_CONNECTED_DISCONNECTED_MESSAGE_ID:
         addPlayer(content);
@@ -359,7 +360,7 @@ void ClientManager::stopSpeak(){
 }
 
 void ClientManager::sendAudio() {
-    if(canSpeak/* && micphone->bytesCount() >= SOUND_SIZE*/) {
+    if(true/* && micphone->bytesCount() >= SOUND_SIZE*/) {
         QByteArray audio = micphone->getAudio();
         if(net->isConnected()) {
             //std::cout << "connected" << std::endl;
@@ -371,7 +372,7 @@ void ClientManager::sendAudio() {
 
 void ClientManager::sendVideo() {
     QByteArray video = webcam->getFrame();
-    if(camActive) {
+    if(true) {
         mafUi->updateFrame(myIdx, video);
     // send video via net
         if(net->isConnected()) {
@@ -389,7 +390,7 @@ void ClientManager::addPlayer(std::string player) {
 
 void ClientManager::sheriffResult(std::string content) {
     bool res = *(bool*)(&content.data()[0]);
-    // notify about sheriff vote
+    mafUi->sheriffResult(99, res);
 }
 
 void ClientManager::showTextInfo(std::string info){
