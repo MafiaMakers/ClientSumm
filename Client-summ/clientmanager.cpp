@@ -290,10 +290,6 @@ void ClientManager::changeStage(std::string nstage) {
         mafUi->askNextStage();
     }
 
-    if(nst == SPEAKING_STAGE && meAdmin){
-        mafUi->showNextStageButton();
-    }
-
     curStage = nst;
     mafUi->setStage(curStage);
 }

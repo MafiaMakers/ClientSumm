@@ -37,7 +37,6 @@ public:
     void updateFrame(int idx, QByteArray frame);
     void enableVotings(bool status);
     void askNextStage();
-    void showNextStageButton();
     void startSpeak();
 
 private:
