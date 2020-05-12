@@ -15,11 +15,11 @@ public:
 
     void startGame();
     void startVoting(int player, QString action);
-    void endVoting();
+    void endVotingForPlayer();
 
     void startAllVoting(QString action);
     void setCanVote(int player, bool yes);
-
+    void kill(int index);
     void addVoter(int voter, int votedFor);
 
 signals:

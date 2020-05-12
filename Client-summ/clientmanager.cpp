@@ -125,7 +125,6 @@ void ClientManager::getMessage(int id, char* data, int size) {
         leaveRoom();
     break;
     case SHERIFF_MESSAGE_ID:
-        std::cout << "sheriff mes" << std::endl;
         sheriffResult(content);
         qWarning() << "sheriff mes";
     break;
@@ -181,6 +180,7 @@ void ClientManager::getMessage(int id, char* data, int size) {
         break;
     }
     case FINISH_VOTING_MESSAGE_ID:{
+        finishVoting();
         break;
     }
     default:
@@ -428,6 +428,7 @@ void ClientManager::addVote(std::string vote) {
     if(curStage == ARGUMENT_STAGE){
         mafUi->nominate(voted);
     }
+    std::cout << "Made vote got" << std::endl;
     mafUi->addVote(voter, voted);
    // mafUi->updateVotings(votings);
 }

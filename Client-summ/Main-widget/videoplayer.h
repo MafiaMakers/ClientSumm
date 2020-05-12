@@ -23,6 +23,8 @@ public:
     void setVoteOn(int player);
     void killPlayer(bool is_died=true);
     void setCanVote(bool yes);
+    void raiseVotings();
+    bool isAlive();
 
 signals:
     void vote(int myIdx);
@@ -40,6 +42,8 @@ private:
     QPushButton *voteButton;
     bool canVote;
     int myIndex;
+    int votesForMe = 0;
+    bool alive = true;
 
     void repaint();
 

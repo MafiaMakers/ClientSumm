@@ -1,5 +1,6 @@
 #include "videoplayer.h"
 #include <QMessageBox>
+#include <iostream>
 Mafia::VideoPlayer::VideoPlayer(QWidget *parent)
 {
     canVote = true;
@@ -30,6 +31,11 @@ Mafia::VideoPlayer::~VideoPlayer() {
    // player->setVisible(false);
     delete player;
    // delete parent;
+}
+
+void Mafia::VideoPlayer::raiseVotings(){
+    votesForMe++;
+    setVotesCount(votesForMe);
 }
 
 void Mafia::VideoPlayer::updateFrame(QByteArray frame) {
@@ -85,6 +91,8 @@ void Mafia::VideoPlayer::startVoting(QString action)
 
 void Mafia::VideoPlayer::setVotesCount(int votes)
 {
+    votesForMe = votes;
+    std::cout << "Now player's " << myIndex << " votes are " << votes << std::endl;
     QString str;
     if (votes == -1)
         str = "Не выставлен";
@@ -108,8 +116,13 @@ void Mafia::VideoPlayer::endVoting()
     textVoteOn->hide();
 }
 
+bool Mafia::VideoPlayer::isAlive(){
+    return alive;
+}
+
 void Mafia::VideoPlayer::setVoteOn(int player)
 {
+    std::cout << "Player " << myIndex << " voted for " << player << std::endl;
     textVoteOn->setText("Проголосовал за " + QString::number(player));
     textVoteOn->show();
 }
@@ -118,6 +131,7 @@ void Mafia::VideoPlayer::killPlayer(bool is_died)
 {
     if (is_died)
     {
+        alive = false;
         textVotes->setText("Ну сдох и сдох");
         textVoteOn->setText("что бубнить-то");
         textVotes->setStyleSheet("color: red;");
@@ -129,6 +143,7 @@ void Mafia::VideoPlayer::killPlayer(bool is_died)
     }
     else
     {
+        alive = true;
         textVotes->setStyleSheet("color: black;");
         textVoteOn->setStyleSheet("color: black;");
         textPlayer->setStyleSheet("color: black;");
