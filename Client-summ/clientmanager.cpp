@@ -70,7 +70,6 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(mafUi, &UIManager::stopSpeakSignal, this, &ClientManager::stopSpeak);
     connect(mafUi, &UIManager::votedSignal, this, &ClientManager::voted);
 //    net->connect();
-    mafUi->enableVotings(true);
     for(int i = 0; i < muchPlayers; i++) {
         QList<int> l;
         votings.append(l);
@@ -276,26 +275,7 @@ void ClientManager::throwError(std::string err) {
 
 void ClientManager::changeStage(std::string nstage) {
     int nst = int(nstage.data()[0]);
-    // update voting status requered
     std::cout << "stage - " << nst << std::endl;
-    mafUi->stopVoting();
-    if(nst == DEATH_STAGE || nst == ARGUMENT_STAGE) {
-        votings.clear();
-        for(int i = 0; i < muchPlayers; i++) {
-            QList<int> l;
-            votings.append(l);
-        }
-        mafUi->updateVotings(votings);
-        mafUi->enableVotings(true);
-    }  else {
-        votings.clear();
-        mafUi->enableVotings(false);
-    }
-
-    if(nst == SPEAKING_STAGE && meAdmin) {
-        mafUi->askNextStage();
-    }
-
     curStage = nst;
     mafUi->setStage(curStage);
 }
@@ -303,7 +283,6 @@ void ClientManager::changeStage(std::string nstage) {
 void ClientManager::processAudio(char* data, int size){
     int index = (int)data[0];
     QByteArray sound = QByteArray(data+1, size-1);
-    //std::cout << "e" << std::endl;
     aplayer->appendAudio(sound, index);
 }
 

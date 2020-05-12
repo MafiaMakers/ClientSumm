@@ -1,5 +1,5 @@
 #include "notifyshower.h"
-using namespace Mafia;
+    using namespace Mafia;
 
 NotifyShower::NotifyShower(QWidget *parent) : QLabel(parent)
 {

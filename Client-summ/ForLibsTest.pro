@@ -32,7 +32,6 @@ SOURCES += \
     Main-widget/userbuttonpanel.cpp \
     Main-widget/videoplayer.cpp \
     Main-widget/videospace.cpp \
-    Main-widget/votingsfield.cpp \
     Main-widget/notifyshower.cpp \
     Network/networker_c.cpp \
     Network/systemfunctions_c.cpp \
@@ -59,7 +58,6 @@ HEADERS += \
     Main-widget/userbuttonpanel.h \
     Main-widget/videoplayer.h \
     Main-widget/videospace.h \
-    Main-widget/votingsfield.h \
     Network/defines_c.h \
     Network/include_c.h \
     Network/networker_c.h \
