@@ -53,6 +53,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     meAdmin = false;
     canSpeak = true;
     camActive = true;
+    micActive = true;
     myIdx = 0;
     audioSender = new QTimer();
     videoSender = new QTimer();
@@ -69,6 +70,10 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(mafUi, &UIManager::stopGameSignal, this, &ClientManager::stopGameSlot);
     connect(mafUi, &UIManager::stopSpeakSignal, this, &ClientManager::stopSpeak);
     connect(mafUi, &UIManager::votedSignal, this, &ClientManager::voted);
+
+    connect(mafUi, &UIManager::micphoneSignal, this, &ClientManager::micphoneSlot);
+    connect(mafUi, &UIManager::webkamSignal, this, &ClientManager::webkamSlot);
+
 //    net->connect();
     for(int i = 0; i < muchPlayers; i++) {
         QList<int> l;
@@ -79,6 +84,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     micphone->start();
     audioSender->start();
     videoSender->start();
+    mafUi->setAdminActive(false);
 }
 
 ClientManager::~ClientManager() {
@@ -344,11 +350,9 @@ void ClientManager::stopSpeak(){
 }
 
 void ClientManager::sendAudio() {
-    if(true/* && micphone->bytesCount() >= SOUND_SIZE*/) {
+    if(micActive) {
         QByteArray audio = micphone->getAudio();
         if(net->isConnected()) {
-            //std::cout << "connected" << std::endl;
-            //std::cout << audio.size() << std::endl;
             net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size());
         }
     }
@@ -356,10 +360,8 @@ void ClientManager::sendAudio() {
 
 void ClientManager::sendVideo() {
     QByteArray video = webcam->getFrame();
-
-    if(true /*camActive*/) {
+    if(camActive) {
         mafUi->updateFrame(myIdx, video);
-    // send video via net
         if(net->isConnected()) {
             net->sendMessage(*net->getAddrIn(), VIDEO_MESSAGE_ID, (char*)video.data(), video.size());
         }
@@ -450,7 +452,6 @@ void ClientManager::rolesSettingsSlot(QList<int> rolesToPlay, QList<int> players
     net->sendMessage(*net->getAddrIn(), SETUP_MESSAGE_ID, (char*)rolesToSend, MAX_ROLE_ID*4);
     delete[] dontPlaySend;
     delete[] rolesToSend;
-    //
 }
 
 void ClientManager::nextStageSlot() {
@@ -465,4 +466,12 @@ void ClientManager::startGameSlot() {
 
 void ClientManager::stopGameSlot() {
 
+}
+
+void ClientManager::micphoneSlot(bool status) {
+    micActive = status;
+}
+
+void ClientManager::webkamSlot(bool status) {
+    camActive = status;
 }

@@ -17,7 +17,6 @@ ResultsWindow::ResultsWindow(int resState, QList<int> rolesIndexes, QList<QStrin
     widget->setLayout(ScrollLayout);
     playersData->setWidget(widget);
     playersData->setWidgetResizable(true);
-    playersData->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     playersData->setGeometry(170, 125, 260, 300);
     QList<QString> rolesNames = QList<QString>() << "зритель" << "мирный" << "мафия" << "комиссар" << "доктор";
     for(int i = 0; i < names.length(); i++){

@@ -25,6 +25,8 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     connect(bottomBox, &UserButtonPanel::stopSpeaking, this, &UIManager::stopSpeakSlot);
     connect(camsSpace, &VideoSpace::vote, this, &UIManager::votedSlot);
 
+    connect(bottomBox, &UserButtonPanel::microStatus, this, &UIManager::micphoneSlot);
+    connect(bottomBox, &UserButtonPanel::cameraStatus, this, &UIManager::webkamSlot);
 }
 
 void UIManager::addVote(int voter, int votedFor){
@@ -70,7 +72,7 @@ void UIManager::updateRole(int role) {
 }
 
 void UIManager::setAdminActive(bool status) {
-    //bottomBox->setAdminActive(status);
+    bottomBox->setAdminActive(status);
 }
 
 void UIManager::setStage(int stage) {

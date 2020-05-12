@@ -1,8 +1,9 @@
 #include "notifyshower.h"
-    using namespace Mafia;
+using namespace Mafia;
 
 NotifyShower::NotifyShower(QWidget *parent) : QLabel(parent)
 {
+    this->close();
     this->setStyleSheet("background-color: #BBBBBB;"
                         "font-size: 24px;");
     this->setAlignment(Qt::AlignCenter);

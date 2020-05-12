@@ -62,6 +62,10 @@ void Mafia::UserButtonPanel::stopSpeakingPressed(){
     emit stopSpeaking();
 }
 
+void Mafia::UserButtonPanel::setAdminActive(bool isActive) {
+    startButton->setVisible(isActive);
+}
+
 void Mafia::UserButtonPanel::startSpeking(){
     stopSpeakButton->show();
 }
@@ -174,7 +178,7 @@ void Mafia::UserButtonPanel::startGameSlot()
 {
     modeGame = 1;
     emit startGame();
-    startButton->hide();
+    startButton->close();
     stopContinueButton->setIcon(iconStopGame);
     //stopContinueButton->show();
     //endGameButton->show();

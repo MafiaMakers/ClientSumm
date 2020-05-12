@@ -18,6 +18,7 @@ public:
     void showNextStageButton();
     void setCurrentStage(int stateId);
     void startSpeking();
+    void setAdminActive(bool isActive);
 
 signals:
     void microStatus(bool on);

@@ -49,6 +49,7 @@ private:
     void processResults(int* resState, int size);
     void changedName(char* data, int size);
     void finishVoting();
+
     int curStage;
     QList<QString> playersNames;
     int curRole;
@@ -56,7 +57,8 @@ private:
     int myIdx;
     bool meAdmin;
     bool canSpeak = true;
-    bool camActive;
+    bool camActive = true;
+    bool micActive = true;
     QString curName;
     QTextStream *out;
     UIManager *mafUi;
@@ -85,6 +87,8 @@ private slots:
     void nextStageSlot();
     void startGameSlot();
     void stopGameSlot();
+    void micphoneSlot(bool status);
+    void webkamSlot(bool status);
 };
 }
 
