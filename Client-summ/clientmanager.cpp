@@ -41,7 +41,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     audCheck->open(QBuffer::ReadWrite);
     mafUi =new UIManager();
     mafUi->show();
-    muchPlayers = 8;
+    muchPlayers = 1;
     mafUi->setPlayersCount(1);
     mafUi->setPlayersCount(muchPlayers);
 
@@ -68,8 +68,8 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(mafUi, &UIManager::startGameSignal, this, &ClientManager::startGameSlot);
     connect(mafUi, &UIManager::stopGameSignal, this, &ClientManager::stopGameSlot);
     connect(mafUi, &UIManager::stopSpeakSignal, this, &ClientManager::stopSpeak);
+    connect(mafUi, &UIManager::votedSignal, this, &ClientManager::voted);
 //    net->connect();
-    mafUi->enableVotings(true);
     for(int i = 0; i < muchPlayers; i++) {
         QList<int> l;
         votings.append(l);
@@ -119,7 +119,9 @@ void ClientManager::getMessage(int id, char* data, int size) {
         leaveRoom();
     break;
     case SHERIFF_MESSAGE_ID:
+        std::cout << "sheriff mes" << std::endl;
         sheriffResult(content);
+        qWarning() << "sheriff mes";
     break;
     case CLIENT_CONNECTED_DISCONNECTED_MESSAGE_ID:
         addPlayer(content);
@@ -172,11 +174,18 @@ void ClientManager::getMessage(int id, char* data, int size) {
         changedName(data, size);
         break;
     }
+    case FINISH_VOTING_MESSAGE_ID:{
+        break;
+    }
     default:
         std::cout << content << " error" << std::endl;
         throwError("Messge id - "+QString::number(id).toStdString()+"; content - "+content);
         break;
     }
+}
+
+void ClientManager::finishVoting(){
+    mafUi->stopVoting();
 }
 
 void ClientManager::changedName(char *data, int size){
@@ -187,7 +196,18 @@ void ClientManager::changedName(char *data, int size){
 }
 
 void ClientManager::vote(std::string voteType){
-    std::cout << "voting - " << voteType << std::endl;
+    std::string trueString = std::string(voteType.c_str(), voteType.length() - 1);
+    std::cout << "vote - " << trueString << std::endl;
+    int index = *(int*)(char*)voteType.c_str();
+    if(index > -1 && index < muchPlayers){
+        mafUi->startVoting(index+1);
+    } else{
+        QString action = (trueString == "kill" ? "Убить"
+                       : (trueString == "check" ? "Проверить"
+                       : (trueString == "move for voting" ? "Выдвинуть"
+                       : (trueString == "hill" ? "Вылечить" : "Ошибка!!"))));
+        mafUi->startVoting(-1, action);
+    }
 }
 
 void ClientManager::processResults(int* resState, int size){
@@ -217,6 +237,12 @@ void ClientManager::processResults(int* resState, int size){
     }
     std::cout << "results processing successfully finished" << std::endl;
 }
+
+void ClientManager::voted(int index){
+    net->sendMessage(*net->getAddrIn(), VOTE_MESSAGE_ID, (char*)&index, 4);
+    std::cout << "Me voted for " << index << std::endl;
+}
+
 void ClientManager::setClientsInfo(std::string info){
     muchPlayers = (int)info[0];
     playersNames = QList<QString>();
@@ -232,6 +258,7 @@ void ClientManager::setClientsInfo(std::string info){
     if(meAdmin){
         QList<QString> avroles = QList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор";
         //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
+        std::cout << "done!!!!!!!!!!!!!" << std::endl;
         setWind = new SettingsWindow(avroles, playersNames);
         connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
         setWind->show();
@@ -248,29 +275,7 @@ void ClientManager::throwError(std::string err) {
 
 void ClientManager::changeStage(std::string nstage) {
     int nst = int(nstage.data()[0]);
-    // update voting status requered
     std::cout << "stage - " << nst << std::endl;
-    if(nst == DEATH_STAGE || nst == ARGUMENT_STAGE) {
-        votings.clear();
-        for(int i = 0; i < muchPlayers; i++) {
-            QList<int> l;
-            votings.append(l);
-        }
-        mafUi->updateVotings(votings);
-        mafUi->enableVotings(true);
-    }  else {
-        votings.clear();
-        mafUi->enableVotings(false);
-    }
-
-    if(nst == SPEAKING_STAGE && meAdmin) {
-        mafUi->askNextStage();
-    }
-
-    if(nst == SPEAKING_STAGE && meAdmin){
-        mafUi->showNextStageButton();
-    }
-
     curStage = nst;
     mafUi->setStage(curStage);
 }
@@ -278,7 +283,6 @@ void ClientManager::changeStage(std::string nstage) {
 void ClientManager::processAudio(char* data, int size){
     int index = (int)data[0];
     QByteArray sound = QByteArray(data+1, size-1);
-    //std::cout << "e" << std::endl;
     aplayer->appendAudio(sound, index);
 }
 
@@ -302,6 +306,7 @@ void ClientManager::voteResult(std::string res) {
     int idx = *(int*)(data + 1);
     std::cout << idx << " dead" << std::endl;
     bool flag = *(bool*)data;
+    mafUi->dayKill(idx);
     // notify about results
 
 }
@@ -339,7 +344,7 @@ void ClientManager::stopSpeak(){
 }
 
 void ClientManager::sendAudio() {
-    if(canSpeak/* && micphone->bytesCount() >= SOUND_SIZE*/) {
+    if(true/* && micphone->bytesCount() >= SOUND_SIZE*/) {
         QByteArray audio = micphone->getAudio();
         if(net->isConnected()) {
             //std::cout << "connected" << std::endl;
@@ -351,7 +356,8 @@ void ClientManager::sendAudio() {
 
 void ClientManager::sendVideo() {
     QByteArray video = webcam->getFrame();
-    if(camActive) {
+
+    if(true /*camActive*/) {
         mafUi->updateFrame(myIdx, video);
     // send video via net
         if(net->isConnected()) {
@@ -369,6 +375,8 @@ void ClientManager::addPlayer(std::string player) {
 
 void ClientManager::sheriffResult(std::string content) {
     bool res = *(bool*)(&content.data()[0]);
+    std::cout << "sher" << std::endl;
+    mafUi->sheriffResult(0, res);
     // notify about sheriff vote
 }
 
@@ -414,8 +422,12 @@ void ClientManager::updateIndex(std::string content) {
 void ClientManager::addVote(std::string vote) {
     int voter = *(int*)((char*)vote.data());
     int voted = *(int*)((char*)vote.data() + 4);
-    votings[voted].append(voter);
-    mafUi->updateVotings(votings);
+    //votings[voted].append(voter);
+    if(curStage == ARGUMENT_STAGE){
+        mafUi->nominate(voted);
+    }
+    mafUi->addVote(voter, voted);
+   // mafUi->updateVotings(votings);
 }
 
 void ClientManager::rolesSettingsSlot(QList<int> rolesToPlay, QList<int> playersToPlay) {

@@ -13,8 +13,8 @@
 #include "samplerelative.h"
 #include "videospace.h"
 #include "userbuttonpanel.h"
-#include "votingsfield.h"
 #include "showrole.h"
+#include "notifyshower.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -26,26 +26,28 @@ class UIManager : public QMainWindow
 public:
     UIManager(QWidget *parent = nullptr);
     ~UIManager();
-
+    void startVoting(int candidateIndex = -1, QString action = "Убить");
+    void stopVoting();
     void setStage(int stage);
     void updateRole(int role);
     void setPlayersCount(int count);
     void setAdminActive(bool status);
     void enableSpeaking(bool status);
-    void updateVotings(QList<QList<int>> votws);
     void updateFrame(int idx, QByteArray frame);
-    void enableVotings(bool status);
     void askNextStage();
-    void showNextStageButton();
     void startSpeak();
+    void sheriffResult(int idx, bool res);
+    void dayKill(int idx);
+    void nominate(int idx);
+    void addVote(int voter, int votedFor);
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;
     SampleRelative *chat;
     ShowRole *roleIcon;
-    VotingsField *votings;
     VideoSpace *camsSpace;
     UserButtonPanel *bottomBox;
+    NotifyShower *notifies;
 
 
 private slots:
@@ -56,6 +58,7 @@ private slots:
     void stopGameSlot();
     void nextStageSlot();
     void stopSpeakSlot();
+    void votedSlot(int votedForIndex);
 
 signals:
     void micphoneSignal(bool status);
@@ -65,6 +68,7 @@ signals:
     void nextStageSignal();
     void startGameSignal();
     void stopGameSignal();
+    void votedSignal(int votedForIndex);
 };
 }
 QT_END_NAMESPACE
