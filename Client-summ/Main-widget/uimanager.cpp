@@ -116,7 +116,7 @@ void UIManager::startVoting(int candidateIndex, QString action){
 }
 
 void UIManager::stopVoting(){
-    camsSpace->endVoting();
+    camsSpace->endVotingForPlayer();
 }
 
 void UIManager::askNextStage() {
@@ -140,6 +140,7 @@ void UIManager::sheriffResult(int idx, bool res) {
 }
 
 void UIManager::dayKill(int idx) {
+    camsSpace->kill(idx);
     notifies->dayKill(idx);
 }
 

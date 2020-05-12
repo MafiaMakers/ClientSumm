@@ -68,10 +68,9 @@ void VideoSpace::updateBounds(QSize nsize) {
 }
 
 void VideoSpace::addVoter(int voter, int votedFor){
-    if(curVotePlayer == votedFor){
-        webcams[voter]->setVoteOn(votedFor+1);
-        webcams[votedFor]->setVotesCount(++curVotes);
-    }
+    std::cout << "made vote made" << std::endl;
+    webcams[voter]->setVoteOn(votedFor + 1);
+    webcams[votedFor]->raiseVotings();
 }
 
 void VideoSpace::repaint() {
@@ -111,6 +110,10 @@ void VideoSpace::repaint() {
     }
 }
 
+void VideoSpace::kill(int index){
+    webcams[index]->killPlayer(true);
+}
+
 void VideoSpace::updateFrame(int idx, QByteArray frame) {
     webcams[idx]->updateFrame(frame);
 }
@@ -124,8 +127,6 @@ void VideoSpace::startGame()
 
 void VideoSpace::voteSlot(int index)
 {
-    curVotes++;
-    endVoting();
     //startVoting(curVotePlayer + 1);
     emit vote(index);
 }
@@ -134,7 +135,7 @@ void VideoSpace::startVoting(int player, QString action)
 {
 
     if (curVotePlayer > 0) {
-        webcams[curVotePlayer - 1]->setVotesCount(curVotes);
+        //webcams[curVotePlayer - 1]->setVotesCount(curVotes);
     }
     curVotes = 0;
     curVotePlayer = player;
@@ -146,22 +147,19 @@ void VideoSpace::setCanVote(int player, bool yes)
     webcams[player - 1]->setCanVote(yes);
 }
 
-void VideoSpace::endVoting()
-{
-    if (curVotePlayer > 0)
-        webcams[curVotePlayer - 1]->setVotesCount(curVotes);
-    else{
-        if(curVotePlayer == -1){
-            for(int i = 0; i < muchPlayers; i++){
-                webcams[i]->endVoting();
-            }
-        }
+void VideoSpace::endVotingForPlayer(){
+    for(int i = 0; i < muchPlayers; i++){
+        webcams[i]->setVoteOn(0);
+        webcams[i]->setVotesCount(0);
+        webcams[i]->endVoting();
     }
 }
 
 void VideoSpace::startAllVoting(QString action){
     for(int i = 0; i < muchPlayers; i++){
-        startVoting(i+1, action);
+        if(webcams[i]->isAlive()){
+            startVoting(i+1, action);
+        }
     }
     curVotes = 0;
     curVotePlayer = -1;
