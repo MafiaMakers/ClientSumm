@@ -365,11 +365,7 @@ void ClientManager::stopSpeak(){
 }
 
 void ClientManager::sendAudio() {
-<<<<<<< HEAD
     if(true/* && micphone->bytesCount() >= SOUND_SIZE*/) {
-=======
-    if(true/*canSpeak*//* && micphone->bytesCount() >= SOUND_SIZE*/) {
->>>>>>> d9cad60d44f0669d14e41dff3f7cba016bfe67f7
         QByteArray audio = micphone->getAudio();
         if(net->isConnected()) {
             //std::cout << "connected" << std::endl;
@@ -381,11 +377,8 @@ void ClientManager::sendAudio() {
 
 void ClientManager::sendVideo() {
     QByteArray video = webcam->getFrame();
-<<<<<<< HEAD
-    if(true) {
-=======
+
     if(true /*camActive*/) {
->>>>>>> d9cad60d44f0669d14e41dff3f7cba016bfe67f7
         mafUi->updateFrame(myIdx, video);
     // send video via net
         if(net->isConnected()) {

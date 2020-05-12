@@ -15,7 +15,7 @@
 #include "userbuttonpanel.h"
 #include "votingsfield.h"
 #include "showrole.h"
-#include "Notifies/notifyshower.h"
+#include "notifyshower.h"
 
 QT_BEGIN_NAMESPACE
 

@@ -4,6 +4,7 @@ micphonehelper.o
 createwindow.o
 enterwindow.o
 mainmenu.o
+notifyshower.o
 samplerelative.o
 showrole.o
 uimanager.o
@@ -11,9 +12,9 @@ userbuttonpanel.o
 videoplayer.o
 videospace.o
 votingsfield.o
+notifyshower.o
 networker_c.o
 systemfunctions_c.o
-notifyshower.o
 resultswidget.o
 idcheckbox.o
 idpushbutton.o
@@ -29,13 +30,13 @@ moc_micphonehelper.o
 moc_createwindow.o
 moc_enterwindow.o
 moc_mainmenu.o
+moc_notifyshower.o
 moc_uimanager.o
 moc_userbuttonpanel.o
 moc_videoplayer.o
 moc_videospace.o
 moc_votingsfield.o
 moc_networker_c.o
-moc_notifyshower.o
 moc_resultswidget.o
 moc_idcheckbox.o
 moc_idpushbutton.o
