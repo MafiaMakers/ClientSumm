@@ -32,10 +32,9 @@ SOURCES += \
     Main-widget/userbuttonpanel.cpp \
     Main-widget/videoplayer.cpp \
     Main-widget/videospace.cpp \
-    Main-widget/votingsfield.cpp \
+    Main-widget/notifyshower.cpp \
     Network/networker_c.cpp \
     Network/systemfunctions_c.cpp \
-    Notifies/notifyshower.cpp \
     Results-widget/resultswidget.cpp \
     Settings-widget/idcheckbox.cpp \
     Settings-widget/idpushbutton.cpp \
@@ -52,18 +51,17 @@ HEADERS += \
     EnterWindow/createwindow.h \
     EnterWindow/enterwindow.h \
     EnterWindow/mainmenu.h \
+    Main-widget/notifyshower.h \
     Main-widget/samplerelative.h \
     Main-widget/showrole.h \
     Main-widget/uimanager.h \
     Main-widget/userbuttonpanel.h \
     Main-widget/videoplayer.h \
     Main-widget/videospace.h \
-    Main-widget/votingsfield.h \
     Network/defines_c.h \
     Network/include_c.h \
     Network/networker_c.h \
     Network/systemfunctions_c.h \
-    Notifies/notifyshower.h \
     Results-widget/resultswidget.h \
     Settings-widget/idcheckbox.h \
     Settings-widget/idpushbutton.h \

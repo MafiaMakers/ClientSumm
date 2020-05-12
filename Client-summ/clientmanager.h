@@ -63,7 +63,7 @@ private:
     QString serverIP;
     QTimer *audioSender;
     QTimer *videoSender;
-    QList<QList<int>> votings;
+    QList<QList<int>> votings = QList<QList<int>>();
     //SystemNotifier notifier; notifier
     NetWorker_c *net;
     MicphoneHelper *micphone;

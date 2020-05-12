@@ -13,9 +13,8 @@
 #include "samplerelative.h"
 #include "videospace.h"
 #include "userbuttonpanel.h"
-#include "votingsfield.h"
 #include "showrole.h"
-#include "Notifies/notifyshower.h"
+#include "notifyshower.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -34,9 +33,7 @@ public:
     void setPlayersCount(int count);
     void setAdminActive(bool status);
     void enableSpeaking(bool status);
-    void updateVotings(QList<QList<int>> votws);
     void updateFrame(int idx, QByteArray frame);
-    void enableVotings(bool status);
     void askNextStage();
     void startSpeak();
     void sheriffResult(int idx, bool res);
@@ -48,7 +45,6 @@ private:
     virtual void resizeEvent(QResizeEvent *event) override;
     SampleRelative *chat;
     ShowRole *roleIcon;
-    VotingsField *votings;
     VideoSpace *camsSpace;
     UserButtonPanel *bottomBox;
     NotifyShower *notifies;

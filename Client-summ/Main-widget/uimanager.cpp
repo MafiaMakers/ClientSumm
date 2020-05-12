@@ -10,11 +10,9 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     bottomBox = new UserButtonPanel(this);
     roleIcon = new ShowRole(this);
     camsSpace = new VideoSpace(this);
-    votings = new VotingsField(this);
     notifies = new NotifyShower(this);
 
     camsSpace->setRelatives(QList<double>() << 10/1280.0 << 10/700.0 << 940/1280.0 << 500/700.0); // cams space
-    votings->setRelatives(QList<double>() << 10/1280.0 << 520/700.0 << 940/1280.0 << 80/700.0); // votings field
     bottomBox->setRelatives(QList<double>() << 10/1280.0 << 610/700.0 << 940/1280.0 << 80/700.0); // bottom box
     roleIcon->setRelatives(QList<double>() << 960/1280.0 << 10/700.0 << 310/1280.0 << 250/700.0); // role icon
     chat->setRelatives(QList<double>() << 960/1280.0 << 270/700.0 << 310/1280.0 << 420.0/700.0); // chat
@@ -54,7 +52,6 @@ void UIManager::resizeEvent(QResizeEvent *event) {
     bottomBox->updateBounds(event->size());
     roleIcon->updateBounds(event->size());
     camsSpace->updateBounds(event->size());
-    votings->updateBounds(event->size());
     notifies->updateBounds(event->size());
 }
 /////////////////////////////////////////////
@@ -88,22 +85,8 @@ void UIManager::enableSpeaking(bool status) {
     bottomBox->setMicro(status);
 }
 
-void UIManager::updateVotings(QList<QList<int>> votes) {
-    votings->setVotings(votes);
-}
-
 void UIManager::updateFrame(int idx, QByteArray frame) {
     camsSpace->updateFrame(idx, frame);
-}
-
-void UIManager::enableVotings(bool status) {
-    if(status) {
-        chat->setRelatives(QList<double>() << 960/1280.0 << 270/700.0 << 310/1280.0 << 420.0/700.0);
-        votings->setVisible(true);
-    } else {
-        chat->setRelatives(QList<double>() << 960/1280.0 << 140/700.0 << 310/1280.0 << 550.0/700.0);
-        votings->setVisible(false);
-    }
 }
 
 void UIManager::startVoting(int candidateIndex, QString action){
