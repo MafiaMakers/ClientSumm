@@ -52,7 +52,7 @@ EnterWindow::EnterWindow(QWidget *parent): QDialog(parent)
     OkCancelBox->addButton(QDialogButtonBox::Cancel);
 
     connect(OkCancelBox, &QDialogButtonBox::accepted, this, &EnterWindow::OkButton);
-    connect(OkCancelBox, &QDialogButtonBox::rejected, this, &EnterWindow::reject);
+    connect(OkCancelBox, &QDialogButtonBox::rejected, this, &EnterWindow::cancel);
     connect(PasteButton, &QPushButton::clicked, this, &EnterWindow::Paste);
 }
 
@@ -65,6 +65,11 @@ void EnterWindow::OkButton() {
 void EnterWindow::Paste() {
     RoomKey->clear();
     RoomKey->paste();
+}
+
+void EnterWindow::cancel() {
+    this->close();
+    emit cancelSignal();
 }
 
 EnterWindow::~EnterWindow()

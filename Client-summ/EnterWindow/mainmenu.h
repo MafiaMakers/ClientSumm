@@ -10,12 +10,12 @@
 QT_BEGIN_NAMESPACE
 
 namespace Mafia {
-class MainMenu : public QMainWindow
+class MainMenu : public QWidget
 {
     Q_OBJECT
 
 public:
-    MainMenu(QWidget *parent = nullptr, NetWorker_c* networker = nullptr);
+    MainMenu(NetWorker_c* networker = nullptr);
     void gameCreated(int roomId, QString key);
     ~MainMenu();
 
@@ -25,6 +25,7 @@ private slots:
     void Settings();
     void sendName(QString name);
     void GoIn(QString key, QString name, int roomId);
+    void cancelSlot();
 private:
     MyCreateWindow* Cwindow;
     EnterWindow* Ewindow;

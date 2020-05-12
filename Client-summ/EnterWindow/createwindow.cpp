@@ -62,7 +62,7 @@ MyCreateWindow::MyCreateWindow(QWidget *parent): QDialog(parent)
     OkCancelBox->addButton(QDialogButtonBox::Cancel);
 
     connect(OkCancelBox, &QDialogButtonBox::accepted, this, &MyCreateWindow::OkButton);
-    connect(OkCancelBox, &QDialogButtonBox::rejected, this, &MyCreateWindow::reject);
+    connect(OkCancelBox, &QDialogButtonBox::rejected, this, &MyCreateWindow::cancel);
     connect(CopyButton, &QPushButton::clicked, this, &MyCreateWindow::Copy);
 }
 
@@ -82,6 +82,11 @@ void MyCreateWindow::Copy() {
     QClipboard *cb = QApplication::clipboard();
     QString text = RoomId_label->text() + " " + RoomId->text() + "\n" + RoomKey_label->text() + " " + RoomKey->text();
     cb->setText(text);
+}
+
+void MyCreateWindow::cancel() {
+    this->close();
+    emit cancelSignal();
 }
 
 MyCreateWindow::~MyCreateWindow()

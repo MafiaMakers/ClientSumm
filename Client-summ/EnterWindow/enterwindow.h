@@ -26,6 +26,7 @@ signals:
 private slots:
     void OkButton();
     void Paste();
+    void cancel();
 
 private:
     QLabel *RoomId_label;
@@ -39,6 +40,9 @@ private:
     QCheckBox *MicroOn;
     QDialogButtonBox *OkCancelBox;
     const int window_width = 500, window_height = 350;
+
+signals:
+    void cancelSignal();
 };
 }
 QT_END_NAMESPACE

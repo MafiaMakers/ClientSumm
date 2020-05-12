@@ -29,9 +29,8 @@ void ClientManager::inputFirstData(){
 
     }*/
 
-    menu = new MainMenu(nullptr, net);
+    menu = new MainMenu(net);
     menu->show();
-    canSpeak = true;
 }
 
 ClientManager::ClientManager(QObject *parent) : QObject(parent)
@@ -41,15 +40,14 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     audCheck->open(QBuffer::ReadWrite);
     mafUi =new UIManager();
     mafUi->show();
+    mafUi->setVisible(false);
     muchPlayers = 1;
-    mafUi->setPlayersCount(1);
     mafUi->setPlayersCount(muchPlayers);
 
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
     net = new NetWorker_c();
     out = new QTextStream(stdout);
-    votings.clear();
     meAdmin = false;
     canSpeak = true;
     camActive = true;
@@ -75,16 +73,12 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     connect(mafUi, &UIManager::webkamSignal, this, &ClientManager::webkamSlot);
 
 //    net->connect();
-    for(int i = 0; i < muchPlayers; i++) {
-        QList<int> l;
-        votings.append(l);
-    }
     //mafUi->updateVotings(votings);
-    inputFirstData();
     micphone->start();
     audioSender->start();
     videoSender->start();
     mafUi->setAdminActive(false);
+    inputFirstData();
 }
 
 ClientManager::~ClientManager() {
@@ -126,7 +120,6 @@ void ClientManager::getMessage(int id, char* data, int size) {
     break;
     case SHERIFF_MESSAGE_ID:
         sheriffResult(content);
-        qWarning() << "sheriff mes";
     break;
     case CLIENT_CONNECTED_DISCONNECTED_MESSAGE_ID:
         addPlayer(content);
@@ -171,7 +164,6 @@ void ClientManager::getMessage(int id, char* data, int size) {
         break;
     }
     case RESULTS_MESSAGE_ID:{
-        //int state = *(int*)data;
         processResults((int*)data, size/4);
         break;
     }
@@ -318,6 +310,9 @@ void ClientManager::voteResult(std::string res) {
 }
 
 void ClientManager::setupOthers(std::string count) {
+    menu->close();
+    mafUi->setVisible(true);
+
     muchPlayers = *(int*)count.data();
     for(int i = 0; i < muchPlayers; i++){
         aplayer->addPlayer();
