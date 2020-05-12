@@ -131,6 +131,10 @@ void Mafia::UserButtonPanel::setCurrentStage(int stateId){
     QList<QString> stateNames = QList<QString>() << "ожидание других игроков" << "свободный разговор"
                                             << "ночь" << "стадия аргументации" << "стадия повешанья" << "результаты";
     currentGameStateLabel->setText("Текущая стадия : " + stateNames[stateId]);
+    if(stateId == SPEAKING_STAGE){
+        nextStageButton->show();
+        startButton->hide();
+    }
 }
 
 void Mafia::UserButtonPanel::setMicro(bool on)

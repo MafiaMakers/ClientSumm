@@ -127,6 +127,9 @@ void VideoSpace::startGame()
 
 void VideoSpace::voteSlot(int index)
 {
+    if(curVotePlayer == -1){
+        endVotingForPlayer();
+    }
     //startVoting(curVotePlayer + 1);
     emit vote(index);
 }
