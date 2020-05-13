@@ -61,7 +61,9 @@ void VideoSpace::setPlayersCount(int count,  QList<QString> names) {
         webcams[i]->updateBounds(QRect(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), myWidth, myHeight));
         connect(webcams[i], &VideoPlayer::vote, this, &VideoSpace::voteSlot);
     }
+    std::cout << "repainting" << std::endl;
     repaint();
+    std::cout << "well" << std::endl;
 }
 
 void VideoSpace::setName(QString name, int index){
