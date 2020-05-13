@@ -18,8 +18,6 @@ public:
     MainMenu(NetWorker_c* networker = nullptr);
     void gameCreated(int roomId, QString key);
     ~MainMenu();
-signals:
-        void goIntoRoom();
 
 private slots:
     void EnterGame();
@@ -40,6 +38,8 @@ private:
     int window_width = 400, window_height = 300;
     const int min_window_width = 400, min_window_height = 300;
 
+signals:
+    void goIntoRoom();
 };
 }
 QT_END_NAMESPACE

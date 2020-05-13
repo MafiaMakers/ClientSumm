@@ -76,6 +76,7 @@ private:
 signals:
 
 private slots:
+    void goIntoRoom();
     void voted(int votedForIndex);
     void stopSpeak();
     void getMessage(int id, char* data, int size);

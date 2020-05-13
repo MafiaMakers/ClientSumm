@@ -1,6 +1,8 @@
 #include "mainmenu.h"
 #include "enterwindow.h"
 #include "createwindow.h"
+#include <thread>
+#include <chrono>
 
 using namespace Mafia;
 
@@ -49,7 +51,7 @@ void MainMenu::EnterGame() {
 }
 
 void MainMenu::GoIn(QString key, QString name, int roomId){
-    this->setVisible(true);
+    emit goIntoRoom();
     net->setNickname(name.toStdString());
     net->setRoomId(roomId);
     net->connect(key.toStdString());

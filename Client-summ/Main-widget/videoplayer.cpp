@@ -90,7 +90,7 @@ void Mafia::VideoPlayer::setNumPlayer(int num)
 }
 
 void Mafia::VideoPlayer::setName(QString name){
-    textPlayer->setText(name + " (" + QString::number(myIndex) + ")");
+    textPlayer->setText("(" + QString::number(myIndex) + ")" + name);
 }
 
 void Mafia::VideoPlayer::startVoting(QString action)
