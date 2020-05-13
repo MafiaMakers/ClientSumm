@@ -30,6 +30,7 @@ Mafia::VideoPlayer::VideoPlayer(QWidget *parent)
 Mafia::VideoPlayer::~VideoPlayer() {
    // player->setVisible(false);
     delete player;
+   // delete textPlayer;
    // delete parent;
 }
 

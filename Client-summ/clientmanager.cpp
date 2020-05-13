@@ -42,11 +42,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     mafUi->show();
     mafUi->setVisible(false);
     muchPlayers = 1;
-<<<<<<< HEAD
     mafUi->setPlayersCount(muchPlayers, QList<QString>() << "Вы");
-=======
-    mafUi->setPlayersCount(muchPlayers);
->>>>>>> e63f40d8fedf14f0fbb806307009e687f602e484
 
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
