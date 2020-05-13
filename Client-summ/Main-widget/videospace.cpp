@@ -10,8 +10,9 @@ VideoSpace::VideoSpace(QWidget *parent)
     curVotes = 0;
 }
 
-void VideoSpace::setPlayersCount(int count) {
+void VideoSpace::setPlayersCount(int count,  QList<QString> names) {
     while(webcams.size() > 0) {
+        webcams.last()->hide();
         delete webcams.last();
         webcams.pop_back();
     }
@@ -47,7 +48,13 @@ void VideoSpace::setPlayersCount(int count) {
         int xc = i % wc, yc = i / wc;
         QList<double> rels = QList<double>() << (xc*(wp+margin)+margin)/(double)myWidth << (yc*(hp+margin)+margin)/(double)myHeight << wp/(double)myWidth << hp/(double)myHeight;
         webcams[i]->setRelatives(rels);
+        std::cout << "before" << std::endl;
         webcams[i]->setNumPlayer(i + 1);
+
+        if(names.length() > 0){
+            webcams[i]->setName(names[i]);
+        }
+        std::cout << "after" << std::endl;
 //        webcams[i]->setVotesCount(i - 1);
 //        webcams[i]->setVoteOn(i + 1);
 //        webcams[i]->startVoting();
@@ -55,6 +62,10 @@ void VideoSpace::setPlayersCount(int count) {
         connect(webcams[i], &VideoPlayer::vote, this, &VideoSpace::voteSlot);
     }
     repaint();
+}
+
+void VideoSpace::setName(QString name, int index){
+    webcams[index]->setName(name);
 }
 
 void VideoSpace::setRelatives(QList<double> dimens) {

@@ -8,7 +8,7 @@ class VideoSpace: public QObject
     Q_OBJECT
 public:
     VideoSpace(QWidget *parent);
-    void setPlayersCount(int count);
+    void setPlayersCount(int count, QList<QString> names = QList<QString>());
     void updateBounds(QSize nsize);
     void setRelatives(QList<double> dimens);
     void updateFrame(int idx, QByteArray frame);
@@ -21,6 +21,7 @@ public:
     void setCanVote(int player, bool yes);
     void kill(int index);
     void addVoter(int voter, int votedFor);
+    void setName(QString name, int index);
 
 signals:
     void vote(int player);

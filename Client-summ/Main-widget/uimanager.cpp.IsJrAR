@@ -79,16 +79,12 @@ void UIManager::setStage(int stage) {
     bottomBox->setCurrentStage(stage);
 }
 
-void UIManager::setPlayersCount(int count, QList<QString> names) {
-    camsSpace->setPlayersCount(count, names);
+void UIManager::setPlayersCount(int count, QList<QString> names = QList<QString>()) {
+    camsSpace->setPlayersCount(count);
 }
 
 void UIManager::enableSpeaking(bool status) {
     bottomBox->setMicro(status);
-}
-
-void UIManager::setPlayersName(QString name, int index){
-    camsSpace->setName(name, index);
 }
 
 void UIManager::updateFrame(int idx, QByteArray frame) {

@@ -30,7 +30,7 @@ public:
     void stopVoting();
     void setStage(int stage);
     void updateRole(int role);
-    void setPlayersCount(int count);
+    void setPlayersCount(int count, QList<QString> names = QList<QString>());
     void setAdminActive(bool status);
     void enableSpeaking(bool status);
     void updateFrame(int idx, QByteArray frame);
@@ -40,6 +40,7 @@ public:
     void dayKill(int idx);
     void nominate(int idx);
     void addVote(int voter, int votedFor);
+    void setPlayersName(QString name, int index);
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;

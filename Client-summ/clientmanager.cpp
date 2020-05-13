@@ -42,8 +42,7 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     mafUi =new UIManager();
     mafUi->show();
     muchPlayers = 1;
-    mafUi->setPlayersCount(1);
-    mafUi->setPlayersCount(muchPlayers);
+    mafUi->setPlayersCount(muchPlayers, QList<QString>() << "Вы");
 
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
@@ -96,6 +95,7 @@ void ClientManager::getMessage(int id, char* data, int size) {
     for(int i = 0; i < size; i++){
         content.insert(content.begin()+i, 1, data[i]);
     }
+    std::cout << id << std::endl;
     switch (id) {
     case ERROR_MESSAGE_ID:
         throwError(content);
@@ -197,7 +197,10 @@ void ClientManager::finishVoting(){
 void ClientManager::changedName(char *data, int size){
     int index = (int)data[0];
     char* name = data+1;
+    std::cout << "bef - " << playersNames.length() << " " << index << std::endl;
     playersNames[index] = QString::fromStdString(std::string(name, size - 1));
+    //mafUi->setPlayersCount(muchPlayers, playersNames);
+    mafUi->setPlayersName(playersNames[index], index);
     std::cout << index << " changed name to " << std::string(name, size - 1) << std::endl;
 }
 
@@ -284,6 +287,12 @@ void ClientManager::changeStage(std::string nstage) {
     std::cout << "stage - " << nst << std::endl;
     curStage = nst;
     mafUi->setStage(curStage);
+    if(curStage == WAITING_STAGE && meAdmin){
+        mafUi->setAdminActive(true);
+    }
+    if(curStage == SPEAKING_STAGE && meAdmin){
+        mafUi->askNextStage();
+    }
 }
 
 void ClientManager::processAudio(char* data, int size){
@@ -372,7 +381,8 @@ void ClientManager::addPlayer(std::string player) {
     muchPlayers += 1;
     aplayer->addPlayer();
     playersNames.append(QString::fromStdString(player));
-    mafUi->setPlayersCount(muchPlayers);
+    mafUi->setPlayersCount(muchPlayers, playersNames);
+    std::cout << "well done" << std::endl;
 }
 
 void ClientManager::sheriffResult(std::string content) {

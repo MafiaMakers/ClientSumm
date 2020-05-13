@@ -25,7 +25,8 @@ public:
     void setCanVote(bool yes);
     void raiseVotings();
     bool isAlive();
-
+    void setName(QString name);
+    void hide();
 signals:
     void vote(int myIdx);
 

@@ -33,14 +33,6 @@ Mafia::VideoPlayer::~VideoPlayer() {
    // delete parent;
 }
 
-void Mafia::VideoPlayer::hide(){
-    textPlayer->close();
-    voteButton->close();
-    textVotes->close();
-    textVoteOn->close();
-    player->close();
-}
-
 void Mafia::VideoPlayer::raiseVotings(){
     votesForMe++;
     setVotesCount(votesForMe);
@@ -89,6 +81,7 @@ void Mafia::VideoPlayer::setNumPlayer(int num)
 }
 
 void Mafia::VideoPlayer::setName(QString name){
+    textPlayer->clear();
     textPlayer->setText(name + " (" + QString::number(myIndex) + ")");
 }
 

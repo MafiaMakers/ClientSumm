@@ -33,14 +33,6 @@ Mafia::VideoPlayer::~VideoPlayer() {
    // delete parent;
 }
 
-void Mafia::VideoPlayer::hide(){
-    textPlayer->close();
-    voteButton->close();
-    textVotes->close();
-    textVoteOn->close();
-    player->close();
-}
-
 void Mafia::VideoPlayer::raiseVotings(){
     votesForMe++;
     setVotesCount(votesForMe);
@@ -89,7 +81,7 @@ void Mafia::VideoPlayer::setNumPlayer(int num)
 }
 
 void Mafia::VideoPlayer::setName(QString name){
-    textPlayer->setText(name + " (" + QString::number(myIndex) + ")");
+    textPlayer->setText(name + " (" + myIndex + ")");
 }
 
 void Mafia::VideoPlayer::startVoting(QString action)
@@ -177,3 +169,5 @@ void Mafia::VideoPlayer::setCanVote(bool yes)
 {
     canVote = yes;
 }
+
+//void VideoPlayer::vote() {}
