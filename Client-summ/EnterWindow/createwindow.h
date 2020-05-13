@@ -28,6 +28,7 @@ signals:
 private slots:
     void OkButton();
     void Copy();
+    void cancel();
 
 
 private:
@@ -43,6 +44,9 @@ private:
     QCheckBox *MicroOn;
     QDialogButtonBox *OkCancelBox;
     const int window_width = 400, window_height = 340;
+
+signals:
+    void cancelSignal();
 };
 }
 QT_END_NAMESPACE

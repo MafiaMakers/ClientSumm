@@ -4,7 +4,7 @@
 
 using namespace Mafia;
 
-MainMenu::MainMenu(QWidget *parent, NetWorker_c* networker): QMainWindow(parent)
+MainMenu::MainMenu(NetWorker_c* networker): QWidget()
 {
     this->resize(window_width, window_height);
     this->setMinimumSize(min_window_width, min_window_height);
@@ -20,6 +20,8 @@ MainMenu::MainMenu(QWidget *parent, NetWorker_c* networker): QMainWindow(parent)
     Ewindow = new EnterWindow();
     connect(Ewindow, &EnterWindow::goIn, this, &MainMenu::GoIn);
     connect(Cwindow, &MyCreateWindow::sendName, this, &MainMenu::sendName);
+    connect(Ewindow, &EnterWindow::cancelSignal, this, &MainMenu::cancelSlot);
+    connect(Cwindow, &MyCreateWindow::cancelSignal, this, &MainMenu::cancelSlot);
     net = networker;
 }
 
@@ -40,8 +42,7 @@ void MainMenu::repaint() {
 }
 
 void MainMenu::EnterGame() {
-    //EnterWindow window;
-    Ewindow->setModal(true);
+    this->setVisible(false);
     Ewindow->exec();
     std::thread recTh(&NetWorker_c::processMessages, net);
     recTh.detach();
@@ -56,12 +57,11 @@ void MainMenu::GoIn(QString key, QString name, int roomId){
 
 void MainMenu::gameCreated(int roomId, QString key){
     Cwindow->setup(key, roomId);
-    Cwindow->setModal(true);
     Cwindow->exec();
-    this->close();
 }
 
 void MainMenu::CreateGame() {
+    this->setVisible(false);
     net->setNickname("User");
     net->sendMessage(*net->getAddrIn(), CREATE_ROOM_MESSAGE_ID, (char*)"User", 5);
     std::thread recTh(&NetWorker_c::processMessages, net);
@@ -73,9 +73,13 @@ void MainMenu::Settings() {
 }
 
 void MainMenu::resizeEvent(QResizeEvent *event) {
-    window_width = event->size().width();
+    window_width = event->size().width()    ;
     window_height = event->size().height();
     repaint();
+}
+
+void MainMenu::cancelSlot() {
+    this->close();
 }
 
 MainMenu::~MainMenu()
