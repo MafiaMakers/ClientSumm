@@ -64,10 +64,6 @@ MyCreateWindow::MyCreateWindow(QWidget *parent): QDialog(parent)
     connect(OkCancelBox, &QDialogButtonBox::accepted, this, &MyCreateWindow::OkButton);
     connect(OkCancelBox, &QDialogButtonBox::rejected, this, &MyCreateWindow::cancel);
     connect(CopyButton, &QPushButton::clicked, this, &MyCreateWindow::Copy);
-
-    RoomId_label->raise();
-    RoomKey_label->raise();
-    Name_label->raise();
 }
 
 void MyCreateWindow::setup(QString key, int roomId){
