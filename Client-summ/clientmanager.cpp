@@ -31,6 +31,7 @@ void ClientManager::inputFirstData(){
 
     menu = new MainMenu(net);
     menu->show();
+    connect(menu, &MainMenu::goIntoRoom, this, &ClientManager::goIntoRoom);
 }
 
 ClientManager::ClientManager(QObject *parent) : QObject(parent)
@@ -42,12 +43,8 @@ ClientManager::ClientManager(QObject *parent) : QObject(parent)
     mafUi->show();
     mafUi->setVisible(false);
     muchPlayers = 1;
-<<<<<<< HEAD
     mafUi->setPlayersCount(muchPlayers, QList<QString>() << "Вы");
-=======
-    mafUi->setPlayersCount(muchPlayers);
->>>>>>> e63f40d8fedf14f0fbb806307009e687f602e484
-
+    playersNames = QList<QString>();
     micphone = new MicphoneHelper();
     webcam = new CamHelper();
     net = new NetWorker_c();
@@ -191,6 +188,11 @@ void ClientManager::finishVoting(){
     mafUi->stopVoting();
 }
 
+void ClientManager::goIntoRoom(){
+    menu->close();
+    mafUi->setVisible(true);
+}
+
 void ClientManager::changedName(char *data, int size){
     int index = (int)data[0];
     char* name = data+1;
@@ -250,6 +252,7 @@ void ClientManager::voted(int index){
 }
 
 void ClientManager::setClientsInfo(std::string info){
+    bool firstStart = playersNames.length() == 0;
     muchPlayers = (int)info[0];
     playersNames = QList<QString>();
     QString tmp = "";
@@ -261,7 +264,9 @@ void ClientManager::setClientsInfo(std::string info){
             tmp += info[i];
         }
     }
-    if(meAdmin){
+    std::cout << muchPlayers << " - " << playersNames.length() << std::endl;
+    mafUi->setPlayersCount(muchPlayers, playersNames);
+    if(meAdmin && !firstStart){
         QList<QString> avroles = QList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор";
         //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
         std::cout << "done!!!!!!!!!!!!!" << std::endl;
