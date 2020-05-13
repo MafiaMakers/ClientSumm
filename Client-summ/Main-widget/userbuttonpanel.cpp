@@ -4,8 +4,14 @@
 #include "Network/defines_c.h"
 Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
 {
+
     frame = new QFrame(parent);
     frame->setStyleSheet("background-color:grey;");
+    currentGameStateLabel = new QLabel("Текущая стадия : ожидание игроков", parent);
+    currentGameStateLabel->setGeometry(170, 70, 500, 30);
+    currentGameStateLabel->setAlignment(Qt::AlignCenter);
+    currentGameStateLabel->setStyleSheet("background-color: #FFFFFF;"
+                            "font-size: 20px;");
     exitButton = new QPushButton(parent);
     exitButton->setStyleSheet("color: red;");
     exitButton->setFont(QFont("Times", 15, QFont::Bold));
@@ -26,11 +32,6 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
     setMicro(true);
     myDimens = QList<double>() << 0 << 0 << 0 << 0;
 
-    currentGameStateLabel = new QLabel("Текущая стадия : ожидание игроков", parent);
-    currentGameStateLabel->setGeometry(170, 70, 500, 30);
-    currentGameStateLabel->setAlignment(Qt::AlignCenter);
-    currentGameStateLabel->setStyleSheet("background-color: #FFFFFF;"
-                            "font-size: 20px;");
     winsize = QSize(0, 0);
     exitButton->setGeometry(20, 20, 50, 50);
     exitButton->setText("Выйти");
@@ -116,7 +117,7 @@ void Mafia::UserButtonPanel::repaint()
     stopContinueButton->setIconSize(QSize((myHeight - 20) * 0.8, (myHeight - 20) * 0.8));
     endGameButton->setGeometry(myX + 3 * myHeight - 10, myY + 10, myHeight - 20, myHeight - 20);
     endGameButton->setIconSize(QSize((myHeight - 20) * 0.8, (myHeight - 20) * 0.8));
-    currentGameStateLabel->setGeometry(myX + myWidth - 540, myY + 10, 400, myHeight - 20);
+    currentGameStateLabel->setGeometry((myWidth - 540)*(myWidth >= 545)+myX+5, myY + 10, 395*(myWidth >= 400)+(myWidth-10)*(myWidth < 400), myHeight - 20);
 }
 
 void Mafia::UserButtonPanel::setCamera(bool on)

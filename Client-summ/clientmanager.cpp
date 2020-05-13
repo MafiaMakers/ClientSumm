@@ -253,6 +253,7 @@ void ClientManager::voted(int index){
 
 void ClientManager::setClientsInfo(std::string info){
     std::cout << "setClientsInfo" << std::endl;
+    qWarning("start");
     bool firstStart = playersNames.length() == 0;
     muchPlayers = (int)info[0];
     playersNames = QList<QString>();
@@ -277,6 +278,7 @@ void ClientManager::setClientsInfo(std::string info){
         connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
         setWind->show();
     }
+    qWarning("end");
 }
 
 void ClientManager::setMyIdx(std::string newIdx){
@@ -332,7 +334,9 @@ void ClientManager::voteResult(std::string res) {
 }
 
 void ClientManager::setupOthers(std::string count) {
-    menu->close();
+    if(menu->isVisible()) {
+        menu->close();
+    }
     mafUi->setVisible(true);
 
     muchPlayers = *(int*)count.data();
@@ -478,6 +482,7 @@ void ClientManager::nextStageSlot() {
 }
 
 void ClientManager::startGameSlot() {
+    qWarning("beda");
     net->sendMessage(*net->getAddrIn(), NEXT_STAGE_MESSAGE_ID, (char*)"a", 2);
     std::cout << "sent to server!" << std::endl;
      // сюда надо еще список игроков и доступных ролей передавать, пока что это делается в конструкторе

@@ -55,7 +55,6 @@ void MainMenu::GoIn(QString key, QString name, int roomId){
     net->setNickname(name.toStdString());
     net->setRoomId(roomId);
     net->connect(key.toStdString());
-    this->close();
 }
 
 void MainMenu::gameCreated(int roomId, QString key){
@@ -82,7 +81,7 @@ void MainMenu::resizeEvent(QResizeEvent *event) {
 }
 
 void MainMenu::cancelSlot() {
-    this->close();
+    this->show();
 }
 
 MainMenu::~MainMenu()
