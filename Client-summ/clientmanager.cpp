@@ -264,6 +264,7 @@ void ClientManager::voted(int index){
 }
 
 void ClientManager::setClientsInfo(std::string info){
+    std::cout << "setClientsInfo" << std::endl;
     qWarning("start");
     bool firstStart = playersNames.length() == 0;
     muchPlayers = (int)info[0];
@@ -278,8 +279,9 @@ void ClientManager::setClientsInfo(std::string info){
         }
     }
     std::cout << muchPlayers << " - " << playersNames.length() << std::endl;
+    std::cout << "setting..." << std::endl;
     mafUi->setPlayersCount(muchPlayers, playersNames);
-    qWarning("seredina");
+    std::cout << "ok" << std::endl;
     if(meAdmin && !firstStart){
         QList<QString> avroles = QList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор";
         //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
@@ -353,7 +355,7 @@ void ClientManager::setupOthers(std::string count) {
     for(int i = 0; i < muchPlayers; i++){
         aplayer->addPlayer();
     }
-    this->myIdx = muchPlayers;
+    //this->myIdx = muchPlayers;
     mafUi->setPlayersCount(muchPlayers);
 }
 
@@ -494,6 +496,7 @@ void ClientManager::nextStageSlot() {
 void ClientManager::startGameSlot() {
     qWarning("beda");
     net->sendMessage(*net->getAddrIn(), NEXT_STAGE_MESSAGE_ID, (char*)"a", 2);
+    std::cout << "sent to server!" << std::endl;
      // сюда надо еще список игроков и доступных ролей передавать, пока что это делается в конструкторе
 
 }
