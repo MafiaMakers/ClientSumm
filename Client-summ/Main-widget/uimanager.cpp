@@ -34,6 +34,7 @@ void UIManager::addVote(int voter, int votedFor){
 }
 
 void UIManager::stopSpeakSlot(){
+    camsSpace->endVotingForPlayer();
     emit stopSpeakSignal();
 }
 

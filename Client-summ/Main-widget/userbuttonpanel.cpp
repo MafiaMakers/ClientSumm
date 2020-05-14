@@ -64,7 +64,9 @@ void Mafia::UserButtonPanel::stopSpeakingPressed(){
 }
 
 void Mafia::UserButtonPanel::setAdminActive(bool isActive) {
-    startButton->setVisible(isActive);
+    if(stage == WAITING_STAGE) {
+        startButton->setVisible(isActive);
+    }
 }
 
 void Mafia::UserButtonPanel::startSpeking(){
@@ -130,6 +132,7 @@ void Mafia::UserButtonPanel::setCamera(bool on)
 }
 
 void Mafia::UserButtonPanel::setCurrentStage(int stateId){
+    stage = stateId;
     QList<QString> stateNames = QList<QString>() << "ожидание других игроков" << "свободный разговор"
                                             << "ночь" << "стадия аргументации" << "стадия повешанья" << "результаты";
     currentGameStateLabel->setText("Текущая стадия : " + stateNames[stateId]);
@@ -179,8 +182,8 @@ void Mafia::UserButtonPanel::microChanged()
 void Mafia::UserButtonPanel::startGameSlot()
 {
     modeGame = 1;
-    emit startGame();
     startButton->close();
+    emit startGame();
     stopContinueButton->setIcon(iconStopGame);
     //stopContinueButton->show();
     //endGameButton->show();

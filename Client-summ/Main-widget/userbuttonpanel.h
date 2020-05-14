@@ -55,6 +55,7 @@ private:
     QSize winsize;
     bool microState, cameraState;
     int modeGame;
+    int stage = 0;
     void repaint();
     const QIcon iconCameraON = QIcon(":UserPanel/img/Camera_ON"), iconCameraOFF = QIcon(":UserPanel/img/Camera_OFF"),
             iconMicroON = QIcon(":UserPanel/img/Microphone_ON"), iconMicroOFF = QIcon(":UserPanel/img/Microphone_OFF"),

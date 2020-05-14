@@ -7,6 +7,7 @@
 #include <QSaveFile>
 #include <QMediaPlayer>
 #include <QDir>
+#include <signal.h>
 #include "Main-widget/uimanager.h"
 #include "Network/networker_c.h"
 #include "Backend/camhelper.h"
@@ -22,6 +23,7 @@ namespace Mafia {
 public:
     explicit ClientManager(QObject *parent = nullptr);
     ~ClientManager();
+    void memento();
 
 private:
     void vote(std::string voteType);
@@ -49,6 +51,8 @@ private:
     void processResults(int* resState, int size);
     void changedName(char* data, int size);
     void finishVoting();
+
+    void posix_death_signal(int signum);
 
     int curStage;
     QList<QString> playersNames;

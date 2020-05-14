@@ -7,6 +7,17 @@
 #include "EnterWindow/mainmenu.h"
 
 using namespace Mafia;
+
+void ClientManager::memento() {
+    qWarning() << muchPlayers;
+}
+
+void ClientManager::posix_death_signal(int signum) {
+    memento();
+    signal(signum, SIG_DFL);
+    exit(3);
+}
+
 void ClientManager::inputFirstData(){
     /*std::string name = QInputDialog::getText(0, "Nickname","Введите свой никнейм").toStdString();
     QMessageBox *myBox = new QMessageBox();
@@ -36,6 +47,7 @@ void ClientManager::inputFirstData(){
 
 ClientManager::ClientManager(QObject *parent) : QObject(parent)
 {
+ //   signal(SIGSEGV, posix_death_signal);
     aplayer = new AudioPlayer();
     audCheck = new QBuffer();
     audCheck->open(QBuffer::ReadWrite);
