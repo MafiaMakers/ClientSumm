@@ -59,8 +59,11 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
 }
 
 void Mafia::UserButtonPanel::stopSpeakingPressed(){
-    stopSpeakButton->hide();
     emit stopSpeaking();
+}
+
+void Mafia::UserButtonPanel::hideSpeakOptions() {
+    stopSpeakButton->hide();
 }
 
 void Mafia::UserButtonPanel::setAdminActive(bool isActive) {

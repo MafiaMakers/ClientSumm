@@ -374,6 +374,8 @@ void ClientManager::enableSpeaking(std::string status) {
     canSpeak = *(bool*)status.data();
     if(canSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE)){
         mafUi->startSpeak();
+    } else if(!canSpeak) {
+        mafUi->stopSpeakSlot();
     }
     mafUi->enableSpeaking(canSpeak);
 }

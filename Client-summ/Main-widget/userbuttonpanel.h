@@ -19,6 +19,7 @@ public:
     void setCurrentStage(int stateId);
     void startSpeking();
     void setAdminActive(bool isActive);
+    void hideSpeakOptions();
 
 signals:
     void microStatus(bool on);

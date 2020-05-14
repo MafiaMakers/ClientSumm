@@ -58,8 +58,10 @@ private slots:
     void startGameSlot();
     void stopGameSlot();
     void nextStageSlot();
-    void stopSpeakSlot();
     void votedSlot(int votedForIndex);
+
+public slots:
+    void stopSpeakSlot();
 
 signals:
     void micphoneSignal(bool status);
