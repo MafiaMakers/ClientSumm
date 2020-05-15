@@ -65,6 +65,7 @@ void Mafia::UserButtonPanel::stopSpeakingPressed(){
 
 void Mafia::UserButtonPanel::hideSpeakOptions() {
     call_void(stopSpeakButton->hide());
+    call_void(microButton->setEnabled(false));
 }
 
 void Mafia::UserButtonPanel::setAdminActive(bool isActive) {
@@ -75,6 +76,11 @@ void Mafia::UserButtonPanel::setAdminActive(bool isActive) {
 
 void Mafia::UserButtonPanel::startSpeking(){
     call_void(stopSpeakButton->show());
+    call_void(microButton->setEnabled(true));
+}
+
+void Mafia::UserButtonPanel::freeSpeak() {
+    call_void(microButton->setEnabled(true));
 }
 
 void Mafia::UserButtonPanel::setRelatives(SuperList<double> dimens)

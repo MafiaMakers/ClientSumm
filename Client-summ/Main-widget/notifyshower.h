@@ -17,6 +17,8 @@ public:
     void nominate(int idx);
     void updateBounds(QSize nbounds);
     void setRelatives(SuperList<double> nbounds);
+    void startSpeak();
+    void stopSpeak();
 
 private:
     SuperList<double> myDimens = SuperList<double>();

@@ -391,10 +391,11 @@ void ClientManager::enableSpeaking(std::string status) {
     canSpeak = *(bool*)status.data();
     if(canSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE)){
         call_void(mafUi->startSpeak());
-    } else if(!canSpeak) {
+    } else if(canSpeak && curStage == WAITING_STAGE) {
+        call_void(mafUi->freeSpeak());
+    }else if(!canSpeak) {
         call_void(mafUi->stopSpeak());
     }
-    call_void(mafUi->enableSpeaking(canSpeak));
 }
 
 void ClientManager::stopSpeak(){
@@ -402,7 +403,7 @@ void ClientManager::stopSpeak(){
 }
 
 void ClientManager::sendAudio() {
-    if(micActive) {
+    if(micActive && canSpeak) {
         call_void(QByteArray audio = micphone->getAudio());
         if(net->isConnected()) {
             call_void(net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size()));

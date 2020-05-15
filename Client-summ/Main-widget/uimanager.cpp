@@ -41,10 +41,12 @@ void UIManager::stopSpeakSlot(){
 void UIManager::stopSpeak(){
     call_void(camsSpace->endVotingForPlayer());
     call_void(bottomBox->hideSpeakOptions());
+    call_void(notifies->stopSpeak());
 }
 
 void UIManager::startSpeak(){
     call_void(bottomBox->startSpeking());
+    call_void(notifies->startSpeak());
 }
 
 UIManager::~UIManager() {
@@ -108,6 +110,10 @@ void UIManager::startVoting(int candidateIndex, QString action){
         call_void(camsSpace->startAllVoting(action));
     }
 
+}
+
+void UIManager::freeSpeak() {
+    call_void(bottomBox->freeSpeak());
 }
 
 void UIManager::stopVoting(){

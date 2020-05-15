@@ -21,10 +21,19 @@ void NotifyShower::nominate(int idx) {
 }
 
 void NotifyShower::sheriffResult(int idx, bool res) {
-    /*"+QString::number(idx)+*/
     msg = "Игрок, которого вы проверили, ";
     if(res) msg += "мафия";
     else msg += "мирный";
+    showMessage();
+}
+
+void NotifyShower::startSpeak() {
+    msg = "Теперь вы МОЖЕТЕ говорить";
+    showMessage();
+}
+
+void NotifyShower::stopSpeak() {
+    msg = "Теперь вы НЕ можете говорить";
     showMessage();
 }
 

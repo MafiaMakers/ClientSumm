@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QLabel>
 #include <QPushButton>
+#include <QTimer>
 
 #include "Calls/SuperList.h"
 
@@ -49,11 +50,13 @@ private:
     int myIndex;
     int votesForMe = 0;
     bool alive = true;
+    QTimer *timer;
 
     void repaint();
 
 private slots:
     void voteSlot();
+    void noVideoSlot();
 
 };
 }

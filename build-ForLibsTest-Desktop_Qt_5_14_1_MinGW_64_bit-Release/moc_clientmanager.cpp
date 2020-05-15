@@ -10,7 +10,6 @@
 #include "../Client-summ/clientmanager.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
-#include <QtCore/QList>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'clientmanager.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -24,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Mafia__ClientManager_t {
     QByteArrayData data[23];
-    char stringdata0[239];
+    char stringdata0[243];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -47,24 +46,24 @@ QT_MOC_LITERAL(10, 88, 4), // "size"
 QT_MOC_LITERAL(11, 93, 9), // "sendAudio"
 QT_MOC_LITERAL(12, 103, 9), // "sendVideo"
 QT_MOC_LITERAL(13, 113, 17), // "rolesSettingsSlot"
-QT_MOC_LITERAL(14, 131, 10), // "QList<int>"
-QT_MOC_LITERAL(15, 142, 10), // "selections"
-QT_MOC_LITERAL(16, 153, 13), // "playersToPlay"
-QT_MOC_LITERAL(17, 167, 13), // "nextStageSlot"
-QT_MOC_LITERAL(18, 181, 13), // "startGameSlot"
-QT_MOC_LITERAL(19, 195, 12), // "stopGameSlot"
-QT_MOC_LITERAL(20, 208, 12), // "micphoneSlot"
-QT_MOC_LITERAL(21, 221, 6), // "status"
-QT_MOC_LITERAL(22, 228, 10) // "webkamSlot"
+QT_MOC_LITERAL(14, 131, 14), // "SuperList<int>"
+QT_MOC_LITERAL(15, 146, 10), // "selections"
+QT_MOC_LITERAL(16, 157, 13), // "playersToPlay"
+QT_MOC_LITERAL(17, 171, 13), // "nextStageSlot"
+QT_MOC_LITERAL(18, 185, 13), // "startGameSlot"
+QT_MOC_LITERAL(19, 199, 12), // "stopGameSlot"
+QT_MOC_LITERAL(20, 212, 12), // "micphoneSlot"
+QT_MOC_LITERAL(21, 225, 6), // "status"
+QT_MOC_LITERAL(22, 232, 10) // "webkamSlot"
 
     },
     "Mafia::ClientManager\0goIntoRoom\0\0voted\0"
     "votedForIndex\0stopSpeak\0getMessage\0"
     "id\0char*\0data\0size\0sendAudio\0sendVideo\0"
-    "rolesSettingsSlot\0QList<int>\0selections\0"
-    "playersToPlay\0nextStageSlot\0startGameSlot\0"
-    "stopGameSlot\0micphoneSlot\0status\0"
-    "webkamSlot"
+    "rolesSettingsSlot\0SuperList<int>\0"
+    "selections\0playersToPlay\0nextStageSlot\0"
+    "startGameSlot\0stopGameSlot\0micphoneSlot\0"
+    "status\0webkamSlot"
 };
 #undef QT_MOC_LITERAL
 
@@ -124,25 +123,13 @@ void Mafia::ClientManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         case 3: _t->getMessage((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< char*(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         case 4: _t->sendAudio(); break;
         case 5: _t->sendVideo(); break;
-        case 6: _t->rolesSettingsSlot((*reinterpret_cast< QList<int>(*)>(_a[1])),(*reinterpret_cast< QList<int>(*)>(_a[2]))); break;
+        case 6: _t->rolesSettingsSlot((*reinterpret_cast< SuperList<int>(*)>(_a[1])),(*reinterpret_cast< SuperList<int>(*)>(_a[2]))); break;
         case 7: _t->nextStageSlot(); break;
         case 8: _t->startGameSlot(); break;
         case 9: _t->stopGameSlot(); break;
         case 10: _t->micphoneSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 11: _t->webkamSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
-        }
-    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        switch (_id) {
-        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 6:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-            case 1:
-            case 0:
-                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QList<int> >(); break;
-            }
-            break;
         }
     }
 }
@@ -181,7 +168,7 @@ int Mafia::ClientManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 12)
-            qt_static_metacall(this, _c, _id, _a);
+            *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 12;
     }
     return _id;
