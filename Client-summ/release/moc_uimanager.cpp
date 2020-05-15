@@ -50,8 +50,8 @@ QT_MOC_LITERAL(14, 182, 13), // "leaveRoomSlot"
 QT_MOC_LITERAL(15, 196, 13), // "startGameSlot"
 QT_MOC_LITERAL(16, 210, 12), // "stopGameSlot"
 QT_MOC_LITERAL(17, 223, 13), // "nextStageSlot"
-QT_MOC_LITERAL(18, 237, 13), // "stopSpeakSlot"
-QT_MOC_LITERAL(19, 251, 9) // "votedSlot"
+QT_MOC_LITERAL(18, 237, 9), // "votedSlot"
+QT_MOC_LITERAL(19, 247, 13) // "stopSpeakSlot"
 
     },
     "Mafia::UIManager\0micphoneSignal\0\0"
@@ -60,8 +60,8 @@ QT_MOC_LITERAL(19, 251, 9) // "votedSlot"
     "startGameSignal\0stopGameSignal\0"
     "votedSignal\0votedForIndex\0micphoneSlot\0"
     "webkamSlot\0leaveRoomSlot\0startGameSlot\0"
-    "stopGameSlot\0nextStageSlot\0stopSpeakSlot\0"
-    "votedSlot"
+    "stopGameSlot\0nextStageSlot\0votedSlot\0"
+    "stopSpeakSlot"
 };
 #undef QT_MOC_LITERAL
 
@@ -95,8 +95,8 @@ static const uint qt_meta_data_Mafia__UIManager[] = {
       15,    0,  115,    2, 0x08 /* Private */,
       16,    0,  116,    2, 0x08 /* Private */,
       17,    0,  117,    2, 0x08 /* Private */,
-      18,    0,  118,    2, 0x08 /* Private */,
-      19,    1,  119,    2, 0x08 /* Private */,
+      18,    1,  118,    2, 0x08 /* Private */,
+      19,    0,  121,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -115,8 +115,8 @@ static const uint qt_meta_data_Mafia__UIManager[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   11,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -141,8 +141,8 @@ void Mafia::UIManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 11: _t->startGameSlot(); break;
         case 12: _t->stopGameSlot(); break;
         case 13: _t->nextStageSlot(); break;
-        case 14: _t->stopSpeakSlot(); break;
-        case 15: _t->votedSlot((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 14: _t->votedSlot((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 15: _t->stopSpeakSlot(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

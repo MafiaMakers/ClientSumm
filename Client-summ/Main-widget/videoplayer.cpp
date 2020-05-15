@@ -26,7 +26,7 @@ Mafia::VideoPlayer::VideoPlayer(QWidget *parent)
     voteButton->setText("Расстрелять");
     voteButton->hide();
     timer = new QTimer();
-    timer->setInterval(300);
+    timer->setInterval(600);
 
     connect(timer, &QTimer::timeout, this, &VideoPlayer::noVideoSlot);
     connect(voteButton, &QPushButton::clicked, this, &VideoPlayer::voteSlot);
