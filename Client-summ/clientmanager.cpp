@@ -248,7 +248,6 @@ void ClientManager::vote(std::string voteType){
 }
 
 void ClientManager::processResults(int* resState, int size){
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     call_void(std::cout << "results processing - " << size - 1 << " " << playersNames.length() << std::endl);
     call_void(std::cout << resState[0] << " " << resState[1] << std::endl);
     SuperList<int> rolesRevealed = SuperList<int>();
@@ -389,9 +388,10 @@ void ClientManager::checkAdmin(std::string content) {
 
 void ClientManager::enableSpeaking(std::string status) {
     canSpeak = *(bool*)status.data();
+    std::cout << "Now you " << canSpeak << " speak" << std::endl;
     if(canSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE)){
         call_void(mafUi->startSpeak());
-    } else if(canSpeak && curStage == WAITING_STAGE) {
+    } else if(canSpeak && (curStage == WAITING_STAGE || curStage == KILLING_STAGE)) {
         call_void(mafUi->freeSpeak());
     }else if(!canSpeak) {
         call_void(mafUi->stopSpeak());

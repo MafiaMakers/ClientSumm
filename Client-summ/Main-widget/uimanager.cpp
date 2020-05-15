@@ -114,6 +114,7 @@ void UIManager::startVoting(int candidateIndex, QString action){
 
 void UIManager::freeSpeak() {
     call_void(bottomBox->freeSpeak());
+    call_void(notifies->startSpeak());
 }
 
 void UIManager::stopVoting(){
