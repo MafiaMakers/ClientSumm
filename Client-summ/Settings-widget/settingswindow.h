@@ -15,12 +15,15 @@
 #include "idpushbutton.h"
 #include "idspinbox.h"
 
+#include "Calls/SuperList.h"
+using namespace SuperFunctions;
+
 namespace Mafia {
 class SettingsWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SettingsWindow(QList<QString> avaiRoles, QList<QString> participants);
+    explicit SettingsWindow(SuperList<QString> avaiRoles, SuperList<QString> participants);
 
 private:
     QScrollArea *scrollRoles;
@@ -30,15 +33,15 @@ private:
     QPushButton *addRole;
     QComboBox *chRole;
     QLabel *valBorder;
-    QList<int> *readyRoles;
+    SuperList<int> *readyRoles;
     QPushButton *apply;
     QLabel *tipRoles;
     QLabel *tipPlayers;
-    QList<QString> mapRoles;
-    QList<QString> roomParts;
+    SuperList<QString> mapRoles;
+    SuperList<QString> roomParts;
     QWidget *toaddP, *toaddR;
-    QList<int> playersToPlay;
-    QList<int> rolesToPlay;
+    SuperList<int> playersToPlay;
+    SuperList<int> rolesToPlay;
     QLabel *summPlayers, *summRoles;
 
     void updateSumm();
@@ -51,7 +54,7 @@ private slots:
     void updateRoleCount(int id, int nval);
 
 signals:
-    void applySignal(QList<int> rolesToPlay, QList<int> playersToPlay);
+    void applySignal(SuperList<int> rolesToPlay, SuperList<int> playersToPlay);
 
 };
 }

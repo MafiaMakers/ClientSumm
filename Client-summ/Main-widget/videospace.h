@@ -2,15 +2,16 @@
 #define VIDEOSPACE_H
 #include "videoplayer.h"
 
+
 namespace Mafia {
 class VideoSpace: public QObject
 {
     Q_OBJECT
 public:
     VideoSpace(QWidget *parent);
-    void setPlayersCount(int count, QList<QString> names = QList<QString>());
+    void setPlayersCount(int count, SuperList<QString> names = SuperList<QString>());
     void updateBounds(QSize nsize);
-    void setRelatives(QList<double> dimens);
+    void setRelatives(SuperList<double> dimens);
     void updateFrame(int idx, QByteArray frame);
 
     void startGame();
@@ -28,10 +29,10 @@ signals:
 
 private:
     QSize parSize;
-    QList<double> myDimens;
+    SuperList<double> myDimens;
     void repaint();
     QWidget *parent;
-    QList<VideoPlayer*> webcams;
+    SuperList<VideoPlayer*> webcams;
     int muchPlayers;
 
     int curVotePlayer;

@@ -6,10 +6,10 @@ ShowRole::ShowRole(QWidget* parent)
 {
     Role = new QLabel(parent);
     windowSize = QSize(0, 0);
-    RoleDimens = QList<double>() << 0 << 0 << 0 << 0;
+    RoleDimens = SuperList<double>() << 0 << 0 << 0 << 0;
 }
 
-void ShowRole::setRelatives(QList<double> dimens) {
+void ShowRole::setRelatives(SuperList<double> dimens) {
     RoleDimens = dimens;
     repaint();
 }

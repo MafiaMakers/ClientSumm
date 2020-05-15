@@ -4,7 +4,8 @@
 #include <QObject>
 #include <QLabel>
 #include <QTimer>
-
+#include "Calls/SuperList.h"
+using namespace SuperFunctions;
 namespace Mafia {
 class NotifyShower : public QLabel
 {
@@ -15,10 +16,10 @@ public:
     void dayKill(int idx);
     void nominate(int idx);
     void updateBounds(QSize nbounds);
-    void setRelatives(QList<double> nbounds);
+    void setRelatives(SuperList<double> nbounds);
 
 private:
-    QList<double> myDimens = QList<double>();
+    SuperList<double> myDimens = SuperList<double>();
     QSize parBounds = QSize();
     QString msg = "";
     int delay = 3000;

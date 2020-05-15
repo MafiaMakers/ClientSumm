@@ -4,6 +4,8 @@
 #include <QFrame>
 #include <QPushButton>
 #include <QLabel>
+#include "Calls/SuperList.h"
+using namespace SuperFunctions;
 namespace Mafia {
 
 class UserButtonPanel: public QObject
@@ -11,7 +13,7 @@ class UserButtonPanel: public QObject
     Q_OBJECT
 public:
     explicit UserButtonPanel(QWidget* parent);
-    void setRelatives(QList<double> dimens);
+    void setRelatives(SuperList<double> dimens);
     void updateBounds(QSize nsize);
     void setMicro(bool on);
     void setCamera(bool on);
@@ -52,7 +54,7 @@ private:
     QPushButton * nextStageButton;
     QPushButton * stopSpeakButton;
     QLabel * currentGameStateLabel;
-    QList<double> myDimens;
+    SuperList<double> myDimens;
     QSize winsize;
     bool microState, cameraState;
     int modeGame;

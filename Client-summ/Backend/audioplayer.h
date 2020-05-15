@@ -5,6 +5,10 @@
 #include <QAudioOutput>
 #include <QBuffer>
 #include <QAudioFormat>
+
+#include "Calls/SuperList.h"
+using namespace SuperFunctions;
+
 namespace Mafia {
 class AudioPlayer : public QObject
 {
@@ -14,8 +18,8 @@ public:
     void appendAudio(QByteArray audio, int index);
     void addPlayer();
 private:
-    QList<QAudioOutput*> outAudio;
-    QList<QIODevice*> player;
+    SuperList<QAudioOutput*> outAudio;
+    SuperList<QIODevice*> player;
     QByteArray *whole;
     QAudioFormat format;
 

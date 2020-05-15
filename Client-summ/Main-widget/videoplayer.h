@@ -5,6 +5,10 @@
 #include <QLabel>
 #include <QPushButton>
 
+#include "Calls/SuperList.h"
+
+using namespace SuperFunctions;
+
 namespace Mafia {
 class VideoPlayer: public QObject
 {
@@ -15,7 +19,7 @@ public:
     void setBorder(int bw, QColor ncolor);
     void updateFrame(QByteArray frame);
     void updateBounds(QRect nbounds);
-    void setRelatives(QList<double> dimens);
+    void setRelatives(SuperList<double> dimens);
     void setNumPlayer(int num);
     void endVoting();
     void setVotesCount(int votes);
@@ -35,7 +39,7 @@ private:
     QColor borderColor;
     QWidget *parent;
     QLabel *player;
-    QList<double> myDimens;
+    SuperList<double> myDimens;
     QRect parBounds;
     QLabel *textPlayer;
     QLabel *textVotes;

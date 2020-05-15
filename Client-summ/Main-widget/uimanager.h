@@ -15,6 +15,8 @@
 #include "userbuttonpanel.h"
 #include "showrole.h"
 #include "notifyshower.h"
+#include "Calls/SuperList.h"
+using namespace SuperFunctions;
 
 QT_BEGIN_NAMESPACE
 
@@ -30,7 +32,7 @@ public:
     void stopVoting();
     void setStage(int stage);
     void updateRole(int role);
-    void setPlayersCount(int count, QList<QString> names = QList<QString>());
+    void setPlayersCount(int count, SuperList<QString> names = SuperList<QString>());
     void setAdminActive(bool status);
     void enableSpeaking(bool status);
     void updateFrame(int idx, QByteArray frame);

@@ -11,24 +11,24 @@ AudioPlayer::AudioPlayer(QObject *parent) : QObject(parent)
     format.setSampleType(QAudioFormat::UnSignedInt ); //Sample type as usigned integer sample
     format.setByteOrder(QAudioFormat::LittleEndian); //Byte order
     format.setCodec("audio/pcm");
-    outAudio = QList<QAudioOutput*>();
+    outAudio = SuperList<QAudioOutput*>();
     //outAudio = new QAudioOutput(format, this);
-    player = QList<QIODevice*>();
+    player = SuperList<QIODevice*>();
     //player = outAudio->start();
 }
 
 void AudioPlayer::appendAudio(QByteArray audio, int index) {
     if(index < player.length() && index >= 0){
-        player[index]->write(audio);
+        call_void(((QIODevice*)player[index])->write(audio));
     }
 
 }
 
 void AudioPlayer::addPlayer(){
-    outAudio.append(new QAudioOutput(format, this));
+    call_void(outAudio.append(new QAudioOutput(format, this)));
     int idx = outAudio.length()-1;
-    outAudio[idx]->setVolume(1.0);
-    outAudio[idx]->setBufferSize(30000);
-    player.append(outAudio[idx]->start());
+    call_void(((QAudioOutput*)outAudio[idx])->setVolume(1.0));
+    call_void(((QAudioOutput*)outAudio[idx])->setBufferSize(30000));
+    call_void(player.append(((QAudioOutput*)outAudio[idx])->start()));
     std::cout << "added player" << std::endl;
 }

@@ -23,6 +23,8 @@ SOURCES += \
     Backend/audioplayer.cpp \
     Backend/camhelper.cpp \
     Backend/micphonehelper.cpp \
+    Calls/LogsHandler.cpp \
+    Calls/stack.cpp \
     EnterWindow/createwindow.cpp \
     EnterWindow/enterwindow.cpp \
     EnterWindow/mainmenu.cpp \
@@ -48,6 +50,9 @@ HEADERS += \
     Backend/audioplayer.h \
     Backend/camhelper.h \
     Backend/micphonehelper.h \
+    Calls/LogsHandler.h \
+    Calls/SuperList.h \
+    Calls/stack.h \
     EnterWindow/createwindow.h \
     EnterWindow/enterwindow.h \
     EnterWindow/mainmenu.h \

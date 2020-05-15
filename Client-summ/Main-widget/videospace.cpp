@@ -10,16 +10,17 @@ VideoSpace::VideoSpace(QWidget *parent)
     curVotes = 0;
 }
 
-void VideoSpace::setPlayersCount(int count,  QList<QString> names) {
-    while(webcams.size() > 0) {
-        webcams.last()->hide();
-        delete webcams.last();
-        webcams.pop_back();
+void VideoSpace::setPlayersCount(int count,  SuperList<QString> names) {
+    while(webcams.length() > 0) {
+        call_void(((VideoPlayer*)webcams.getLast())->hide());
+        call_void(delete ((VideoPlayer*)webcams.getLast()));
+        call_void(webcams.pop(webcams.length()-1));
     }
     muchPlayers = count;
     double k = 1.5;
     int wc = 0, hc = 0, margin = 10, wp = 0, hp = 0;
-    int myWidth = myDimens[2]*parSize.width(), myHeight = myDimens[3]*parSize.height();
+    call_void(int myWidth = myDimens[2]*parSize.width());
+    call_void(int myHeight = myDimens[3]*parSize.height());
     while(wc*hc < muchPlayers) {
         wc += 1;
         wp = myWidth/wc - margin;
@@ -44,53 +45,55 @@ void VideoSpace::setPlayersCount(int count,  QList<QString> names) {
         hc = myHeight/(hp+margin);
     }
     for(int i = 0; i < count; i++) {
-        webcams.append(new VideoPlayer(parent));
+        call_void(webcams.append(new VideoPlayer(parent)));
         int xc = i % wc, yc = i / wc;
-        QList<double> rels = QList<double>() << (xc*(wp+margin)+margin)/(double)myWidth << (yc*(hp+margin)+margin)/(double)myHeight << wp/(double)myWidth << hp/(double)myHeight;
-        webcams[i]->setRelatives(rels);
+        SuperList<double> rels;
+        call(SuperList<double>() << (xc*(wp+margin)+margin)/(double)myWidth << (yc*(hp+margin)+margin)/(double)myHeight << wp/(double)myWidth << hp/(double)myHeight, &rels);
+        call_void(((VideoPlayer*)webcams[i])->setRelatives(rels));
         std::cout << "before" << std::endl;
-        webcams[i]->setNumPlayer(i + 1);
+        call_void(((VideoPlayer*)webcams[i])->setNumPlayer(i + 1));
 
         if(names.length() > 0){
-            webcams[i]->setName(names[i]);
+            call_void(((VideoPlayer*)webcams[i])->setName(names[i]));
         }
         std::cout << "after" << std::endl;
 //        webcams[i]->setVotesCount(i - 1);
 //        webcams[i]->setVoteOn(i + 1);
 //        webcams[i]->startVoting();
-        webcams[i]->updateBounds(QRect(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), myWidth, myHeight));
-        connect(webcams[i], &VideoPlayer::vote, this, &VideoSpace::voteSlot);
+        call_void(((VideoPlayer*)webcams[i])->updateBounds(QRect(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), myWidth, myHeight)));
+        connect(((VideoPlayer*)webcams[i]), &VideoPlayer::vote, this, &VideoSpace::voteSlot);
     }
     std::cout << "repainting" << std::endl;
-    repaint();
+    call_void(repaint());
     std::cout << "well" << std::endl;
 }
 
 void VideoSpace::setName(QString name, int index){
-    webcams[index]->setName(name);
+    call_void(((VideoPlayer*)webcams[index])->setName(name));
 }
 
-void VideoSpace::setRelatives(QList<double> dimens) {
-    myDimens = dimens;
-    repaint();
+void VideoSpace::setRelatives(SuperList<double> dimens) {
+    call_void(myDimens = dimens);
+    call_void(repaint());
 }
 
 void VideoSpace::updateBounds(QSize nsize) {
     parSize = nsize;
-    repaint();
+    call_void(repaint());
 }
 
 void VideoSpace::addVoter(int voter, int votedFor){
     std::cout << "made vote made" << std::endl;
-    webcams[voter]->setVoteOn(votedFor + 1);
-    webcams[votedFor]->raiseVotings();
+    call_void(((VideoPlayer*)webcams[voter])->setVoteOn(votedFor + 1));
+    call_void(((VideoPlayer*)webcams[votedFor])->raiseVotings());
 }
 
 void VideoSpace::repaint() {
     //don't clear like in setPlayersCount
     double k = 1.2;
     int wc = 0, hc = 0, margin = 10, wp = 0, hp = 0;
-    int myWidth = myDimens[2]*parSize.width(), myHeight = myDimens[3]*parSize.height();
+    call_void(int myWidth = myDimens[2]*parSize.width());
+    call_void(int myHeight = myDimens[3]*parSize.height());
     while(wc*hc < muchPlayers) {
         wc += 1;
         wp = myWidth/wc - margin;
@@ -117,34 +120,35 @@ void VideoSpace::repaint() {
     for(int i = 0; i < muchPlayers; i++) {
         //and don't append new VideoPlayers
         int xc = i % wc, yc = i / wc;
-        QList<double> rels = QList<double>() << (xc*(wp+margin)+margin)/(double)myWidth << (yc*(hp+margin)+margin)/(double)myHeight << wp/(double)myWidth << hp/(double)myHeight;
-        webcams[i]->setRelatives(rels);
-        webcams[i]->updateBounds(QRect(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), myWidth, myHeight));
+        SuperList<double> rels;
+        call(SuperList<double>() << (xc*(wp+margin)+margin)/(double)myWidth << (yc*(hp+margin)+margin)/(double)myHeight << wp/(double)myWidth << hp/(double)myHeight, &rels);
+        call_void(((VideoPlayer*)webcams[i])->setRelatives(rels));
+        call_void(((VideoPlayer*)webcams[i])->updateBounds(QRect(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), myWidth, myHeight)));
     }
 }
 
 void VideoSpace::kill(int index){
-    webcams[index]->killPlayer(true);
+    call_void(((VideoPlayer*)webcams[index])->killPlayer(true));
 }
 
 void VideoSpace::updateFrame(int idx, QByteArray frame) {
-    webcams[idx]->updateFrame(frame);
+    call_void(((VideoPlayer*)webcams[idx])->updateFrame(frame));
 }
 
 void VideoSpace::startGame()
 {
     for (int i = 0; i < muchPlayers; i++) {
-        webcams[i]->killPlayer(false);
+        call_void(((VideoPlayer*)webcams[i])->killPlayer(false));
     }
 }
 
 void VideoSpace::voteSlot(int index)
 {
     if(curVotePlayer == -1){
-        endVotingForPlayer();
+        call_void(endVotingForPlayer());
     }
     //startVoting(curVotePlayer + 1);
-    emit vote(index);
+    call_void(emit vote(index));
 }
 
 void VideoSpace::startVoting(int player, QString action)
@@ -155,26 +159,28 @@ void VideoSpace::startVoting(int player, QString action)
     }
     curVotes = 0;
     curVotePlayer = player;
-    webcams[player - 1]->startVoting(action);
+    call_void(((VideoPlayer*)webcams[player - 1])->startVoting(action));
 }
 
 void VideoSpace::setCanVote(int player, bool yes)
 {
-    webcams[player - 1]->setCanVote(yes);
+    call_void(((VideoPlayer*)webcams[player - 1])->setCanVote(yes));
 }
 
 void VideoSpace::endVotingForPlayer(){
     for(int i = 0; i < muchPlayers; i++){
-        webcams[i]->setVoteOn(0);
-        webcams[i]->setVotesCount(0);
-        webcams[i]->endVoting();
+        call_void(((VideoPlayer*)webcams[i])->setVoteOn(0));
+        call_void(((VideoPlayer*)webcams[i])->setVotesCount(0));
+        call_void(((VideoPlayer*)webcams[i])->endVoting());
     }
 }
 
 void VideoSpace::startAllVoting(QString action){
     for(int i = 0; i < muchPlayers; i++){
-        if(webcams[i]->isAlive()){
-            startVoting(i+1, action);
+        bool cond;
+        call(((VideoPlayer*)webcams[i])->isAlive(), &cond);
+        if(cond){
+            call_void(startVoting(i+1, action));
         }
     }
     curVotes = 0;

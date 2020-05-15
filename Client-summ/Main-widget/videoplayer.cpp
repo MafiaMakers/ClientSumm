@@ -6,7 +6,7 @@ Mafia::VideoPlayer::VideoPlayer(QWidget *parent)
     canVote = true;
     this->parent = parent;
     this->parBounds = QRect(0, 0, 0, 0);
-    this->myDimens = QList<double>() << 0 << 0 << 0 << 0;
+    call(SuperList<double>() << 0 << 0 << 0 << 0, &this->myDimens);
     player = new QLabel(parent);
     player->setStyleSheet("background-color: #FFFFFF;"
                           "font-size: 24px;");
@@ -44,33 +44,35 @@ void Mafia::VideoPlayer::hide(){
 
 void Mafia::VideoPlayer::raiseVotings(){
     votesForMe++;
-    setVotesCount(votesForMe);
+    call_void(setVotesCount(votesForMe));
 }
 
 void Mafia::VideoPlayer::updateFrame(QByteArray frame) {
     QPixmap pixmap;
     pixmap.loadFromData(frame, "jpg");
-    player->setPixmap(pixmap.scaled(player->size()));
+    call_void(player->setPixmap(pixmap.scaled(player->size())));
 }
 
 void Mafia::VideoPlayer::setBorder(int bw, QColor ncolor) {
     player->setStyleSheet("border: " + QString::number(bw) + "px solid " + ncolor.name() + ";");
 }
 
-void Mafia::VideoPlayer::setRelatives(QList<double> dimens) {
-    myDimens = dimens;
-    repaint();
+void Mafia::VideoPlayer::setRelatives(SuperList<double> dimens) {
+    call_void(myDimens = dimens);
+    call_void(repaint());
 }
 
 void Mafia::VideoPlayer::updateBounds(QRect nbounds) {
-    parBounds = nbounds;
-    repaint();
+    call_void(parBounds = nbounds);
+    call_void(repaint());
 }
 
 void Mafia::VideoPlayer::repaint() {
-    int x = myDimens[0]*parBounds.width()+parBounds.x(), y = myDimens[1]*parBounds.height()+parBounds.y(),
-            width = myDimens[2]*parBounds.width(), height = myDimens[3]*parBounds.height();
-    int space = (height - width / 1.5) / 3;
+    call_void(int x = myDimens[0]*parBounds.width()+parBounds.x());
+    call_void(int y = myDimens[1]*parBounds.height()+parBounds.y());
+    call_void(int width = myDimens[2]*parBounds.width());
+    call_void(int height = myDimens[3]*parBounds.height());
+    call_void(int space = (height - width / 1.5) / 3);
     player->setGeometry(x, y + space, width, width / 1.5);
     textPlayer->setGeometry(x, y, width, space);
     textPlayer->setFont(QFont("Times", space*0.9, QFont::Bold));
@@ -84,22 +86,23 @@ void Mafia::VideoPlayer::repaint() {
 
 void Mafia::VideoPlayer::setNumPlayer(int num)
 {
-    textPlayer->setText("Игрок " + QString::number(num));
-    textPlayer->show();
+    call_void(textPlayer->setText("Игрок " + QString::number(num)));
+    call_void(textPlayer->show());
     myIndex = num-1;
 }
 
 void Mafia::VideoPlayer::setName(QString name){
-    textPlayer->setText("(" + QString::number(myIndex) + ")" + name);
+    call_void(textPlayer->setText("(" + QString::number(myIndex) + ")" + name));
 }
 
 void Mafia::VideoPlayer::startVoting(QString action)
 {
-    voteButton->setText(action);
-    textVotes->hide();
-    textVoteOn->hide();
-    if (canVote)
-        voteButton->show();
+    call_void(voteButton->setText(action));
+    call_void(textVotes->hide());
+    call_void(textVoteOn->hide());
+    if (canVote){
+        call_void(voteButton->show());
+    }
 }
 
 void Mafia::VideoPlayer::setVotesCount(int votes)
@@ -117,9 +120,9 @@ void Mafia::VideoPlayer::setVotesCount(int votes)
         str = QString::number(votes) + " голоса";
     else
         str = QString::number(votes) + " голосов";
-    textVotes->setText(str);
+    call_void(textVotes->setText(str));
     //voteButton->hide();
-    textVotes->show();
+    call_void(textVotes->show());
 }
 
 void Mafia::VideoPlayer::endVoting()
@@ -136,8 +139,8 @@ bool Mafia::VideoPlayer::isAlive(){
 void Mafia::VideoPlayer::setVoteOn(int player)
 {
     std::cout << "Player " << myIndex << " voted for " << player << std::endl;
-    textVoteOn->setText("Проголосовал за " + QString::number(player));
-    textVoteOn->show();
+    call_void(textVoteOn->setText("Проголосовал за " + QString::number(player)));
+    call_void(textVoteOn->show());
 }
 
 void Mafia::VideoPlayer::killPlayer(bool is_died)
@@ -171,7 +174,7 @@ void Mafia::VideoPlayer::voteSlot()
     textVotes->show();
     //textVotes->setText("Вы проголосовали");
     //textVotes->show();
-    emit this->vote(myIndex);
+    call_void(emit this->vote(myIndex));
 }
 
 void Mafia::VideoPlayer::setCanVote(bool yes)

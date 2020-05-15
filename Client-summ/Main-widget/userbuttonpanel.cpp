@@ -1,3 +1,4 @@
+
 #include "userbuttonpanel.h"
 #include <QPushButton>
 #include <iostream>
@@ -30,7 +31,7 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
     endGameButton->hide();
     setCamera(true);
     setMicro(true);
-    myDimens = QList<double>() << 0 << 0 << 0 << 0;
+    myDimens = SuperList<double>() << 0 << 0 << 0 << 0;
 
     winsize = QSize(0, 0);
     exitButton->setGeometry(20, 20, 50, 50);
@@ -59,56 +60,58 @@ Mafia::UserButtonPanel::UserButtonPanel(QWidget* parent)
 }
 
 void Mafia::UserButtonPanel::stopSpeakingPressed(){
-    emit stopSpeaking();
+    call_void(emit stopSpeaking());
 }
 
 void Mafia::UserButtonPanel::hideSpeakOptions() {
-    stopSpeakButton->hide();
+    call_void(stopSpeakButton->hide());
 }
 
 void Mafia::UserButtonPanel::setAdminActive(bool isActive) {
     if(stage == WAITING_STAGE) {
-        startButton->setVisible(isActive);
+        call_void(startButton->setVisible(isActive));
     }
 }
 
 void Mafia::UserButtonPanel::startSpeking(){
-    stopSpeakButton->show();
+    call_void(stopSpeakButton->show());
 }
 
-void Mafia::UserButtonPanel::setRelatives(QList<double> dimens)
+void Mafia::UserButtonPanel::setRelatives(SuperList<double> dimens)
 {
-    myDimens = dimens;
-    repaint();
+    call_void(myDimens = dimens);
+    call_void(repaint());
 }
 
 void Mafia::UserButtonPanel::updateBounds(QSize nsize)
 {
     winsize = nsize;
-    repaint();
+    call_void(repaint());
 }
 
 void Mafia::UserButtonPanel::passExit()
 {
-    exitButton->hide();
-    exitButton->show();
-    emit exitApp();
+    call_void(exitButton->hide());
+    call_void(exitButton->show());
+    call_void(emit exitApp());
 }
 
 void Mafia::UserButtonPanel::nextStage(){
-    nextStageButton->hide();
-    emit nextStageButtonPressed();
+    call_void(nextStageButton->hide());
+    call_void(emit nextStageButtonPressed());
 }
 
 void Mafia::UserButtonPanel::showNextStageButton(){
-    nextStageButton->show();
-    startButton->hide();
+    call_void(nextStageButton->show());
+    call_void(startButton->hide());
 }
 
 void Mafia::UserButtonPanel::repaint()
 {
-    int myWidth = myDimens[2] * winsize.width(), myHeight = myDimens[3] * winsize.height();
-    int myX = myDimens[0] * winsize.width(), myY = myDimens[1] * winsize.height();
+    call_void(int myWidth = myDimens[2] * winsize.width());
+    call_void(int myHeight = myDimens[3] * winsize.height());
+    call_void(int myX = myDimens[0] * winsize.width());
+    call_void(int myY = myDimens[1] * winsize.height());
     frame->setGeometry(myX, myY, myWidth, myHeight);
     exitButton->setGeometry(myX + myWidth - 110, myY + 10, 100, myHeight - 20);
     microButton->setGeometry(myX + 10, myY + 10, myHeight - 20, myHeight - 20);
@@ -128,26 +131,30 @@ void Mafia::UserButtonPanel::repaint()
 void Mafia::UserButtonPanel::setCamera(bool on)
 {
     cameraState = on;
-    if (on)
-        cameraButton->setIcon(iconCameraON);
-    else
-        cameraButton->setIcon(iconCameraOFF);
+    if (on){
+        call_void(cameraButton->setIcon(iconCameraON));
+    }
+    else{
+        call_void(cameraButton->setIcon(iconCameraOFF));
+    }
 }
 
 void Mafia::UserButtonPanel::setCurrentStage(int stateId){
     stage = stateId;
-    QList<QString> stateNames = QList<QString>() << "ожидание других игроков" << "свободный разговор"
+    SuperList<QString> stateNames = SuperList<QString>() << "ожидание других игроков" << "свободный разговор"
                                             << "ночь" << "стадия аргументации" << "стадия повешанья" << "результаты";
-    currentGameStateLabel->setText("Текущая стадия : " + stateNames[stateId]);
+    call_void(currentGameStateLabel->setText("Текущая стадия : " + stateNames[stateId]));
 }
 
 void Mafia::UserButtonPanel::setMicro(bool on)
 {
     microState = on;
-    if (on)
-        microButton->setIcon(iconMicroON);
-    else
-        microButton->setIcon(iconMicroOFF);
+    if (on){
+        call_void(microButton->setIcon(iconMicroON));
+    }
+    else{
+        call_void(microButton->setIcon(iconMicroOFF));
+    }
 }
 
 void Mafia::UserButtonPanel::cameraChanged()
@@ -155,14 +162,14 @@ void Mafia::UserButtonPanel::cameraChanged()
     if (cameraState)
     {
         cameraState = false;
-        cameraButton->setIcon(iconCameraOFF);
-        emit cameraStatus(false);
+        call_void(cameraButton->setIcon(iconCameraOFF));
+        call_void(emit cameraStatus(false));
     }
     else
     {
         cameraState = true;
-        cameraButton->setIcon(iconCameraON);
-        emit cameraStatus(true);
+        call_void(cameraButton->setIcon(iconCameraON));
+        call_void(emit cameraStatus(true));
     }
 }
 
@@ -171,14 +178,14 @@ void Mafia::UserButtonPanel::microChanged()
     if (microState)
     {
         microState = false;
-        microButton->setIcon(iconMicroOFF);
-        emit microStatus(false);
+        call_void(microButton->setIcon(iconMicroOFF));
+        call_void(emit microStatus(false));
     }
     else
     {
         microState = true;
-        microButton->setIcon(iconMicroON);
-        emit microStatus(true);
+        call_void(microButton->setIcon(iconMicroON));
+        call_void(emit microStatus(true));
     }
 }
 
@@ -186,9 +193,9 @@ void Mafia::UserButtonPanel::startGameSlot()
 {
     std::cout << "QWERTYU" << std::endl;
     modeGame = 1;
-    startButton->close();
-    emit startGame();
-    stopContinueButton->setIcon(iconStopGame);
+    call_void(startButton->close());
+    call_void(emit startGame());
+    call_void(stopContinueButton->setIcon(iconStopGame));
     //stopContinueButton->show();
     //endGameButton->show();
 }
@@ -198,22 +205,22 @@ void Mafia::UserButtonPanel::stopContinueSlot()
     if (modeGame == 1)
     {
         modeGame = 2;
-        emit gamePause(true);
-        stopContinueButton->setIcon(iconContinue);
+        call_void(emit gamePause(true));
+        call_void(stopContinueButton->setIcon(iconContinue));
     }
     else
     {
         modeGame = 1;
-        emit gamePause(false);
-        stopContinueButton->setIcon(iconStopGame);
+        call_void(emit gamePause(false));
+        call_void(stopContinueButton->setIcon(iconStopGame));
     }
 }
 
 void Mafia::UserButtonPanel::endGameSlot()
 {
     modeGame = 0;
-    emit endGame();
-    startButton->show();
-    stopContinueButton->hide();
-    endGameButton->hide();
+    call_void(emit endGame());
+    call_void(startButton->show());
+    call_void(stopContinueButton->hide());
+    call_void(endGameButton->hide());
 }

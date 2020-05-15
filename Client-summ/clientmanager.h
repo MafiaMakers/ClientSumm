@@ -15,6 +15,7 @@
 #include "Settings-widget/settingswindow.h"
 #include "Results-widget/resultswidget.h"
 #include "EnterWindow/mainmenu.h"
+#include "Calls/SuperList.h"
 
 namespace Mafia {
     class ClientManager : public QObject
@@ -55,7 +56,7 @@ private:
     void posix_death_signal(int signum);
 
     int curStage;
-    QList<QString> playersNames;
+    SuperList<QString> playersNames;
     int curRole;
     int muchPlayers;
     int myIdx;
@@ -86,7 +87,7 @@ private slots:
     void getMessage(int id, char* data, int size);
     void sendAudio();
     void sendVideo();
-    void rolesSettingsSlot(QList<int> selections, QList<int> playersToPlay);
+    void rolesSettingsSlot(SuperList<int> selections, SuperList<int> playersToPlay);
     void nextStageSlot();
     void startGameSlot();
     void stopGameSlot();

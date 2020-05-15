@@ -1,14 +1,14 @@
 #include "settingswindow.h"
 using namespace Mafia;
-SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> participants) : QWidget()
+SettingsWindow::SettingsWindow(SuperList<QString> avaiRoles, SuperList<QString> participants) : QWidget()
 {
     mapRoles = avaiRoles;
     roomParts = participants;
 
-    for(int i = 0; i < avaiRoles.size(); i++) {
-        rolesToPlay.append(0);
+    for(int i = 0; i < avaiRoles.length(); i++) {
+        call_void(rolesToPlay.append(0));
     }
-    playersToPlay = QList<int>();
+    playersToPlay = SuperList<int>();
 
     this->setGeometry(650, 200, 600, 500);
     this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -32,7 +32,7 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
     chRole->setGeometry(50, 15, 300, 30);
     chRole->setStyleSheet("background-color: #FFFFFF;"
                           "font-size: 20px;");
-    chRole->addItems(avaiRoles);
+    call_void(chRole->addItems(avaiRoles.toQtList()));
     QFont chFont = QFont();
     chFont.setLetterSpacing(QFont::AbsoluteSpacing, 1.5);
     chRole->setFont(chFont);
@@ -47,10 +47,10 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
     valBorder->setStyleSheet("border: 5px solid #FF2714;");
     valBorder->setForegroundRole(QPalette::NoRole);
 
-    chRole->raise();
-    addRole->raise();
+    call_void(chRole->raise());
+    call_void(addRole->raise());
 
-    readyRoles = new QList<int>;
+    readyRoles = new SuperList<int>();
 
     apply = new QPushButton("Применить", this);
     apply->setGeometry(240, 440, 120, 45);
@@ -90,12 +90,12 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
     summRoles->setText("Сумма: 0");
     summPlayers->setText("Сумма: 0");
 
-    for(int i = 0; i < roomParts.size(); i++) {
-        QLabel *serial = new QLabel(QString::number(i), this);
-        QLabel *label = new QLabel(roomParts[i], this);
-        IdCheckBox *ichb = new IdCheckBox(i, this);
+    for(int i = 0; i < roomParts.length(); i++) {
+        call_void(QLabel *serial = new QLabel(QString::number(i), this));
+        call_void(QLabel *label = new QLabel(roomParts[i], this));
+        call_void(IdCheckBox *ichb = new IdCheckBox(i, this));
 
-        serial->setMinimumWidth(20);
+        call_void(serial->setMinimumWidth(20));
 
         ichb->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         ichb->setMaximumHeight(40);
@@ -107,13 +107,13 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
         serial->setContentsMargins(5, 0, 0, 0);
         label->setContentsMargins(5, 0, 5, 0);
 
-        glPlayers->setRowMinimumHeight(i, 40);
-        glPlayers->addWidget(serial, i, 0);
-        glPlayers->addWidget(label, i, 1);
-        glPlayers->addWidget(ichb, i, 2);
+        call_void(glPlayers->setRowMinimumHeight(i, 40));
+        call_void(glPlayers->addWidget(serial, i, 0));
+        call_void(glPlayers->addWidget(label, i, 1));
+        call_void(glPlayers->addWidget(ichb, i, 2));
 
         connect(ichb, &IdCheckBox::statusChanged, this, &SettingsWindow::playerStch);
-        ichb->setChecked(true);
+        call_void(ichb->setChecked(true));
     }
 
 
@@ -126,86 +126,88 @@ SettingsWindow::SettingsWindow(QList<QString> avaiRoles, QList<QString> particip
 void SettingsWindow::addPressed() {
     int curRow = glRoles->rowCount();
 
-    IdSpinBox *spb = new IdSpinBox(mapRoles.indexOf(chRole->currentText()), this);
+    call_void(IdSpinBox *spb = new IdSpinBox(mapRoles.indexOf(chRole->currentText()), this));
     spb->setButtonSymbols(QAbstractSpinBox::NoButtons);
     spb->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     spb->setMaximumHeight(40);
     spb->setStyleSheet("font-size: 24px;");
-    spb->setValue(1);
-    updateRoleCount(mapRoles.indexOf(chRole->currentText()), 1);
+    call_void(spb->setValue(1));
+    call_void(updateRoleCount(mapRoles.indexOf(chRole->currentText()), 1));
 
     QLabel *label = new QLabel(chRole->currentText());
     label->setStyleSheet("font-size: 24px;");
 
     glRoles->setRowMinimumHeight(curRow, 40);
-    glRoles->addWidget(spb, curRow, 0);
-    glRoles->addWidget(label, curRow, 1);
+    call_void(glRoles->addWidget(spb, curRow, 0));
+    call_void(glRoles->addWidget(label, curRow, 1));
 
-    readyRoles->append(mapRoles.indexOf(chRole->currentText()));
-    chRole->setCurrentIndex(0);
+    call_void(readyRoles->append(mapRoles.indexOf(chRole->currentText())));
+    call_void(chRole->setCurrentIndex(0));
 
     connect(spb, &IdSpinBox::idValueChanged, this, &SettingsWindow::updateRoleCount);
 }
 
 void SettingsWindow::selectChanged(int idCh) {
-    if(rolesToPlay[idCh] != 0 || idCh == 0) {
-        addRole->setEnabled(false);
+    int tId;
+    call(rolesToPlay[idCh], &tId);
+    if(tId != 0 || idCh == 0) {
+        call_void(addRole->setEnabled(false));
         valBorder->setStyleSheet("border: 5px solid #FF2714;");
     } else {
-        addRole->setEnabled(true);
+        call_void(addRole->setEnabled(true));
         valBorder->setStyleSheet("border: 5px solid #0EE834;");
     }
 }
 
 void SettingsWindow::playerStch(int id, bool status) {
     if(status) {
-        playersToPlay.append(id);
+        call_void(playersToPlay.append(id));
 
-        glPlayers->itemAtPosition(id, 0)->widget()->setStyleSheet("background-color: #0EE834;"
+        call_void(glPlayers->itemAtPosition(id, 0)->widget()->setStyleSheet("background-color: #0EE834;"
                                                                   "font-size: 20px;"
-                                                                  "border-bottom: 4px solid #000000;");
-        glPlayers->itemAtPosition(id, 1)->widget()->setStyleSheet("background-color: #0EE834;"
+                                                                  "border-bottom: 4px solid #000000;"));
+        call_void(glPlayers->itemAtPosition(id, 1)->widget()->setStyleSheet("background-color: #0EE834;"
                                                                   "font-size: 16px;"
-                                                                  "border-bottom: 4px solid #000000;");
-        glPlayers->itemAtPosition(id, 2)->widget()->setStyleSheet("background-color: #0EE834;"
-                                                                  "border-bottom: 4px solid #000000;");
+                                                                  "border-bottom: 4px solid #000000;"));
+        call_void(glPlayers->itemAtPosition(id, 2)->widget()->setStyleSheet("background-color: #0EE834;"
+                                                                  "border-bottom: 4px solid #000000;"));
     } else {
-        playersToPlay.removeAt(playersToPlay.indexOf(id));
+        call_void(playersToPlay.pop(playersToPlay.indexOf(id)));
 
-        glPlayers->itemAtPosition(id, 0)->widget()->setStyleSheet("background-color: #FF2714;"
+        call_void(glPlayers->itemAtPosition(id, 0)->widget()->setStyleSheet("background-color: #FF2714;"
                                                                   "font-size: 20px;"
-                                                                  "border-bottom: 4px solid #000000;");
-        glPlayers->itemAtPosition(id, 1)->widget()->setStyleSheet("background-color: #FF2714;"
+                                                                  "border-bottom: 4px solid #000000;"));
+        call_void(glPlayers->itemAtPosition(id, 1)->widget()->setStyleSheet("background-color: #FF2714;"
                                                                   "font-size: 16px;"
-                                                                  "border-bottom: 4px solid #000000;");
-        glPlayers->itemAtPosition(id, 2)->widget()->setStyleSheet("background-color: #FF2714;"
-                                                                  "border-bottom: 4px solid #000000;");
+                                                                  "border-bottom: 4px solid #000000;"));
+        call_void(glPlayers->itemAtPosition(id, 2)->widget()->setStyleSheet("background-color: #FF2714;"
+                                                                  "border-bottom: 4px solid #000000;"));
     }
-    updateSumm();
+    call_void(updateSumm());
 }
 
 void SettingsWindow::applyPressed() {
-    emit applySignal(rolesToPlay, playersToPlay);
+    call_void(emit applySignal(rolesToPlay, playersToPlay));
 }
 
 void SettingsWindow::updateRoleCount(int id, int nval) {
-    rolesToPlay[id] = nval;
-    updateSumm();
+    call_void(rolesToPlay[id] = nval);
+    call_void(updateSumm());
 }
 
 void SettingsWindow::updateSumm() {
     int sumRoles = 0;
-    int sumPlayers = playersToPlay.size();
-    for(int i = 0; i < rolesToPlay.size(); i++) {
-        sumRoles += rolesToPlay[i];
+    call_void(int sumPlayers = playersToPlay.length());
+    for(int i = 0; i < rolesToPlay.length(); i++) {
+        call_void(sumRoles += rolesToPlay[i]);
     }
-    summRoles->setText("Сумма: " + QString::number(sumRoles));
-    summPlayers->setText("Сумма: " + QString::number(sumPlayers));
+    call_void(summRoles->setText("Сумма: " + QString::number(sumRoles)));
+    call_void(summPlayers->setText("Сумма: " + QString::number(sumPlayers)));
 
     if(sumRoles == sumPlayers) {
-        apply->setEnabled(true);
+        call_void(apply->setEnabled(true));
     } else {
-        apply->setEnabled(false);
+        call_void(apply->setEnabled(false));
     }
 }
 

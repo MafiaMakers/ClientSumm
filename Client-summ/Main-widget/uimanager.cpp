@@ -12,11 +12,11 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
     camsSpace = new VideoSpace(this);
     notifies = new NotifyShower(this);
 
-    camsSpace->setRelatives(QList<double>() << 10/1280.0 << 10/700.0 << 940/1280.0 << 500/700.0); // cams space
-    bottomBox->setRelatives(QList<double>() << 10/1280.0 << 610/700.0 << 940/1280.0 << 80/700.0); // bottom box
-    roleIcon->setRelatives(QList<double>() << 960/1280.0 << 10/700.0 << 310/1280.0 << 250/700.0); // role icon
-    chat->setRelatives(QList<double>() << 960/1280.0 << 270/700.0 << 310/1280.0 << 420.0/700.0); // chat
-    notifies->setRelatives(QList<double>() << 300/1280.0 << 250/700.0 << 680/1280.0 << 200/700.0);
+    call_void(camsSpace->setRelatives(SuperList<double>() << 10/1280.0 << 10/700.0 << 940/1280.0 << 500/700.0)); // cams space
+    call_void(bottomBox->setRelatives(SuperList<double>() << 10/1280.0 << 610/700.0 << 940/1280.0 << 80/700.0)); // bottom box
+    call_void(roleIcon->setRelatives(SuperList<double>() << 960/1280.0 << 10/700.0 << 310/1280.0 << 250/700.0)); // role icon
+    call_void(chat->setRelatives(SuperList<double>() << 960/1280.0 << 270/700.0 << 310/1280.0 << 420.0/700.0); // chat
+    call_void(notifies->setRelatives(SuperList<double>() << 300/1280.0 << 250/700.0 << 680/1280.0 << 200/700.0)));
 
     connect(bottomBox, &UserButtonPanel::exitApp, this, &UIManager::leaveRoomSlot);
     connect(bottomBox, &UserButtonPanel::startGame, this, &UIManager::startGameSlot);
@@ -30,17 +30,17 @@ UIManager::UIManager(QWidget *parent): QMainWindow(parent)
 }
 
 void UIManager::addVote(int voter, int votedFor){
-    camsSpace->addVoter(voter, votedFor);
+    call_void(camsSpace->addVoter(voter, votedFor));
 }
 
 void UIManager::stopSpeakSlot(){
-    camsSpace->endVotingForPlayer();
-    bottomBox->hideSpeakOptions();
+    call_void(camsSpace->endVotingForPlayer());
+    call_void(bottomBox->hideSpeakOptions());
     emit stopSpeakSignal();
 }
 
 void UIManager::startSpeak(){
-    bottomBox->startSpeking();
+    call_void(bottomBox->startSpeking());
 }
 
 UIManager::~UIManager() {
@@ -48,93 +48,93 @@ UIManager::~UIManager() {
 }
 
 void UIManager::nextStageSlot(){
-    emit nextStageSignal();
+    call_void(emit nextStageSignal());
 }
 
 void UIManager::resizeEvent(QResizeEvent *event) {
-    chat->updateBounds(event->size());
-    bottomBox->updateBounds(event->size());
-    roleIcon->updateBounds(event->size());
-    camsSpace->updateBounds(event->size());
-    notifies->updateBounds(event->size());
+    call_void(chat->updateBounds(event->size()));
+    call_void(bottomBox->updateBounds(event->size()));
+    call_void(roleIcon->updateBounds(event->size()));
+    call_void(camsSpace->updateBounds(event->size()));
+    call_void(notifies->updateBounds(event->size()));
 }
 /////////////////////////////////////////////
 void UIManager::micphoneSlot(bool status) { // Slots transition from widgets to client manager
-    emit micphoneSignal(status);
+    call_void(emit micphoneSignal(status));
 }
 void UIManager::webkamSlot(bool status) {
-    emit webkamSignal(status);
+    call_void(emit webkamSignal(status));
 }
 void UIManager::leaveRoomSlot() {
-    emit leaveRoomSignal();
+    call_void(emit leaveRoomSignal());
 }
 //////////////////////////////////////////////////
 void UIManager::updateRole(int role) {
-    roleIcon->Show_role(role);
+    call_void(roleIcon->Show_role(role));
 }
 
 void UIManager::setAdminActive(bool status) {
-    bottomBox->setAdminActive(status);
+    call_void(bottomBox->setAdminActive(status));
 }
 
 void UIManager::setStage(int stage) {
-    bottomBox->setCurrentStage(stage);
+    call_void(bottomBox->setCurrentStage(stage));
 }
 
-void UIManager::setPlayersCount(int count, QList<QString> names) {
-    camsSpace->setPlayersCount(count, names);
+void UIManager::setPlayersCount(int count, SuperList<QString> names) {
+    call_void(camsSpace->setPlayersCount(count, names));
 }
 
 void UIManager::enableSpeaking(bool status) {
-    bottomBox->setMicro(status);
+    call_void(bottomBox->setMicro(status));
 }
 
 void UIManager::setPlayersName(QString name, int index){
-    camsSpace->setName(name, index);
+    call_void(camsSpace->setName(name, index));
 }
 
 void UIManager::updateFrame(int idx, QByteArray frame) {
-    camsSpace->updateFrame(idx, frame);
+    call_void(camsSpace->updateFrame(idx, frame));
 }
 
 void UIManager::startVoting(int candidateIndex, QString action){
     if(candidateIndex != -1){
-        camsSpace->startVoting(candidateIndex, action);
+        call_void(camsSpace->startVoting(candidateIndex, action));
     } else{
-        camsSpace->startAllVoting(action);
+        call_void(camsSpace->startAllVoting(action));
     }
 
 }
 
 void UIManager::stopVoting(){
-    camsSpace->endVotingForPlayer();
+    call_void(camsSpace->endVotingForPlayer());
 }
 
 void UIManager::askNextStage() {
-    bottomBox->showNextStageButton();
+    call_void(bottomBox->showNextStageButton());
 }
 
 void UIManager::votedSlot(int votedForIndex){
-    emit votedSignal(votedForIndex);
+    call_void(emit votedSignal(votedForIndex));
 }
 
 void UIManager::startGameSlot() {
-    emit startGameSignal();
+    call_void(emit startGameSignal());
 }
 
 void UIManager::stopGameSlot() {
-    emit stopGameSignal();
+    call_void(emit stopGameSignal());
 }
 
 void UIManager::sheriffResult(int idx, bool res) {
-    notifies->sheriffResult(idx, res);
+    call_void(notifies->sheriffResult(idx, res));
 }
 
 void UIManager::dayKill(int idx) {
-    camsSpace->kill(idx);
-    notifies->dayKill(idx);
+    call_void(camsSpace->kill(idx));
+    call_void(notifies->dayKill(idx));
 }
 
 void UIManager::nominate(int idx) {
-    notifies->nominate(idx);
+    call_void(notifies->nominate(idx));
 }
