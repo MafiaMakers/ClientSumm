@@ -388,12 +388,13 @@ void ClientManager::checkAdmin(std::string content) {
 
 void ClientManager::enableSpeaking(std::string status) {
     canSpeak = *(bool*)status.data();
-    if(canSpeak){
+    if(canSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE)){
         call_void(mafUi->startSpeak());
-    } else if(!canSpeak) {
+    } else if(canSpeak && curStage == WAITING_STAGE) {
+        call_void(mafUi->freeSpeak());
+    }else if(!canSpeak) {
         call_void(mafUi->stopSpeak());
     }
-    call_void(mafUi->enableSpeaking(canSpeak));
 }
 
 void ClientManager::stopSpeak(){

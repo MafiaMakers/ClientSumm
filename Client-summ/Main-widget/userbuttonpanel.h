@@ -22,6 +22,7 @@ public:
     void startSpeking();
     void setAdminActive(bool isActive);
     void hideSpeakOptions();
+    void freeSpeak();
 
 signals:
     void microStatus(bool on);

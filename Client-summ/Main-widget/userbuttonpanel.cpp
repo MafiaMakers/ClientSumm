@@ -79,6 +79,10 @@ void Mafia::UserButtonPanel::startSpeking(){
     call_void(microButton->setEnabled(true));
 }
 
+void Mafia::UserButtonPanel::freeSpeak() {
+    call_void(microButton->setEnabled(true));
+}
+
 void Mafia::UserButtonPanel::setRelatives(SuperList<double> dimens)
 {
     call_void(myDimens = dimens);

@@ -112,6 +112,10 @@ void UIManager::startVoting(int candidateIndex, QString action){
 
 }
 
+void UIManager::freeSpeak() {
+    call_void(bottomBox->freeSpeak());
+}
+
 void UIManager::stopVoting(){
     call_void(camsSpace->endVotingForPlayer());
 }
