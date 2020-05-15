@@ -37,6 +37,7 @@ void NotifyShower::setRelatives(SuperList<double> rels) {
 }
 
 void NotifyShower::showMessage() {
+    this->raise();
     QRect geom = QRect(myDimens[0]*parBounds.width(), myDimens[1]*parBounds.height(), myDimens[2]*parBounds.width(), myDimens[3]*parBounds.height());
     this->setGeometry(geom);
     this->setText(msg);

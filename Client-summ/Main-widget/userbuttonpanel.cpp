@@ -142,7 +142,7 @@ void Mafia::UserButtonPanel::setCamera(bool on)
 void Mafia::UserButtonPanel::setCurrentStage(int stateId){
     stage = stateId;
     SuperList<QString> stateNames = SuperList<QString>() << "ожидание других игроков" << "свободный разговор"
-                                            << "ночь" << "стадия аргументации" << "стадия повешанья" << "результаты";
+                                            << "ночь" << "стадия аргументации" << "предпоследнее слово" << "стадия повешанья" << "результаты";
     call_void(currentGameStateLabel->setText("Текущая стадия : " + stateNames[stateId]));
 }
 

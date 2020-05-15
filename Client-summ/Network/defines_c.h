@@ -70,7 +70,8 @@
 #define NIGHT_STAGE 2
 #define ARGUMENT_STAGE 3
 #define DEATH_STAGE 4
-#define RESULT_STAGE 5
+#define KILLING_STAGE 5
+#define RESULT_STAGE 6
 
 #define CIVILIAN_ROLE 0
 #define MAFIA_ROLE 1

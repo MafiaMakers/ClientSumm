@@ -22,7 +22,7 @@ private:
     SuperList<double> myDimens = SuperList<double>();
     QSize parBounds = QSize();
     QString msg = "";
-    int delay = 3000;
+    int delay = 2000;
     void showMessage();
 
 private slots:

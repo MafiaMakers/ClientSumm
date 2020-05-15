@@ -248,6 +248,7 @@ void ClientManager::vote(std::string voteType){
 }
 
 void ClientManager::processResults(int* resState, int size){
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     call_void(std::cout << "results processing - " << size - 1 << " " << playersNames.length() << std::endl);
     call_void(std::cout << resState[0] << " " << resState[1] << std::endl);
     SuperList<int> rolesRevealed = SuperList<int>();
