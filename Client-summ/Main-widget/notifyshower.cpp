@@ -7,6 +7,7 @@ NotifyShower::NotifyShower(QWidget *parent) : QLabel(parent)
     this->setStyleSheet("background-color: #BBBBBB;"
                         "font-size: 24px;");
     this->setAlignment(Qt::AlignCenter);
+    this->raise();
 }
 
 void NotifyShower::dayKill(int idx) {

@@ -43,6 +43,7 @@ public:
     void nominate(int idx);
     void addVote(int voter, int votedFor);
     void setPlayersName(QString name, int index);
+    void stopSpeak();
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;

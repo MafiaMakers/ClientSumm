@@ -52,7 +52,7 @@ private:
     void processResults(int* resState, int size);
     void changedName(char* data, int size);
     void finishVoting();
-
+    void startGame();
     void posix_death_signal(int signum);
 
     int curStage;

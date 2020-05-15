@@ -192,6 +192,10 @@ void ClientManager::getMessage(int id, char* data, int size) {
         call_void(finishVoting());
         break;
     }
+    case START_GAME_MESSAGE_ID:{
+        startGame();
+        break;
+    }
     default:
         std::cout << content << " error" << std::endl;
         call_void(throwError("Messge id - "+QString::number(id).toStdString()+"; content - "+content));
@@ -201,6 +205,16 @@ void ClientManager::getMessage(int id, char* data, int size) {
 
 void ClientManager::finishVoting(){
     call_void(mafUi->stopVoting());
+}
+
+void ClientManager::startGame(){
+    SuperList<QString> avroles;
+    call(SuperList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор", &avroles);
+    //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
+    std::cout << "done!!!!!!!!!!!!!" << std::endl;
+    call_void(setWind = new SettingsWindow(avroles, playersNames));
+    connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
+    call_void(setWind->show());
 }
 
 void ClientManager::goIntoRoom(){
@@ -288,15 +302,7 @@ void ClientManager::setClientsInfo(std::string info){
             call_void(mafUi->setPlayersCount(muchPlayers, playersNames));
     }
     std::cout << "ok" << std::endl;
-    if(meAdmin && !firstStart){
-        SuperList<QString> avroles;
-        call(SuperList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор", &avroles);
-        //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
-        std::cout << "done!!!!!!!!!!!!!" << std::endl;
-        call_void(setWind = new SettingsWindow(avroles, playersNames));
-        connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
-        call_void(setWind->show());
-    }
+
     qWarning("end");
     std::cout << "qwertyuiop[" << std::endl;
 
@@ -385,7 +391,7 @@ void ClientManager::enableSpeaking(std::string status) {
     if(canSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE)){
         call_void(mafUi->startSpeak());
     } else if(!canSpeak) {
-        call_void(mafUi->stopSpeakSlot());
+        call_void(mafUi->stopSpeak());
     }
     call_void(mafUi->enableSpeaking(canSpeak));
 }
