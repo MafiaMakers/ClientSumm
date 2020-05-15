@@ -1,6 +1,8 @@
 audioplayer.o
 camhelper.o
 micphonehelper.o
+LogsHandler.o
+stack.o
 createwindow.o
 enterwindow.o
 mainmenu.o

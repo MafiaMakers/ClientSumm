@@ -17,12 +17,14 @@ public:
     void nominate(int idx);
     void updateBounds(QSize nbounds);
     void setRelatives(SuperList<double> nbounds);
+    void startSpeak();
+    void stopSpeak();
 
 private:
     SuperList<double> myDimens = SuperList<double>();
     QSize parBounds = QSize();
     QString msg = "";
-    int delay = 3000;
+    int delay = 2000;
     void showMessage();
 
 private slots:

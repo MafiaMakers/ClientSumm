@@ -10,7 +10,8 @@ Mafia::VideoPlayer::VideoPlayer(QWidget *parent)
     player = new QLabel(parent);
     player->setStyleSheet("background-color: #FFFFFF;"
                           "font-size: 24px;");
-    player->setText("Video isn't available");
+    player->setText("Видео\nне будэ");
+    player->setAlignment(Qt::AlignCenter);
     player->show();
     textPlayer = new QLabel(parent);
     textPlayer->setStyleSheet("color: black;");
@@ -24,6 +25,10 @@ Mafia::VideoPlayer::VideoPlayer(QWidget *parent)
                               "background-color: lightblue");
     voteButton->setText("Расстрелять");
     voteButton->hide();
+    timer = new QTimer();
+    timer->setInterval(300);
+
+    connect(timer, &QTimer::timeout, this, &VideoPlayer::noVideoSlot);
     connect(voteButton, &QPushButton::clicked, this, &VideoPlayer::voteSlot);
 }
 
@@ -48,9 +53,15 @@ void Mafia::VideoPlayer::raiseVotings(){
 }
 
 void Mafia::VideoPlayer::updateFrame(QByteArray frame) {
+    timer->stop();
+    timer->start();
     QPixmap pixmap;
     pixmap.loadFromData(frame, "jpg");
     call_void(player->setPixmap(pixmap.scaled(player->size())));
+}
+
+void Mafia::VideoPlayer::noVideoSlot() {
+    call_void(player->setText("Видео\nне будэ"));
 }
 
 void Mafia::VideoPlayer::setBorder(int bw, QColor ncolor) {
@@ -86,13 +97,12 @@ void Mafia::VideoPlayer::repaint() {
 
 void Mafia::VideoPlayer::setNumPlayer(int num)
 {
-    call_void(textPlayer->setText("Игрок " + QString::number(num)));
-    call_void(textPlayer->show());
     myIndex = num-1;
 }
 
 void Mafia::VideoPlayer::setName(QString name){
     call_void(textPlayer->setText("(" + QString::number(myIndex) + ")" + name));
+    call_void(textPlayer->show());
 }
 
 void Mafia::VideoPlayer::startVoting(QString action)

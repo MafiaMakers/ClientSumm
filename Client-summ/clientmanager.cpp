@@ -388,7 +388,7 @@ void ClientManager::checkAdmin(std::string content) {
 
 void ClientManager::enableSpeaking(std::string status) {
     canSpeak = *(bool*)status.data();
-    if(canSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE)){
+    if(canSpeak){
         call_void(mafUi->startSpeak());
     } else if(!canSpeak) {
         call_void(mafUi->stopSpeak());
@@ -401,7 +401,7 @@ void ClientManager::stopSpeak(){
 }
 
 void ClientManager::sendAudio() {
-    if(micActive) {
+    if(micActive && canSpeak) {
         call_void(QByteArray audio = micphone->getAudio());
         if(net->isConnected()) {
             call_void(net->sendMessage(*net->getAddrIn(), AUDIO_MESSAGE_ID, (char*)audio.data(), audio.size()));

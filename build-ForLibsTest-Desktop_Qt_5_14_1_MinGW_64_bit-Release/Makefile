@@ -54,6 +54,8 @@ OBJECTS_DIR   = .
 SOURCES       = ..\Client-summ\Backend\audioplayer.cpp \
 		..\Client-summ\Backend\camhelper.cpp \
 		..\Client-summ\Backend\micphonehelper.cpp \
+		..\Client-summ\Calls\LogsHandler.cpp \
+		..\Client-summ\Calls\stack.cpp \
 		..\Client-summ\EnterWindow\createwindow.cpp \
 		..\Client-summ\EnterWindow\enterwindow.cpp \
 		..\Client-summ\EnterWindow\mainmenu.cpp \
@@ -96,6 +98,8 @@ SOURCES       = ..\Client-summ\Backend\audioplayer.cpp \
 OBJECTS       = audioplayer.o \
 		camhelper.o \
 		micphonehelper.o \
+		LogsHandler.o \
+		stack.o \
 		createwindow.o \
 		enterwindow.o \
 		mainmenu.o \
@@ -140,6 +144,9 @@ OBJECTS       = audioplayer.o \
 DIST          =  ..\Client-summ\Backend\audioplayer.h \
 		..\Client-summ\Backend\camhelper.h \
 		..\Client-summ\Backend\micphonehelper.h \
+		..\Client-summ\Calls\LogsHandler.h \
+		..\Client-summ\Calls\SuperList.h \
+		..\Client-summ\Calls\stack.h \
 		..\Client-summ\EnterWindow\createwindow.h \
 		..\Client-summ\EnterWindow\enterwindow.h \
 		..\Client-summ\EnterWindow\mainmenu.h \
@@ -163,6 +170,8 @@ DIST          =  ..\Client-summ\Backend\audioplayer.h \
 		..\Client-summ\clientmanager.h ..\Client-summ\Backend\audioplayer.cpp \
 		..\Client-summ\Backend\camhelper.cpp \
 		..\Client-summ\Backend\micphonehelper.cpp \
+		..\Client-summ\Calls\LogsHandler.cpp \
+		..\Client-summ\Calls\stack.cpp \
 		..\Client-summ\EnterWindow\createwindow.cpp \
 		..\Client-summ\EnterWindow\enterwindow.cpp \
 		..\Client-summ\EnterWindow\mainmenu.cpp \
@@ -621,10 +630,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) ForLibsTest.zip $(SOURCES) $(DIST) ..\Client-summ\ForLibsTest.pro C:\Qt\5.14.1\mingw73_64\mkspecs\features\spec_pre.prf C:\Qt\5.14.1\mingw73_64\mkspecs\qdevice.pri C:\Qt\5.14.1\mingw73_64\mkspecs\features\device_config.prf C:\Qt\5.14.1\mingw73_64\mkspecs\common\sanitize.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\gcc-base.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\g++-base.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\angle.conf C:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.14.1\mingw73_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\g++-win32.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\windows-desktop.conf C:\Qt\5.14.1\mingw73_64\mkspecs\qconfig.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bodymovin_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3d.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3drender.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3drender_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_script.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\features\qt_functions.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\qt_config.prf C:\Qt\5.14.1\mingw73_64\mkspecs\win32-g++\qmake.conf C:\Qt\5.14.1\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.14.1\mingw73_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\toolchain.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\default_pre.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\resolve_config.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\default_post.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\resources_functions.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\qtquickcompiler.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\precompile_header.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\warn_on.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\qt.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\resources.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\moc.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\opengl.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\uic.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\qmake_use.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\file_copies.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\windows.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\testcase_targets.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\exceptions.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\yacc.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\lex.prf ..\Client-summ\ForLibsTest.pro ..\Client-summ\imgs.qrc C:\Qt\5.14.1\mingw73_64\lib\Qt5MultimediaWidgets.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Multimedia.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Widgets.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Gui.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Network.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Core.prl C:\Qt\5.14.1\mingw73_64\lib\qtmain.prl     ..\Client-summ\imgs.qrc C:\Qt\5.14.1\mingw73_64\mkspecs\features\data\dummy.cpp ..\Client-summ\Backend\audioplayer.h ..\Client-summ\Backend\camhelper.h ..\Client-summ\Backend\micphonehelper.h ..\Client-summ\EnterWindow\createwindow.h ..\Client-summ\EnterWindow\enterwindow.h ..\Client-summ\EnterWindow\mainmenu.h ..\Client-summ\Main-widget\notifyshower.h ..\Client-summ\Main-widget\samplerelative.h ..\Client-summ\Main-widget\showrole.h ..\Client-summ\Main-widget\uimanager.h ..\Client-summ\Main-widget\userbuttonpanel.h ..\Client-summ\Main-widget\videoplayer.h ..\Client-summ\Main-widget\videospace.h ..\Client-summ\Network\defines_c.h ..\Client-summ\Network\include_c.h ..\Client-summ\Network\networker_c.h ..\Client-summ\Network\systemfunctions_c.h ..\Client-summ\Results-widget\resultswidget.h ..\Client-summ\Settings-widget\idcheckbox.h ..\Client-summ\Settings-widget\idpushbutton.h ..\Client-summ\Settings-widget\idspinbox.h ..\Client-summ\Settings-widget\settingswindow.h ..\Client-summ\Chat\chatwidget.h ..\Client-summ\clientmanager.h  ..\Client-summ\Backend\audioplayer.cpp ..\Client-summ\Backend\camhelper.cpp ..\Client-summ\Backend\micphonehelper.cpp ..\Client-summ\EnterWindow\createwindow.cpp ..\Client-summ\EnterWindow\enterwindow.cpp ..\Client-summ\EnterWindow\mainmenu.cpp ..\Client-summ\Main-widget\samplerelative.cpp ..\Client-summ\Main-widget\showrole.cpp ..\Client-summ\Main-widget\uimanager.cpp ..\Client-summ\Main-widget\userbuttonpanel.cpp ..\Client-summ\Main-widget\videoplayer.cpp ..\Client-summ\Main-widget\videospace.cpp ..\Client-summ\Main-widget\notifyshower.cpp ..\Client-summ\Network\networker_c.cpp ..\Client-summ\Network\systemfunctions_c.cpp ..\Client-summ\Results-widget\resultswidget.cpp ..\Client-summ\Settings-widget\idcheckbox.cpp ..\Client-summ\Settings-widget\idpushbutton.cpp ..\Client-summ\Settings-widget\idspinbox.cpp ..\Client-summ\Settings-widget\settingswindow.cpp ..\Client-summ\Chat\chatwidget.cpp ..\Client-summ\clientmanager.cpp ..\Client-summ\main.cpp     
+	$(ZIP) ForLibsTest.zip $(SOURCES) $(DIST) ..\Client-summ\ForLibsTest.pro C:\Qt\5.14.1\mingw73_64\mkspecs\features\spec_pre.prf C:\Qt\5.14.1\mingw73_64\mkspecs\qdevice.pri C:\Qt\5.14.1\mingw73_64\mkspecs\features\device_config.prf C:\Qt\5.14.1\mingw73_64\mkspecs\common\sanitize.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\gcc-base.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\g++-base.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\angle.conf C:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.14.1\mingw73_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\g++-win32.conf C:\Qt\5.14.1\mingw73_64\mkspecs\common\windows-desktop.conf C:\Qt\5.14.1\mingw73_64\mkspecs\qconfig.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bodymovin_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3d.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3drender.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3drender_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_script.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.14.1\mingw73_64\mkspecs\features\qt_functions.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\qt_config.prf C:\Qt\5.14.1\mingw73_64\mkspecs\win32-g++\qmake.conf C:\Qt\5.14.1\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.14.1\mingw73_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\toolchain.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\default_pre.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\resolve_config.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\default_post.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\resources_functions.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\qtquickcompiler.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\precompile_header.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\warn_on.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\qt.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\resources.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\moc.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\opengl.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\uic.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\qmake_use.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\file_copies.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\windows.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\testcase_targets.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\exceptions.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\yacc.prf C:\Qt\5.14.1\mingw73_64\mkspecs\features\lex.prf ..\Client-summ\ForLibsTest.pro ..\Client-summ\imgs.qrc C:\Qt\5.14.1\mingw73_64\lib\Qt5MultimediaWidgets.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Multimedia.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Widgets.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Gui.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Network.prl C:\Qt\5.14.1\mingw73_64\lib\Qt5Core.prl C:\Qt\5.14.1\mingw73_64\lib\qtmain.prl     ..\Client-summ\imgs.qrc C:\Qt\5.14.1\mingw73_64\mkspecs\features\data\dummy.cpp ..\Client-summ\Backend\audioplayer.h ..\Client-summ\Backend\camhelper.h ..\Client-summ\Backend\micphonehelper.h ..\Client-summ\Calls\LogsHandler.h ..\Client-summ\Calls\SuperList.h ..\Client-summ\Calls\stack.h ..\Client-summ\EnterWindow\createwindow.h ..\Client-summ\EnterWindow\enterwindow.h ..\Client-summ\EnterWindow\mainmenu.h ..\Client-summ\Main-widget\notifyshower.h ..\Client-summ\Main-widget\samplerelative.h ..\Client-summ\Main-widget\showrole.h ..\Client-summ\Main-widget\uimanager.h ..\Client-summ\Main-widget\userbuttonpanel.h ..\Client-summ\Main-widget\videoplayer.h ..\Client-summ\Main-widget\videospace.h ..\Client-summ\Network\defines_c.h ..\Client-summ\Network\include_c.h ..\Client-summ\Network\networker_c.h ..\Client-summ\Network\systemfunctions_c.h ..\Client-summ\Results-widget\resultswidget.h ..\Client-summ\Settings-widget\idcheckbox.h ..\Client-summ\Settings-widget\idpushbutton.h ..\Client-summ\Settings-widget\idspinbox.h ..\Client-summ\Settings-widget\settingswindow.h ..\Client-summ\Chat\chatwidget.h ..\Client-summ\clientmanager.h  ..\Client-summ\Backend\audioplayer.cpp ..\Client-summ\Backend\camhelper.cpp ..\Client-summ\Backend\micphonehelper.cpp ..\Client-summ\Calls\LogsHandler.cpp ..\Client-summ\Calls\stack.cpp ..\Client-summ\EnterWindow\createwindow.cpp ..\Client-summ\EnterWindow\enterwindow.cpp ..\Client-summ\EnterWindow\mainmenu.cpp ..\Client-summ\Main-widget\samplerelative.cpp ..\Client-summ\Main-widget\showrole.cpp ..\Client-summ\Main-widget\uimanager.cpp ..\Client-summ\Main-widget\userbuttonpanel.cpp ..\Client-summ\Main-widget\videoplayer.cpp ..\Client-summ\Main-widget\videospace.cpp ..\Client-summ\Main-widget\notifyshower.cpp ..\Client-summ\Network\networker_c.cpp ..\Client-summ\Network\systemfunctions_c.cpp ..\Client-summ\Results-widget\resultswidget.cpp ..\Client-summ\Settings-widget\idcheckbox.cpp ..\Client-summ\Settings-widget\idpushbutton.cpp ..\Client-summ\Settings-widget\idspinbox.cpp ..\Client-summ\Settings-widget\settingswindow.cpp ..\Client-summ\Chat\chatwidget.cpp ..\Client-summ\clientmanager.cpp ..\Client-summ\main.cpp     
 
 clean: compiler_clean 
-	-$(DEL_FILE) audioplayer.o camhelper.o micphonehelper.o createwindow.o enterwindow.o mainmenu.o samplerelative.o showrole.o uimanager.o userbuttonpanel.o videoplayer.o videospace.o notifyshower.o networker_c.o systemfunctions_c.o resultswidget.o idcheckbox.o idpushbutton.o idspinbox.o settingswindow.o chatwidget.o clientmanager.o main.o qrc_imgs.o moc_audioplayer.o moc_camhelper.o moc_micphonehelper.o moc_createwindow.o moc_enterwindow.o moc_mainmenu.o moc_notifyshower.o moc_uimanager.o moc_userbuttonpanel.o moc_videoplayer.o moc_videospace.o moc_networker_c.o moc_resultswidget.o moc_idcheckbox.o moc_idpushbutton.o moc_idspinbox.o moc_settingswindow.o moc_chatwidget.o moc_clientmanager.o
+	-$(DEL_FILE) audioplayer.o camhelper.o micphonehelper.o LogsHandler.o stack.o createwindow.o enterwindow.o mainmenu.o samplerelative.o showrole.o uimanager.o userbuttonpanel.o videoplayer.o videospace.o notifyshower.o networker_c.o systemfunctions_c.o resultswidget.o idcheckbox.o idpushbutton.o idspinbox.o settingswindow.o chatwidget.o clientmanager.o main.o qrc_imgs.o moc_audioplayer.o moc_camhelper.o moc_micphonehelper.o moc_createwindow.o moc_enterwindow.o moc_mainmenu.o moc_notifyshower.o moc_uimanager.o moc_userbuttonpanel.o moc_videoplayer.o moc_videospace.o moc_networker_c.o moc_resultswidget.o moc_idcheckbox.o moc_idpushbutton.o moc_idspinbox.o moc_settingswindow.o moc_chatwidget.o moc_clientmanager.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -744,6 +753,10 @@ moc_audioplayer.cpp: ../Client-summ/Backend/audioplayer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/QBuffer \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/qbuffer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QAudioFormat \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/alexe/Documents/ClientSumm/build-ForLibsTest-Desktop_Qt_5_14_1_MinGW_64_bit-Release/moc_predefs.h -IC:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/alexe/Documents/ClientSumm/Client-summ -IC:/Qt/5.14.1/mingw73_64/include -IC:/Qt/5.14.1/mingw73_64/include/QtMultimediaWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtMultimedia -IC:/Qt/5.14.1/mingw73_64/include/QtWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtGui -IC:/Qt/5.14.1/mingw73_64/include/QtANGLE -IC:/Qt/5.14.1/mingw73_64/include/QtNetwork -IC:/Qt/5.14.1/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Client-summ\Backend\audioplayer.h -o moc_audioplayer.cpp
@@ -1466,6 +1479,10 @@ moc_notifyshower.cpp: ../Client-summ/Main-widget/notifyshower.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/QTimer \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/qtimer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/qbasictimer.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/alexe/Documents/ClientSumm/build-ForLibsTest-Desktop_Qt_5_14_1_MinGW_64_bit-Release/moc_predefs.h -IC:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/alexe/Documents/ClientSumm/Client-summ -IC:/Qt/5.14.1/mingw73_64/include -IC:/Qt/5.14.1/mingw73_64/include/QtMultimediaWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtMultimedia -IC:/Qt/5.14.1/mingw73_64/include/QtWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtGui -IC:/Qt/5.14.1/mingw73_64/include/QtANGLE -IC:/Qt/5.14.1/mingw73_64/include/QtNetwork -IC:/Qt/5.14.1/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Client-summ\Main-widget\notifyshower.h -o moc_notifyshower.cpp
@@ -1612,6 +1629,10 @@ moc_uimanager.cpp: ../Client-summ/Main-widget/uimanager.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Backend/audioplayer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QAudioOutput \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qaudiooutput.h \
@@ -1632,7 +1653,6 @@ moc_uimanager.cpp: ../Client-summ/Main-widget/uimanager.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qpen.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Main-widget/samplerelative.h \
 		../Client-summ/Main-widget/videospace.h \
 		../Client-summ/Main-widget/userbuttonpanel.h \
@@ -1755,6 +1775,10 @@ moc_userbuttonpanel.cpp: ../Client-summ/Main-widget/userbuttonpanel.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qicon.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QLabel \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qlabel.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/alexe/Documents/ClientSumm/build-ForLibsTest-Desktop_Qt_5_14_1_MinGW_64_bit-Release/moc_predefs.h -IC:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/alexe/Documents/ClientSumm/Client-summ -IC:/Qt/5.14.1/mingw73_64/include -IC:/Qt/5.14.1/mingw73_64/include/QtMultimediaWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtMultimedia -IC:/Qt/5.14.1/mingw73_64/include/QtWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtGui -IC:/Qt/5.14.1/mingw73_64/include/QtANGLE -IC:/Qt/5.14.1/mingw73_64/include/QtNetwork -IC:/Qt/5.14.1/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Client-summ\Main-widget\userbuttonpanel.h -o moc_userbuttonpanel.cpp
@@ -1871,6 +1895,10 @@ moc_videoplayer.cpp: ../Client-summ/Main-widget/videoplayer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qicon.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/alexe/Documents/ClientSumm/build-ForLibsTest-Desktop_Qt_5_14_1_MinGW_64_bit-Release/moc_predefs.h -IC:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/alexe/Documents/ClientSumm/Client-summ -IC:/Qt/5.14.1/mingw73_64/include -IC:/Qt/5.14.1/mingw73_64/include/QtMultimediaWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtMultimedia -IC:/Qt/5.14.1/mingw73_64/include/QtWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtGui -IC:/Qt/5.14.1/mingw73_64/include/QtANGLE -IC:/Qt/5.14.1/mingw73_64/include/QtNetwork -IC:/Qt/5.14.1/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Client-summ\Main-widget\videoplayer.h -o moc_videoplayer.cpp
@@ -1988,6 +2016,10 @@ moc_videospace.cpp: ../Client-summ/Main-widget/videospace.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qicon.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/alexe/Documents/ClientSumm/build-ForLibsTest-Desktop_Qt_5_14_1_MinGW_64_bit-Release/moc_predefs.h -IC:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/alexe/Documents/ClientSumm/Client-summ -IC:/Qt/5.14.1/mingw73_64/include -IC:/Qt/5.14.1/mingw73_64/include/QtMultimediaWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtMultimedia -IC:/Qt/5.14.1/mingw73_64/include/QtWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtGui -IC:/Qt/5.14.1/mingw73_64/include/QtANGLE -IC:/Qt/5.14.1/mingw73_64/include/QtNetwork -IC:/Qt/5.14.1/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Client-summ\Main-widget\videospace.h -o moc_videospace.cpp
@@ -2190,6 +2222,10 @@ moc_resultswidget.cpp: ../Client-summ/Results-widget/resultswidget.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QSpinBox \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qspinbox.h \
 		../Client-summ/Network/defines_c.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/alexe/Documents/ClientSumm/build-ForLibsTest-Desktop_Qt_5_14_1_MinGW_64_bit-Release/moc_predefs.h -IC:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/alexe/Documents/ClientSumm/Client-summ -IC:/Qt/5.14.1/mingw73_64/include -IC:/Qt/5.14.1/mingw73_64/include/QtMultimediaWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtMultimedia -IC:/Qt/5.14.1/mingw73_64/include/QtWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtGui -IC:/Qt/5.14.1/mingw73_64/include/QtANGLE -IC:/Qt/5.14.1/mingw73_64/include/QtNetwork -IC:/Qt/5.14.1/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Client-summ\Results-widget\resultswidget.h -o moc_resultswidget.cpp
@@ -2677,6 +2713,10 @@ moc_settingswindow.cpp: ../Client-summ/Settings-widget/settingswindow.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qcheckbox.h \
 		../Client-summ/Settings-widget/idpushbutton.h \
 		../Client-summ/Settings-widget/idspinbox.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/alexe/Documents/ClientSumm/build-ForLibsTest-Desktop_Qt_5_14_1_MinGW_64_bit-Release/moc_predefs.h -IC:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/alexe/Documents/ClientSumm/Client-summ -IC:/Qt/5.14.1/mingw73_64/include -IC:/Qt/5.14.1/mingw73_64/include/QtMultimediaWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtMultimedia -IC:/Qt/5.14.1/mingw73_64/include/QtWidgets -IC:/Qt/5.14.1/mingw73_64/include/QtGui -IC:/Qt/5.14.1/mingw73_64/include/QtANGLE -IC:/Qt/5.14.1/mingw73_64/include/QtNetwork -IC:/Qt/5.14.1/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Client-summ\Settings-widget\settingswindow.h -o moc_settingswindow.cpp
@@ -2952,6 +2992,10 @@ moc_clientmanager.cpp: ../Client-summ/clientmanager.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Backend/audioplayer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QAudioOutput \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qaudiooutput.h \
@@ -2971,7 +3015,6 @@ moc_clientmanager.cpp: ../Client-summ/clientmanager.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qpen.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Main-widget/samplerelative.h \
 		../Client-summ/Main-widget/videospace.h \
 		../Client-summ/Main-widget/userbuttonpanel.h \
@@ -3121,7 +3164,11 @@ audioplayer.o: ../Client-summ/Backend/audioplayer.cpp ../Client-summ/Backend/aud
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qaudiodeviceinfo.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/QBuffer \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/qbuffer.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QAudioFormat
+		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QAudioFormat \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o audioplayer.o ..\Client-summ\Backend\audioplayer.cpp
 
 camhelper.o: ../Client-summ/Backend/camhelper.cpp ../Client-summ/Backend/camhelper.h \
@@ -3305,6 +3352,13 @@ micphonehelper.o: ../Client-summ/Backend/micphonehelper.cpp ../Client-summ/Backe
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/QBuffer \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/qbuffer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o micphonehelper.o ..\Client-summ\Backend\micphonehelper.cpp
+
+LogsHandler.o: ../Client-summ/Calls/LogsHandler.cpp ../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LogsHandler.o ..\Client-summ\Calls\LogsHandler.cpp
+
+stack.o: ../Client-summ/Calls/stack.cpp ../Client-summ/Calls/stack.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o stack.o ..\Client-summ\Calls\stack.cpp
 
 createwindow.o: ../Client-summ/EnterWindow/createwindow.cpp ../Client-summ/EnterWindow/createwindow.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QDialog \
@@ -3833,7 +3887,11 @@ samplerelative.o: ../Client-summ/Main-widget/samplerelative.cpp ../Client-summ/M
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextformat.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtGui/qpen.h
+		C:/Qt/5.14.1/mingw73_64/include/QtGui/qpen.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o samplerelative.o ..\Client-summ\Main-widget\samplerelative.cpp
 
 showrole.o: ../Client-summ/Main-widget/showrole.cpp ../Client-summ/Main-widget/showrole.h \
@@ -3942,7 +4000,11 @@ showrole.o: ../Client-summ/Main-widget/showrole.cpp ../Client-summ/Main-widget/s
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/qfile.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qvector2d.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtouchdevice.h
+		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtouchdevice.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o showrole.o ..\Client-summ\Main-widget\showrole.cpp
 
 uimanager.o: ../Client-summ/Main-widget/uimanager.cpp ../Client-summ/Main-widget/uimanager.h \
@@ -4087,6 +4149,10 @@ uimanager.o: ../Client-summ/Main-widget/uimanager.cpp ../Client-summ/Main-widget
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Backend/audioplayer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QAudioOutput \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qaudiooutput.h \
@@ -4107,7 +4173,6 @@ uimanager.o: ../Client-summ/Main-widget/uimanager.cpp ../Client-summ/Main-widget
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qpen.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Main-widget/samplerelative.h \
 		../Client-summ/Main-widget/videospace.h \
 		../Client-summ/Main-widget/userbuttonpanel.h \
@@ -4228,6 +4293,10 @@ userbuttonpanel.o: ../Client-summ/Main-widget/userbuttonpanel.cpp ../Client-summ
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qicon.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QLabel \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qlabel.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Network/defines_c.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userbuttonpanel.o ..\Client-summ\Main-widget\userbuttonpanel.cpp
 
@@ -4343,6 +4412,10 @@ videoplayer.o: ../Client-summ/Main-widget/videoplayer.cpp ../Client-summ/Main-wi
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qicon.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qdialog.h
@@ -4460,7 +4533,11 @@ videospace.o: ../Client-summ/Main-widget/videospace.cpp ../Client-summ/Main-widg
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtGui/qicon.h
+		C:/Qt/5.14.1/mingw73_64/include/QtGui/qicon.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o videospace.o ..\Client-summ\Main-widget\videospace.cpp
 
 notifyshower.o: ../Client-summ/Main-widget/notifyshower.cpp ../Client-summ/Main-widget/notifyshower.h \
@@ -4573,7 +4650,11 @@ notifyshower.o: ../Client-summ/Main-widget/notifyshower.cpp ../Client-summ/Main-
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtouchdevice.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/QTimer \
 		C:/Qt/5.14.1/mingw73_64/include/QtCore/qtimer.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtCore/qbasictimer.h
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/qbasictimer.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o notifyshower.o ..\Client-summ\Main-widget\notifyshower.cpp
 
 networker_c.o: ../Client-summ/Network/networker_c.cpp ../Client-summ/Network/include_c.h \
@@ -4777,7 +4858,11 @@ resultswidget.o: ../Client-summ/Results-widget/resultswidget.cpp ../Client-summ/
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qlabel.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QSpinBox \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qspinbox.h \
-		../Client-summ/Network/defines_c.h
+		../Client-summ/Network/defines_c.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o resultswidget.o ..\Client-summ\Results-widget\resultswidget.cpp
 
 idcheckbox.o: ../Client-summ/Settings-widget/idcheckbox.cpp ../Client-summ/Settings-widget/idcheckbox.h \
@@ -5256,7 +5341,11 @@ settingswindow.o: ../Client-summ/Settings-widget/settingswindow.cpp ../Client-su
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QCheckBox \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qcheckbox.h \
 		../Client-summ/Settings-widget/idpushbutton.h \
-		../Client-summ/Settings-widget/idspinbox.h
+		../Client-summ/Settings-widget/idspinbox.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settingswindow.o ..\Client-summ\Settings-widget\settingswindow.cpp
 
 chatwidget.o: ../Client-summ/Chat/chatwidget.cpp ../Client-summ/Chat/chatwidget.h \
@@ -5528,6 +5617,10 @@ clientmanager.o: ../Client-summ/clientmanager.cpp C:/Qt/5.14.1/mingw73_64/includ
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Backend/audioplayer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QAudioOutput \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qaudiooutput.h \
@@ -5547,7 +5640,6 @@ clientmanager.o: ../Client-summ/clientmanager.cpp C:/Qt/5.14.1/mingw73_64/includ
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qpen.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Main-widget/samplerelative.h \
 		../Client-summ/Main-widget/videospace.h \
 		../Client-summ/Main-widget/userbuttonpanel.h \
@@ -5774,6 +5866,10 @@ main.o: ../Client-summ/main.cpp ../Client-summ/clientmanager.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../Client-summ/Calls/SuperList.h \
+		../Client-summ/Calls/LogsHandler.h \
+		../Client-summ/Calls/stack.h \
+		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Backend/audioplayer.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QAudioOutput \
 		C:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qaudiooutput.h \
@@ -5793,7 +5889,6 @@ main.o: ../Client-summ/main.cpp ../Client-summ/clientmanager.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.14.1/mingw73_64/include/QtGui/qpen.h \
-		C:/Qt/5.14.1/mingw73_64/include/QtCore/QList \
 		../Client-summ/Main-widget/samplerelative.h \
 		../Client-summ/Main-widget/videospace.h \
 		../Client-summ/Main-widget/userbuttonpanel.h \
