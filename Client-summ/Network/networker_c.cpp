@@ -143,6 +143,8 @@ namespace Mafia {
             }
             return 0;
         } else{
+            LOG << "AAAAAAAAAAAAAAAAA big message!!!!!!!" << std::endl;
+            std::cout << "AAAAAAAAAAAAAAAAA big message!!!!!!!" << std::endl;
             return -1;
         }
 
