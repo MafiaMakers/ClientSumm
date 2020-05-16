@@ -236,9 +236,9 @@ void ClientManager::vote(std::string voteType){
     std::string trueString = std::string(voteType.c_str(), voteType.length() - 1);
     std::cout << "vote - " << trueString << std::endl;
     int index = *(int*)(char*)voteType.c_str();
-    if(index > -1 && index < muchPlayers){
+    if(index > -1 && index < muchPlayers && canVote){
         call_void(mafUi->startVoting(index+1));
-    } else{
+    } else if(canVote){
         call_void(QString action = (trueString == "kill" ? "Убить"
                        : (trueString == "check" ? "Проверить"
                        : (trueString == "move for voting" ? "Выдвинуть"
@@ -319,6 +319,9 @@ void ClientManager::throwError(std::string err) {
 void ClientManager::changeStage(std::string nstage) {
     int nst = int(nstage.data()[0]);
     std::cout << "stage - " << nst << std::endl;
+    if(curStage != nst) {
+        canVote = true;
+    }
     curStage = nst;
     call_void(mafUi->setStage(curStage));
     if(curStage == WAITING_STAGE && meAdmin){
