@@ -40,6 +40,7 @@ void LogsHandler::add(std::string data, std::string key) {
 	while (s != 0) {
 		if (s->keyEqual(key)) {
 			s->add(data);
+            //outputLog << data << std::endl;
 			return;
 		}
 		s = s->getNext();
@@ -52,7 +53,8 @@ void LogsHandler::remove(std::string thread_id) {
 	stack* s = first;
 	while (s != 0) {
 		if (s->keyEqual(thread_id)) {
-			s->peak();
+            //outputLog << s->peak().value() << std::endl;;
+            s->peak();
 			return;
 		}
 		s = s->getNext();
@@ -65,7 +67,7 @@ void LogsHandler::showThread(std::string thread_id) {
 		if (s->keyEqual(thread_id)) {
 			stackElem se = s->peak();
 			while (se.getPrev() != 0 || se.value() != "") {
-                outputLog << se.value() << std::endl;
+                //outputLog << se.value() << std::endl;
 				se = s->peak();
 			}
 			return;
