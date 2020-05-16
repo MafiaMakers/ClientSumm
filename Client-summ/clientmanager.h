@@ -64,6 +64,7 @@ private:
     bool canSpeak = true;
     bool camActive = true;
     bool micActive = true;
+    bool canVote = true;
     QString curName;
     QTextStream *out;
     UIManager *mafUi;

@@ -30,6 +30,7 @@ private:
     SuperList<double> myDimens = SuperList<double>();
     QSize parBounds = QSize();
     int delay = 2500;
+    int curId = 0;
     void showMessage();
     SuperList<showingMessage> queue = SuperList<showingMessage>();
 
