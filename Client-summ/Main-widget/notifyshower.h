@@ -7,6 +7,12 @@
 #include "Calls/SuperList.h"
 using namespace SuperFunctions;
 namespace Mafia {
+
+struct showingMessage {
+    int type;
+    QString content;
+};
+
 class NotifyShower : public QLabel
 {
     Q_OBJECT
@@ -23,9 +29,9 @@ public:
 private:
     SuperList<double> myDimens = SuperList<double>();
     QSize parBounds = QSize();
-    QString msg = "";
-    int delay = 2000;
+    int delay = 2500;
     void showMessage();
+    SuperList<showingMessage> queue = SuperList<showingMessage>();
 
 private slots:
     void closeMessage();

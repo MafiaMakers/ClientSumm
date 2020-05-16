@@ -387,15 +387,16 @@ void ClientManager::checkAdmin(std::string content) {
 }
 
 void ClientManager::enableSpeaking(std::string status) {
-    canSpeak = *(bool*)status.data();
+    bool newSpeak = *(bool*)status.data();
     std::cout << "Now you " << canSpeak << " speak" << std::endl;
-    if(canSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE)){
+    if(newSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE) && !canSpeak){
         call_void(mafUi->startSpeak());
-    } else if(canSpeak && (curStage == WAITING_STAGE || curStage == KILLING_STAGE)) {
+    } else if(newSpeak && (curStage == WAITING_STAGE || curStage == KILLING_STAGE) && !canSpeak) {
         call_void(mafUi->freeSpeak());
-    }else if(!canSpeak) {
+    }else if(!newSpeak && canSpeak) {
         call_void(mafUi->stopSpeak());
     }
+    canSpeak = newSpeak;
 }
 
 void ClientManager::stopSpeak(){
