@@ -127,20 +127,25 @@ namespace Mafia {
 
     //sends message with length mesLen and id messageId to client. Returns 0 if succes, error id if error
     int NetWorker_c::sendMessage(sockaddr_in client, short messageId, char* message, int mesLen){
-        char resMes[BUF_SIZE];
-        zeroMemSys(resMes, BUF_SIZE);
-        int err = _wrapMessage(message, mesLen, messageId, resMes);
-        if(err != 0){
-            return(err);
-        }
-        try{
+        if(mesLen < BUF_SIZE - 7){
+            char resMes[BUF_SIZE];
+            zeroMemSys(resMes, BUF_SIZE);
+            int err = _wrapMessage(message, mesLen, messageId, resMes);
+            if(err != 0){
+                return(err);
+            }
+            try{
 
-            int e = sendto(sock, resMes, mesLen + 7, MSG_DONTROUTE, (sockaddr *)&client, sizeof(client));
-            return(e);
-        } catch(std::exception e){
+                int e = sendto(sock, resMes, mesLen + 7, MSG_DONTROUTE, (sockaddr *)&client, sizeof(client));
+                return(e);
+            } catch(std::exception e){
 
+            }
+            return 0;
+        } else{
+            return -1;
         }
-        return 0;
+
     }
     int NetWorker_c::getRoom(){
         return (int)roomId;
