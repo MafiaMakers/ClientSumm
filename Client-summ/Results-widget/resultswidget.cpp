@@ -16,7 +16,7 @@ ResultsWindow::ResultsWindow(int resState, SuperList<int> rolesIndexes, SuperLis
     SuperList<QString> rolesNames;
     call(SuperList<QString>() << "зритель" << "мирный" << "мафия" << "комиссар" << "доктор", &rolesNames);
     for(int i = 0; i < names.length(); i++){
-        call_void(std::cout << rolesIndexes[i] + 1 << std::endl);
+        call_void(LOG << rolesIndexes[i] + 1 << std::endl);
         QLabel* label;
         call((new QLabel(names[i] + " - " + rolesNames[rolesIndexes[i] + 1], this)), &label);
         label->setStyleSheet("font-size: 16px;");

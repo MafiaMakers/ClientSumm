@@ -118,7 +118,10 @@ void Mafia::VideoPlayer::startVoting(QString action)
 void Mafia::VideoPlayer::setVotesCount(int votes)
 {
     votesForMe = votes;
-    std::cout << "Now player's " << myIndex << " votes are " << votes << std::endl;
+    if(votes == 0){
+        raise_logs();
+    }
+    LOG << "Now player's " << myIndex << " votes are " << votes << std::endl;
     QString str;
     if (votes == -1)
         str = "Не выставлен";
@@ -148,7 +151,7 @@ bool Mafia::VideoPlayer::isAlive(){
 
 void Mafia::VideoPlayer::setVoteOn(int player)
 {
-    std::cout << "Player " << myIndex << " voted for " << player << std::endl;
+    LOG << "Player " << myIndex << " voted for " << player << std::endl;
     call_void(textVoteOn->setText("Проголосовал за " + QString::number(player)));
     call_void(textVoteOn->show());
 }
@@ -176,6 +179,11 @@ void Mafia::VideoPlayer::killPlayer(bool is_died)
         textVotes->hide();
         textVoteOn->hide();
     }
+}
+
+void Mafia::VideoPlayer::hideButton(){
+    voteButton->hide();
+    textVotes->show();
 }
 
 void Mafia::VideoPlayer::voteSlot()

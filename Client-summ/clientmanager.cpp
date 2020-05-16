@@ -197,7 +197,7 @@ void ClientManager::getMessage(int id, char* data, int size) {
         break;
     }
     default:
-        std::cout << content << " error" << std::endl;
+        LOG << content << " error" << std::endl;
         call_void(throwError("Messge id - "+QString::number(id).toStdString()+"; content - "+content));
         break;
     }
@@ -211,7 +211,7 @@ void ClientManager::startGame(){
     SuperList<QString> avroles;
     call(SuperList<QString>() << "Не выбрано" << "Мирный" << "Мафия" << "Шериф" << "Доктор", &avroles);
     //QList<QString> avplayers = QList<QString>() << "Иван Гроозный" << "Игорь молодетс" << "Петр Первый топ молодец страну с колен поднял" << "Промлг игрок" << "Денис петух" << "228Я" << "ЯМыМафия" << "А я мирный!";
-    std::cout << "done!!!!!!!!!!!!!" << std::endl;
+    LOG << "done!!!!!!!!!!!!!" << std::endl;
     call_void(setWind = new SettingsWindow(avroles, playersNames));
     connect(setWind, &SettingsWindow::applySignal, this, &ClientManager::rolesSettingsSlot);
     call_void(setWind->show());
@@ -225,17 +225,18 @@ void ClientManager::goIntoRoom(){
 void ClientManager::changedName(char *data, int size){
     int index = (int)data[0];
     char* name = data+1;
-    call_void(std::cout << "bef - " << playersNames.length() << " " << index << std::endl);
+    call_void(LOG << "bef - " << playersNames.length() << " " << index << std::endl);
     call_void(playersNames[index] = QString::fromStdString(std::string(name, size - 1)));
     //mafUi->setPlayersCount(muchPlayers, playersNames);
     call_void(mafUi->setPlayersName(playersNames[index], index));
-    call_void(std::cout << index << " changed name to " << std::string(name, size - 1) << std::endl);
+    call_void(LOG << index << " changed name to " << std::string(name, size - 1) << std::endl);
 }
 
 void ClientManager::vote(std::string voteType){
     std::string trueString = std::string(voteType.c_str(), voteType.length() - 1);
-    std::cout << "vote - " << trueString << std::endl;
+
     int index = *(int*)(char*)voteType.c_str();
+        LOG << "vote - " << index << std::endl;
     if(index > -1 && index < muchPlayers){
         call_void(mafUi->startVoting(index+1));
     } else{
@@ -248,40 +249,40 @@ void ClientManager::vote(std::string voteType){
 }
 
 void ClientManager::processResults(int* resState, int size){
-    call_void(std::cout << "results processing - " << size - 1 << " " << playersNames.length() << std::endl);
-    call_void(std::cout << resState[0] << " " << resState[1] << std::endl);
+    call_void(LOG << "results processing - " << size - 1 << " " << playersNames.length() << std::endl);
+    call_void(LOG << resState[0] << " " << resState[1] << std::endl);
     SuperList<int> rolesRevealed = SuperList<int>();
     for(int i = 1; i < size; i++){
-        call_void(std::cout << resState[1] << std::endl);
+        call_void(LOG << resState[1] << std::endl);
         call_void(rolesRevealed.append(resState[i]));
     }
     call_void(ResultsWindow* rw = new ResultsWindow(resState[0], rolesRevealed, playersNames));
-    std::cout << "window created" << std::endl;
+    LOG << "window created" << std::endl;
     call_void(rw->show());
     switch (resState[0]) {
     case -1:{
-        std::cout << "Mafia wins!" << std::endl;
+        LOG << "Mafia wins!" << std::endl;
         break;
     }
     case 1:{
-        std::cout << "Civilians wins!" << std::endl;
+        LOG << "Civilians wins!" << std::endl;
         break;
     }
     default:{
-        std::cout << "results state error!" << std::endl;
+        LOG << "results state error!" << std::endl;
         break;
     }
     }
-    std::cout << "results processing successfully finished" << std::endl;
+    LOG << "results processing successfully finished" << std::endl;
 }
 
 void ClientManager::voted(int index){
     call_void(net->sendMessage(*net->getAddrIn(), VOTE_MESSAGE_ID, (char*)&index, 4));
-    std::cout << "Me voted for " << index << std::endl;
+    LOG << "Me voted for " << index << std::endl;
 }
 
 void ClientManager::setClientsInfo(std::string info){
-    std::cout << "setClientsInfo" << std::endl;
+    LOG << "setClientsInfo" << std::endl;
     qWarning("start");
     call_void(bool firstStart = playersNames.length() == 0);
     call_void(muchPlayers = (int)info[0]);
@@ -295,16 +296,16 @@ void ClientManager::setClientsInfo(std::string info){
             tmp += info[i];
         }
     }
-    call_void(std::cout << muchPlayers << " - " << playersNames.length() << std::endl);
-    std::cout << "setting..." << std::endl;
+    call_void(LOG << muchPlayers << " - " << playersNames.length() << std::endl);
+    LOG << "setting..." << std::endl;
     if(muchPlayers > 0){
-        std::cout << "do!!!" << std::endl;
+        LOG << "do!!!" << std::endl;
             call_void(mafUi->setPlayersCount(muchPlayers, playersNames));
     }
-    std::cout << "ok" << std::endl;
+    LOG << "ok" << std::endl;
 
     qWarning("end");
-    std::cout << "qwertyuiop[" << std::endl;
+    LOG << "qwertyuiop[" << std::endl;
 
 }
 
@@ -318,7 +319,7 @@ void ClientManager::throwError(std::string err) {
 
 void ClientManager::changeStage(std::string nstage) {
     int nst = int(nstage.data()[0]);
-    std::cout << "stage - " << nst << std::endl;
+    LOG << "stage - " << nst << std::endl;
     curStage = nst;
     call_void(mafUi->setStage(curStage));
     if(curStage == WAITING_STAGE && meAdmin){
@@ -345,7 +346,7 @@ void ClientManager::processVideo(char* data, int size){
 
 void ClientManager::setRole(std::string role) {
     curRole = (int)role[0];
-    std::cout << curRole << " - role" << std::endl;
+    LOG << curRole << " - role" << std::endl;
     call_void(mafUi->updateRole(curRole));
 }
 
@@ -353,7 +354,7 @@ void ClientManager::voteResult(std::string res) {
 
     const char* data = res.data();
     int idx = *(int*)(data + 1);
-    std::cout << idx << " dead" << std::endl;
+    LOG << idx << " dead" << std::endl;
     bool flag = *(bool*)data;
     call_void(mafUi->dayKill(idx));
     // notify about results
@@ -361,7 +362,7 @@ void ClientManager::voteResult(std::string res) {
 }
 
 void ClientManager::setupOthers(std::string count) {
-    std::cout << "others" << std::endl;
+    LOG << "others" << std::endl;
     if(menu->isVisible()) {
         call_void(menu->close());
     }
@@ -388,7 +389,7 @@ void ClientManager::checkAdmin(std::string content) {
 
 void ClientManager::enableSpeaking(std::string status) {
     bool newSpeak = *(bool*)status.data();
-    std::cout << "Now you " << canSpeak << " speak" << std::endl;
+    LOG << "Now you " << canSpeak << " speak" << std::endl;
     if(newSpeak && (curStage == ARGUMENT_STAGE || curStage == DEATH_STAGE) && !canSpeak){
         call_void(mafUi->startSpeak());
     } else if(newSpeak && (curStage == WAITING_STAGE || curStage == KILLING_STAGE) && !canSpeak) {
@@ -425,17 +426,17 @@ void ClientManager::sendVideo() {
 }
 
 void ClientManager::addPlayer(std::string player) {
-    std::cout << "add!" << std::endl;
+    LOG << "add!" << std::endl;
     muchPlayers += 1;
     call_void(aplayer->addPlayer());
     call_void(playersNames.append(QString::fromStdString(player)));
     call_void(mafUi->setPlayersCount(muchPlayers, playersNames));
-    std::cout << "well done" << std::endl;
+    LOG << "well done" << std::endl;
 }
 
 void ClientManager::sheriffResult(std::string content) {
     bool res = *(bool*)(&content.data()[0]);
-    std::cout << "sher" << std::endl;
+    LOG << "sher" << std::endl;
     call_void(mafUi->sheriffResult(0, res));
     // notify about sheriff vote
 }
@@ -486,7 +487,7 @@ void ClientManager::addVote(std::string vote) {
     if(curStage == ARGUMENT_STAGE){
         call_void(mafUi->nominate(voted));
     }
-    std::cout << "Made vote got" << std::endl;
+    LOG << "Made vote got " << voter << " " << voted << std::endl;
     call_void(mafUi->addVote(voter, voted));
    // mafUi->updateVotings(votings);
 }
@@ -507,7 +508,7 @@ void ClientManager::rolesSettingsSlot(SuperList<int> rolesToPlay, SuperList<int>
     int *rolesToSend = new int[MAX_ROLE_ID*4];
     for(int i = 1; i < rolesToPlay.length(); i++) {
         call_void(rolesToSend[i-1] = rolesToPlay[i]);
-        call_void(std::cout << i << " " << rolesToPlay[i] << std::endl);
+        call_void(LOG << i << " " << rolesToPlay[i] << std::endl);
     }
     call_void(net->sendMessage(*net->getAddrIn(), DONT_PLAY_MESSAGE_ID, (char*)dontPlaySend, (muchPlayers-playersToPlay.length())*4));
     call_void(net->sendMessage(*net->getAddrIn(), SETUP_MESSAGE_ID, (char*)rolesToSend, MAX_ROLE_ID*4));
@@ -522,7 +523,7 @@ void ClientManager::nextStageSlot() {
 void ClientManager::startGameSlot() {
     qWarning("beda");
     call_void(net->sendMessage(*net->getAddrIn(), NEXT_STAGE_MESSAGE_ID, (char*)"a", 2));
-    std::cout << "sent to server!" << std::endl;
+    LOG << "sent to server!" << std::endl;
      // сюда надо еще список игроков и доступных ролей передавать, пока что это делается в конструкторе
 
 }

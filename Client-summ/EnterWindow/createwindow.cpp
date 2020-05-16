@@ -1,7 +1,7 @@
 #include "createwindow.h"
 #include <iostream>
 using namespace Mafia;
-
+#include "Calls/LogsHandler.h"
 MyCreateWindow::MyCreateWindow(QWidget *parent): QDialog(parent)
 {
     this->resize(window_width, window_height);
@@ -73,7 +73,7 @@ void MyCreateWindow::setup(QString key, int roomId){
 }
 
 void MyCreateWindow::OkButton() {
-    std::cout << Name->text().toStdString() << std::endl;
+    LOG << Name->text().toStdString() << std::endl;
     emit this->sendName(Name->text());
     this->close();
 }

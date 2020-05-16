@@ -197,7 +197,7 @@ void Mafia::UserButtonPanel::microChanged()
 
 void Mafia::UserButtonPanel::startGameSlot()
 {
-    std::cout << "QWERTYU" << std::endl;
+    LOG << "QWERTYU" << std::endl;
     modeGame = 1;
     call_void(startButton->close());
     call_void(emit startGame());

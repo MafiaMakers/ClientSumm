@@ -30,5 +30,5 @@ void AudioPlayer::addPlayer(){
     call_void(((QAudioOutput*)outAudio[idx])->setVolume(1.0));
     call_void(((QAudioOutput*)outAudio[idx])->setBufferSize(30000));
     call_void(player.append(((QAudioOutput*)outAudio[idx])->start()));
-    std::cout << "added player" << std::endl;
+    LOG << "added player" << std::endl;
 }

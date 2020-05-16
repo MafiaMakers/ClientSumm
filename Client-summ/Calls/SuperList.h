@@ -214,7 +214,7 @@ namespace SuperFunctions {
                 }
                 cur = cur->next;
             }
-            std::cout << "error! Not such object in collection!" << std::endl;
+            LOG << "error! Not such object in collection!" << std::endl;
             raise_logs();
         }
 
@@ -245,7 +245,7 @@ namespace SuperFunctions {
 				return PointerVal<T>(&(last->value));
 			}
 			else {
-				std::cout << "Empty list error. Trying to get last element in null list" << std::endl;
+                LOG << "Empty list error. Trying to get last element in null list" << std::endl;
 				raise_logs();
 				throw - 1;
 				return PointerVal<T>();
@@ -267,7 +267,7 @@ namespace SuperFunctions {
 				return ne;
 			}
 			else {
-				std::cout << "List index out of range!" << std::endl << "Size is " << size << " but " << index << " is given" << std::endl;
+                LOG << "List index out of range!" << std::endl << "Size is " << size << " but " << index << " is given" << std::endl;
 				raise_logs();
 				throw - 1;
 				return 0;

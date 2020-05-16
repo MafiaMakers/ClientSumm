@@ -2,6 +2,7 @@
 #define LOGS_HANDLER
 #include <thread>
 #include <sstream>
+#include <fstream>
 #include "stack.h"
 namespace Logs {
 	class LogsHandler
@@ -15,6 +16,8 @@ namespace Logs {
 		void showThread(std::string thread_id);
 
 		void showAll();
+
+        std::fstream outputLog;
 	private:
 		void createThread(std::string thread_id);
 
@@ -41,4 +44,5 @@ namespace Logs {
 							func;\
 							Logs::lhs->remove(Logs::getKey())
 
+#define LOG Logs::lhs->outputLog
 #endif

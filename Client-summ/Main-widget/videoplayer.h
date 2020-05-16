@@ -32,6 +32,7 @@ public:
     bool isAlive();
     void setName(QString name);
     void hide();
+    void hideButton();
 signals:
     void vote(int myIdx);
 

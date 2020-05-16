@@ -39,6 +39,7 @@ void UIManager::stopSpeakSlot(){
 }
 
 void UIManager::stopSpeak(){
+    LOG << "stopSpeak" << std::endl;
     call_void(camsSpace->endVotingForPlayer());
     call_void(bottomBox->hideSpeakOptions());
     call_void(notifies->stopSpeak());
@@ -118,6 +119,7 @@ void UIManager::freeSpeak() {
 }
 
 void UIManager::stopVoting(){
+    LOG << "stopVoting" << std::endl;
     call_void(camsSpace->endVotingForPlayer());
 }
 

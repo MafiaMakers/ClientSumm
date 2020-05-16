@@ -2,7 +2,7 @@
 #include "include_c.h"
 #include "networker_c.h"
 #include "systemfunctions_c.h"
-
+#include "Calls/LogsHandler.h"
 namespace Mafia {
     NetWorker_c::NetWorker_c(){
         _initSocket();
@@ -36,10 +36,10 @@ namespace Mafia {
 
     int NetWorker_c::leave(){
         if(sendMessage(serverAddr, EXIT_ROOM_MESSAGE_ID, (char*)"EXIT!", 6) == -1){
-            std::cout << WSAGetLastError() << std::endl;
+            LOG << WSAGetLastError() << std::endl;
 			return WSAGetLastError();
         }
-		std::cout << (sock, SD_SEND) << std::endl;
+        LOG << (sock, SD_SEND) << std::endl;
 		return 0;
     }
 
@@ -89,7 +89,7 @@ namespace Mafia {
                     return(err);
                 }
                 //if error was in control sum - it means that not all message received, then ask for resending
-                std::cout << "CONTROL SUM!!!" << std::endl;
+                LOG << "CONTROL SUM!!!" << std::endl;
                 char resendMes[2];
                 zeroMemSys(resendMes, 2);
                 resendMes[0] = ((char*)&mId)[0];
@@ -115,7 +115,7 @@ namespace Mafia {
 		while (true) {
 			int err = receiveMessage();
 			if (err != 0) {
-				std::cout << err << std::endl;
+                LOG << err << std::endl;
 			}
 		}
 	}
@@ -177,7 +177,7 @@ namespace Mafia {
             int* a = (int*)message;
             roomId = *a;
             connected = true;
-            std::cout << "RoomId - "     << (int)roomId << std::endl;
+            LOG << "RoomId - "     << (int)roomId << std::endl;
             emit gotToRoom(roomId);
             break;
         }
@@ -203,14 +203,14 @@ namespace Mafia {
  }
 
 	void NetWorker_c::_nextStage() {
-		std::cout << "Write anything to go to next stage" << std::endl;
+        LOG << "Write anything to go to next stage" << std::endl;
 		std::string a;
 		std::cin >> a;
 		sendMessage(serverAddr, NEXT_STAGE_MESSAGE_ID, (char*)"a", 1);
 	}
 
 	void NetWorker_c::_inputVote(char* message) {
-		std::cout << "Choose who to " << message << std::endl;
+        LOG << "Choose who to " << message << std::endl;
 		int answer;
 		std::cin >> answer;
 		sendMessage(serverAddr, VOTE_MESSAGE_ID, (char*)& answer, 4);
@@ -221,7 +221,7 @@ namespace Mafia {
 
 	void NetWorker_c::_inputRoles() {
 		if (myIndex == 0) {
-			std::cout << "Who will be the next admin?" << std::endl;
+            LOG << "Who will be the next admin?" << std::endl;
 			int idx;
 			std::cin >> idx;
 			sendMessage(serverAddr, SET_ADMIN_MESSAGE_ID, (char*)& idx, 4);
@@ -230,7 +230,7 @@ namespace Mafia {
 			char* count = new char[MAX_ROLE_ID];
 			for (int i = 0; i < MAX_ROLE_ID; i++)
 			{
-				std::cout << "How many players with role " << i << std::endl;
+                LOG << "How many players with role " << i << std::endl;
 				int c;
 				std::cin >> c;
 				count[i] = (char)c;
@@ -254,7 +254,7 @@ namespace Mafia {
             //check if roomId is ok
             char room = bytes[0];
             if(room != roomId){
-                std::cout << (int)room << " / " << (int)roomId << std::endl;
+                LOG << (int)room << " / " << (int)roomId << std::endl;
                 return ROOM_ID_ERROR;
             }
         }

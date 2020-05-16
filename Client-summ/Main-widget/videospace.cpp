@@ -50,22 +50,20 @@ void VideoSpace::setPlayersCount(int count,  SuperList<QString> names) {
         SuperList<double> rels;
         call(SuperList<double>() << (xc*(wp+margin)+margin)/(double)myWidth << (yc*(hp+margin)+margin)/(double)myHeight << wp/(double)myWidth << hp/(double)myHeight, &rels);
         call_void(((VideoPlayer*)webcams[i])->setRelatives(rels));
-        std::cout << "before" << std::endl;
         call_void(((VideoPlayer*)webcams[i])->setNumPlayer(i + 1));
 
         if(names.length() > 0){
             call_void(((VideoPlayer*)webcams[i])->setName(names[i]));
         }
-        std::cout << "after" << std::endl;
 //        webcams[i]->setVotesCount(i - 1);
 //        webcams[i]->setVoteOn(i + 1);
 //        webcams[i]->startVoting();
         call_void(((VideoPlayer*)webcams[i])->updateBounds(QRect(myDimens[0]*parSize.width(), myDimens[1]*parSize.height(), myWidth, myHeight)));
         connect(((VideoPlayer*)webcams[i]), &VideoPlayer::vote, this, &VideoSpace::voteSlot);
     }
-    std::cout << "repainting" << std::endl;
+    LOG << "repainting" << std::endl;
     call_void(repaint());
-    std::cout << "well" << std::endl;
+    LOG << "well" << std::endl;
 }
 
 void VideoSpace::setName(QString name, int index){
@@ -83,7 +81,7 @@ void VideoSpace::updateBounds(QSize nsize) {
 }
 
 void VideoSpace::addVoter(int voter, int votedFor){
-    std::cout << "made vote made" << std::endl;
+    LOG << "made vote made" << std::endl;
     call_void(((VideoPlayer*)webcams[voter])->setVoteOn(votedFor + 1));
     call_void(((VideoPlayer*)webcams[votedFor])->raiseVotings());
 }
@@ -145,6 +143,7 @@ void VideoSpace::startGame()
 void VideoSpace::voteSlot(int index)
 {
     if(curVotePlayer == -1){
+        LOG << "clear" << std::endl;
         call_void(endVotingForPlayer());
     }
     //startVoting(curVotePlayer + 1);
@@ -154,7 +153,10 @@ void VideoSpace::voteSlot(int index)
 void VideoSpace::startVoting(int player, QString action)
 {
 
-    if (curVotePlayer > 0) {
+    if (player > 0) {
+        for(int i = 0; i < player-1; i++){
+            ((VideoPlayer*)webcams[i])->hideButton();
+        }
         //webcams[curVotePlayer - 1]->setVotesCount(curVotes);
     }
     curVotes = 0;
@@ -168,6 +170,7 @@ void VideoSpace::setCanVote(int player, bool yes)
 }
 
 void VideoSpace::endVotingForPlayer(){
+    LOG << "endVotingForPlayer" << std::endl;
     for(int i = 0; i < muchPlayers; i++){
         call_void(((VideoPlayer*)webcams[i])->setVoteOn(0));
         call_void(((VideoPlayer*)webcams[i])->setVotesCount(0));
@@ -180,7 +183,7 @@ void VideoSpace::startAllVoting(QString action){
         bool cond;
         call(((VideoPlayer*)webcams[i])->isAlive(), &cond);
         if(cond){
-            call_void(startVoting(i+1, action));
+            call_void(((VideoPlayer*)webcams[i])->startVoting(action));
         }
     }
     curVotes = 0;

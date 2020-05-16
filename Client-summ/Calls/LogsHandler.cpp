@@ -6,6 +6,8 @@ Logs::LogsHandler* Logs::lhs = 0;
 
 LogsHandler::LogsHandler() {
 	if (lhs == 0) {
+        outputLog.open("data.log", std::ios_base::app);
+        outputLog << "-------------------------------------------------------" << "\nNEW RUN\n";
 		first = 0;
 		last = 0;
 		lhs = this;
@@ -63,7 +65,7 @@ void LogsHandler::showThread(std::string thread_id) {
 		if (s->keyEqual(thread_id)) {
 			stackElem se = s->peak();
 			while (se.getPrev() != 0 || se.value() != "") {
-				std::cout << se.value() << std::endl;
+                outputLog << se.value() << std::endl;
 				se = s->peak();
 			}
 			return;
@@ -75,13 +77,13 @@ void LogsHandler::showThread(std::string thread_id) {
 void LogsHandler::showAll() {
 	stack* s = first;
 	while (s != 0) {
-		std::cout << "Next thread" << std::endl;
+        outputLog << "Next thread" << std::endl;
 		stackElem se = s->peak();
 		while (se.getPrev() != 0 || se.value() != "") {
-			std::cout << se.value() << std::endl;
+            outputLog << se.value() << std::endl;
 			se = s->peak();
 		}
-		std::cout << std::endl;
+        outputLog << std::endl;
 		s = s->getNext();
 	}
 }
