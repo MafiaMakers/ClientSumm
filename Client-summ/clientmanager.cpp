@@ -277,6 +277,7 @@ void ClientManager::processResults(int* resState, int size){
 
 void ClientManager::voted(int index){
     call_void(net->sendMessage(*net->getAddrIn(), VOTE_MESSAGE_ID, (char*)&index, 4));
+    canVote = false;
     std::cout << "Me voted for " << index << std::endl;
 }
 
