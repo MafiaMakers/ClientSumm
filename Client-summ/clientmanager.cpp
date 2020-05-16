@@ -10,11 +10,12 @@
 
 using namespace Mafia;
 
-void ClientManager::memento() {
-    qWarning() << muchPlayers;
+void memento() {
+    LOG << "memeto" << std::endl;
 }
 
-void ClientManager::posix_death_signal(int signum) {
+void posix_death_signal(int signum) {
+    raise_logs();
     call_void(memento());
     call_void(signal(signum, SIG_DFL));
     call_void(exit(3));
@@ -49,7 +50,7 @@ void ClientManager::inputFirstData(){
 
 ClientManager::ClientManager(QObject *parent) : QObject(parent)
 {
- //   signal(SIGSEGV, posix_death_signal);
+    signal(SIGSEGV, posix_death_signal);
     aplayer = new AudioPlayer();
     audCheck = new QBuffer();
     audCheck->open(QBuffer::ReadWrite);

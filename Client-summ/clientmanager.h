@@ -24,7 +24,7 @@ namespace Mafia {
 public:
     explicit ClientManager(QObject *parent = nullptr);
     ~ClientManager();
-    void memento();
+    //void memento();
 
 private:
     void vote(std::string voteType);
@@ -53,7 +53,7 @@ private:
     void changedName(char* data, int size);
     void finishVoting();
     void startGame();
-    void posix_death_signal(int signum);
+    //void posix_death_signal(int signum);
 
     int curStage;
     SuperList<QString> playersNames;
